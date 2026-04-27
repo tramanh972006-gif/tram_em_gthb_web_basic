@@ -1,25 +1,52 @@
 <!DOCTYPE html>
-<html lang = "vi">
+<html lang="vi">
     <head>
-        <meta charset = "utf-8"/>
-        <meta name = "author" content = "Dang Thi Tram Anh"/>
-        <title>Form đăng ký cơ bản</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form đăng ký của Đặng Thị Trâm Anh</title>
     </head>
-    <body> 
-        <h1>Khoá học lập trình web basic</h1>
-        <hr/>
-        <div>
-            Thẻ &lt;b&gt; : <b>In đậm</b>
-            <br/>
-            Thẻ &lt;i&gt; : <i>In nghiêng</i>
-            <br/>
-            Thẻ &lt;br&gt; : Xuống dòng
-            <br/>
-            Thẻ &lt;p&gt; : Đoạn văn bản
-            <p> 
-                Xin chào học viên, chào mừng bạn đến với khoá học lập trình web basic. <br /> Trong khoá học này, bạn sẽ được học về HTML, CSS và JavaScript cơ bản để xây dựng các trang web đơn giản và đẹp mắt. Hãy cùng bắt đầu hành trình học tập của bạn ngay hôm nay nhé!
-            </p>
-        </div>
-        <p>Đây là form đăng ký học lập trình web basic</p>
+    <body>
+        <h3>Thông tin cá nhân</h3>
+        <table border = "1">
+            <tr>
+                <th>Họ và tên</th>
+                <th>Quê quán</th>
+                <th>Giới tính</th>
+                <th>Kỹ năng</th>
+                <th>SDT liên hệ</th>
+                <th>Địa chỉ email</th>
+                <th>Học phần đăng ký</th>
+            </tr>
+            <tr>
+                <td>Đặng Thị Trâm Anh</td>
+                <td>Đà Nẵng</td>
+                <td>Nữ</td>
+                <td>HTML, CSS, Python</td>
+                <td>0123456789</td>
+                <td>t80442911@gmail.com</td>
+                <td>Web Development</td>
+            </tr>
+             <tr>
+                <td>Nguyễn Văn B</td>
+                <td>Hà Nội</td>
+                <td>Nam</td>
+                <td>Java, C++</td>
+                <td>0987654321</td>
+                <td>vanb@example.com</td>
+                <td>Data Science</td>
+            </tr>
+        </table>
+        <h3>Form đăng ký</h3>
+        <form>
+            <label for="name">Họ và tên:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br>
+            <label for="phone">Số điện thoại:</label><br>
+            <input type="tel" id="phone" name="phone"><br>
+            <label for="subject">Học phần:</label><br>
+            <input type="text" id="subject" name="subject"><br>
+            <input type="submit" value="Đăng ký">
+        </form>
     </body>
 </html>
