@@ -1,53 +1,185 @@
 <!DOCTYPE html>
 <html lang="vi">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Form đăng ký của Đặng Thị Trâm Anh</title>
-    </head>
-    <body>
-        <h3>Thông tin cá nhân</h3>
-        <table border = "1">
-            <tr>
-                <th>Họ và tên</th>
-                <th>Quê quán</th>
-                <th>Giới tính</th>
-                <th>Kỹ năng</th>
-                <th>SDT liên hệ</th>
-                <th>Địa chỉ email</th>
-                <th>Học phần đăng ký</th>
-            </tr>
-            <tr>
-                <td>Đặng Thị Trâm Anh</td>
-                <td>Đà Nẵng</td>
-                <td>Nữ</td>
-                <td>HTML, CSS, Python</td>
-                <td>0123456789</td>
-                <td>t80442911@gmail.com</td>
-                <td>Web Development</td>
-            </tr>
-             <tr>
-                <td>Nguyễn Văn B</td>
-                <td>Hà Nội</td>
-                <td>Nam</td>
-                <td>Java, C++</td>
-                <td>0987654321</td>
-                <td>vanb@example.com</td>
-                <td>Data Science</td>
-            </tr>
-        </table>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form đăng ký của Đặng Thị Trâm Anh</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: #eef2f7;
+            color: #1f2937;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        h1, h2 {
+            margin-top: 0;
+            color: #0f3d5b;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 28px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+        }
+        caption {
+            caption-side: top;
+            text-align: left;
+            padding: 16px;
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 14px 12px;
+            text-align: left;
+        }
+        th {
+            background: #f3f9ff;
+        }
+        form {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 14px rgba(15, 23, 42, 0.08);
+        }
+        .form-grid {
+            display: grid;
+            gap: 18px;
+        }
+        @media (min-width: 640px) {
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .required::after {
+            content: " *";
+            color: #d14343;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            background: #f8fafc;
+            font-size: 1rem;
+            color: #111827;
+        }
+        input[type="submit"] {
+            margin-top: 12px;
+            padding: 13px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #0f4c81;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        input[type="submit"]:hover {
+            background: #0b3a63;
+        }
+        .note {
+            margin-top: 16px;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Thông tin cá nhân</h1>
+        <div class="table-wrapper">
+            <table>
+                <caption>Danh sách học viên đăng ký</caption>
+                <thead>
+                    <tr>
+                        <th>Họ và tên</th>
+                        <th>Quê quán</th>
+                        <th>Giới tính</th>
+                        <th>Kỹ năng</th>
+                        <th>SDT</th>
+                        <th>Email</th>
+                        <th>Học phần</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Đặng Thị Trâm Anh</td>
+                        <td>Đà Nẵng</td>
+                        <td>Nữ</td>
+                        <td>HTML, CSS, Python</td>
+                        <td>0123456789</td>
+                        <td>t80442911@gmail.com</td>
+                        <td>Web Development</td>
+                    </tr>
+                    <tr>
+                        <td>Nguyễn Văn B</td>
+                        <td>Hà Nội</td>
+                        <td>Nam</td>
+                        <td>Java, C++</td>
+                        <td>0987654321</td>
+                        <td>vanb@example.com</td>
+                        <td>Data Science</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <hr>
-        <h3>Form đăng ký</h3>
+
+        <h2>Form đăng ký</h2>
         <form>
-            <label for="name">Họ và tên:</label><br>
-            <input type="text" id="name" name="name"><br>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email"><br>
-            <label for="phone">Số điện thoại:</label><br>
-            <input type="tel" id="phone" name="phone"><br>
-            <label for="subject">Học phần:</label><br>
-            <input type="text" id="subject" name="subject"><br>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name" class="required">Họ và tên</label>
+                    <input type="text" id="name" name="name" placeholder="Nhập họ và tên" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="required">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="required">Số điện thoại</label>
+                    <input type="tel" id="phone" name="phone" placeholder="0123456789" pattern="\d{10}" title="Nhập đúng 10 chữ số" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject" class="required">Học phần</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Chọn học phần</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="data-science">Data Science</option>
+                        <option value="ai">AI / Machine Learning</option>
+                    </select>
+                </div>
+            </div>
+
             <input type="submit" value="Đăng ký">
+            <p class="note">Vui lòng điền đầy đủ thông tin và kiểm tra lại trước khi gửi.</p>
         </form>
-    </body>
+    </div>
+</body>
 </html>
