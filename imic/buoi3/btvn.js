@@ -1,4 +1,4 @@
-// Bài tập luyện JavaScript cơ bản <!-- update -->
+// Bài tập luyện JavaScript cơ bản
 
 // Bài 1: Khai báo biến lưu tên, tuổi và in ra câu giới thiệu
 let ten = 'Đặng Thị Trâm Anh';
