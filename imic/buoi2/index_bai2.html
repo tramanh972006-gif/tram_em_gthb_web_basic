@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buoi 2 - HTML Cơ Bản</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Buoi 2 · HTML co ban</p>
+      <h1>Demo các thẻ HTML cơ bản</h1>
+      <p class="hero-text">
+        Trang này tổng hợp các thẻ HTML cần biết khi mới học lập trình web: cấu trúc, văn bản, liên kết, hình ảnh, danh sách, bảng và container.
+      </p>
+
+      <div class="hero-grid">
+        <div class="hero-card">
+          <h2>HTML là gì?</h2>
+          <p>
+            HTML (HyperText Markup Language) là ngôn ngữ đánh dấu dùng để tạo cấu trúc cho trang web. Trình duyệt đọc các thẻ HTML để hiểu nội dung nào là tiêu đề, đoạn văn, liên kết, hình ảnh hay bảng.
+          </p>
+        </div>
+
+        <div class="hero-card">
+          <h2>Cấu trúc cú pháp</h2>
+          <pre><code>&lt;tag&gt;Nội dung&lt;/tag&gt;
+&lt;br&gt;
+&lt;img src="anh.jpg" alt="Mô tả"&gt;</code></pre>
+        </div>
+
+        <div class="hero-card highlights">
+          <h2>5 nhóm thẻ chính</h2>
+          <ul>
+            <li><strong>Cấu trúc:</strong> &lt;html&gt;, &lt;head&gt;, &lt;body&gt;</li>
+            <li><strong>Văn bản:</strong> &lt;h1-h6&gt;, &lt;p&gt;, &lt;strong&gt;, &lt;em&gt;</li>
+            <li><strong>Liên kết:</strong> &lt;a&gt;, &lt;img&gt;</li>
+            <li><strong>Danh sách:</strong> &lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</li>
+            <li><strong>Container:</strong> &lt;div&gt;, &lt;span&gt;</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="quick-nav">
+    <div class="container nav-links">
+      <a href="#cau-truc">Cấu trúc</a>
+      <a href="#van-ban">Văn bản</a>
+      <a href="#van-ban-nang-cao">Văn bản nâng cao</a>
+      <a href="#lien-ket">Liên kết</a>
+      <a href="#danh-sach">Danh sách</a>
+      <a href="#form">Form</a>
+      <a href="#bang">Bảng</a>
+      <a href="#container">Container</a>
+      <a href="#mau-sac">Màu sắc</a>
+      <a href="#bai-tap">Bài tập</a>
+      <a href="#cheat-sheet">Cheat Sheet</a>
+      <a href="#loi-html">Lỗi thường gặp</a>
+      <a href="#push-github">Push GitHub</a>
+    </div>
+  </nav>
+
+  <main class="container main-content">
+    <!-- CAU TRUC -->
+    <section id="cau-truc" class="section-block">
+      <div class="section-heading">
+        <p class="section-label">Phần 1</p>
+        <h2>Cấu trúc tài liệu HTML</h2>
+        <p>Các thẻ bao quanh tạo khung cho một trang web hoàn chỉnh.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="tag-card">
+          <h3>&lt;!DOCTYPE html&gt;</h3>
+          <p class="tag-purpose">Khai báo tài liệu HTML5</p>
+          <p>Phải viết ở dòng đầu tiên, không có thẻ đóng.</p>
+          <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;html lang="vi"&gt;</h3>
+          <p class="tag-purpose">Thẻ gốc bao quanh toàn bộ trang</p>
+          <p>Thuộc tính <code>lang</code> khai báo ngôn ngữ (vi, en, ...).</p>
+          <pre><code>&lt;html lang="vi"&gt;
+  ...
+&lt;/html&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;head&gt;</h3>
+          <p class="tag-purpose">Chứa thông tin cấu hình và metadata</p>
+          <p>Không hiển thị trực tiếp, chứa title, meta, link CSS.</p>
+          <pre><code>&lt;head&gt;
+  &lt;title&gt;Trang của tôi&lt;/title&gt;
+  &lt;meta charset="UTF-8"&gt;
+&lt;/head&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;body&gt;</h3>
+          <p class="tag-purpose">Chứa toàn bộ nội dung hiển thị</p>
+          <p>Nơi đặt văn bản, hình ảnh, danh sách, bảng.</p>
+          <pre><code>&lt;body&gt;
+  &lt;h1&gt;Xin chào&lt;/h1&gt;
+  &lt;p&gt;Nội dung trang&lt;/p&gt;
+&lt;/body&gt;</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <!-- VAN BAN -->
+    <section id="van-ban" class="section-block">
+      <div class="section-heading">
+        <p class="section-label">Phần 2</p>
+        <h2>Thẻ định dạng nội dung</h2>
+        <p>Các thẻ văn bản giúp tổ chức tiêu đề, đoạn văn và định dạng nội dung.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="tag-card">
+          <h3>&lt;h1&gt; đến &lt;h6&gt;</h3>
+          <p class="tag-purpose">Tiêu đề 6 cấp độ</p>
+          <p><code>&lt;h1&gt;</code> lớn nhất, <code>&lt;h6&gt;</code> nhỏ nhất. Dùng <code>&lt;h1&gt;</code> cho tiêu đề chính trang.</p>
+          <div class="demo-box">
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;p&gt;</h3>
+          <p class="tag-purpose">Đoạn văn bản</p>
+          <p>Dùng cho nội dung mô tả, giải thích, bài viết ngắn.</p>
+          <pre><code>&lt;p&gt;Đây là một đoạn văn bản.&lt;/p&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;br&gt; và &lt;hr&gt;</h3>
+          <p class="tag-purpose">Xuống dòng và đường kẻ ngang</p>
+          <p>Cả hai là thẻ đơn, không cần thẻ đóng.</p>
+          <div class="demo-box">
+            <p>Dòng 1<br>Dòng 2</p>
+            <hr>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;strong&gt;, &lt;em&gt;</h3>
+          <p class="tag-purpose">Nhấn mạnh nội dung</p>
+          <p><code>&lt;strong&gt;</code> in đậm, <code>&lt;em&gt;</code> in nghiêng.</p>
+          <div class="demo-box">
+            <p><strong>Nội dung quan trọng</strong></p>
+            <p><em>Nội dung cần chú ý</em></p>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>So sánh strong và em</h3>
+          <table class="custom-table">
+            <tr>
+              <th>strong</th>
+              <th>em</th>
+            </tr>
+            <tr>
+              <td>In đậm</td>
+              <td>In nghiêng</td>
+            </tr>
+            <tr>
+              <td>Nhấn mạnh mạnh hơn</td>
+              <td>Nhấn nhẹ hơn</td>
+            </tr>
+            <tr>
+              <td>Dùng cho cảnh báo</td>
+              <td>Dùng cho chú thích</td>
+            </tr>
+          </table>
+        </article>
+      </div>
+    </section>
+
+    <!-- LIEN KET -->
+    <section id="lien-ket" class="section-block">
+      <div class="section-heading">
+        <p class="section-label">Phần 3</p>
+        <h2>Liên kết (Links)</h2>
+        <p>Kết nối tới trang khác, file, email hoặc vị trí trong trang.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="tag-card">
+          <h3>&lt;a href="..."&gt;</h3>
+          <p class="tag-purpose">Tạo liên kết</p>
+          <p><code>href</code> là đường dẫn đích. <code>target="_blank"</code> mở link ở tab mới.</p>
+          <pre><code>&lt;a href="https://google.com"&gt;
+  Google
+&lt;/a&gt;
+
+&lt;a href="page2.html"&gt;
+  Trang 2
+&lt;/a&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;img src="..." alt="..."&gt;</h3>
+          <p class="tag-purpose">Chèn hình ảnh</p>
+          <p><code>src</code> là đường dẫn ảnh. <code>alt</code> là mô tả khi ảnh không tải.</p>
+          <div class="image-demo">
+            <img
+              src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=60"
+              alt="Laptop và công nghệ"
+            >
+          </div>
+          <pre><code>&lt;img src="image.jpg" 
+     alt="Mô tả ảnh"
+     width="300"&gt;</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <!-- DANH SACH -->
+    <section id="danh-sach" class="section-block">
+      <div class="section-heading">
+        <p class="section-label">Phần 4</p>
+        <h2>Danh sách (Lists)</h2>
+        <p>Liệt kê nội dung theo mục, có thứ tự hoặc không.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="tag-card">
+          <h3>&lt;ul&gt; - Không thứ tự</h3>
+          <p class="tag-purpose">Danh sách dấu đầu dòng</p>
+          <p>Mỗi mục nằm trong thẻ <code>&lt;li&gt;</code>.</p>
+          <div class="demo-box">
+            <ul>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;ol&gt; - Có thứ tự</h3>
+          <p class="tag-purpose">Danh sách đánh số</p>
+          <p>Tự động đánh số từ 1, 2, 3...</p>
+          <div class="demo-box">
+            <ol>
+              <li>Mở file HTML</li>
+              <li>Viết nội dung</li>
+              <li>Lưu file</li>
+            </ol>
+          </div>
+        </article>
+
+        <div class="demo-box">
+          <h4>Ưu điểm</h4>
+          <ul>
+            <li>Dễ trình bày nội dung</li>
+            <li>Gọn gàng, dễ đọc</li>
+            <li>Phù hợp menu, quy trình</li>
+          </ul>
+          <h4>Khi nào dùng?</h4>
+          <p>
+            Dùng khi cần liệt kê dữ liệu theo từng mục.
+          </p>
+          <h4>So sánh</h4>
+          <p>
+            <strong>ul</strong> dùng khi không cần thứ tự.
+            <strong>ol</strong> dùng khi có bước hoặc trình tự.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VAN BAN NANG CAO -->
+    <section id="van-ban-nang-cao" class="section-block">
+      <div class="section-heading">
+        <p class="section-label">Phần 4</p>
+        <h2>Thẻ định dạng văn bản nâng cao</h2>
+        <p>Các thẻ chuyên biệt để định dạng nội dung khác nhau.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="tag-card">
+          <h3>&lt;del&gt;, &lt;s&gt;</h3>
+          <p class="tag-purpose">Chỉ rõ văn bản đã xóa hoặc gạch ngang</p>
+          <p><code>&lt;del&gt;</code> : văn bản bị xóa. <code>&lt;s&gt;</code> : gạch ngang.</p>
+          <div class="demo-box">
+            <p><del>Giá cũ: 100,000đ</del></p>
+            <p><s>Không còn sử dụng</s></p>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;sub&gt;, &lt;sup&gt;</h3>
+          <p class="tag-purpose">Chỉ số dưới và chỉ số trên</p>
+          <p><code>&lt;sub&gt;</code> : dấu chân (H<sub>2</sub>O). <code>&lt;sup&gt;</code> : dấu mũ (x<sup>2</sup>).</p>
+          <div class="demo-box">
+            <p>Công thức: H<sub>2</sub>O</p>
+            <p>Phương trình: x<sup>2</sup> + y<sup>2</sup> = z<sup>2</sup></p>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;blockquote&gt;, &lt;q&gt;</h3>
+          <p class="tag-purpose">Trích dẫn dài và trích dẫn ngắn</p>
+          <p><code>&lt;blockquote&gt;</code> : dùng cho đoạn trích dài. <code>&lt;q&gt;</code> : dùng inline.</p>
+          <pre><code>&lt;blockquote&gt;
+  "HTML là nền tảng của web"
+&lt;/blockquote&gt;
+
+&lt;p&gt;Như người ta nói: &lt;q&gt;HTML rất quan trọng&lt;/q&gt;&lt;/p&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;cite&gt;, &lt;abbr&gt;</h3>
+          <p class="tag-purpose">Trích dẫn nguồn và viết tắt</p>
+          <p><code>&lt;cite&gt;</code> : tên tác phẩm. <code>&lt;abbr&gt;</code> : viết tắt với tooltip.</p>
+          <pre><code>&lt;p&gt;Theo &lt;cite&gt;HTML Docs&lt;/cite&gt;&lt;/p&gt;
+
+&lt;abbr title="HyperText Markup Language"&gt;
+  HTML
+&lt;/abbr&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;code&gt;, &lt;dfn&gt;</h3>
+          <p class="tag-purpose">Đoạn mã và định nghĩa</p>
+          <p><code>&lt;code&gt;</code> : hiển thị mã lập trình. <code>&lt;dfn&gt;</code> : định nghĩa thuật ngữ.</p>
+          <div class="demo-box">
+            <p>Viết mã: <code>let x = 10;</code></p>
+            <p><dfn>HTML</dfn> là ngôn ngữ đánh dấu.</p>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;mark&gt;, &lt;small&gt;</h3>
+          <p class="tag-purpose">Tô sáng và chữ nhỏ</p>
+          <p><code>&lt;mark&gt;</code> : làm nổi bật. <code>&lt;small&gt;</code> : chữ nhỏ hơn.</p>
+          <div class="demo-box">
+            <p>Điểm quan trọng: <mark>đây là phần cần học</mark></p>
+            <p><small>Ghi chú nhỏ hoặc điều khoản</small></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FORM -->
+    <section id="form" class="section-block">
+      <div class="section-heading">
+        <p class="section-label">Phần 5</p>
+        <h2>Form - Nhập liệu từ người dùng</h2>
+        <p>Form cho phép người dùng nhập dữ liệu và gửi lên máy chủ.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="tag-card">
+          <h3>&lt;form&gt;</h3>
+          <p class="tag-purpose">Tạo biểu mẫu</p>
+          <p>Bao quanh các thành phần nhập liệu. Thuộc tính <code>method</code> và <code>action</code>.</p>
+          <pre><code>&lt;form method="POST" action="submit.php"&gt;
+  &lt;!-- Các input ở đây --&gt;
+&lt;/form&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;label&gt;, &lt;input&gt;</h3>
+          <p class="tag-purpose">Nhãn và ô nhập liệu</p>
+          <p><code>&lt;label&gt;</code> mô tả ô nhập. Liên kết bằng thuộc tính <code>for</code>.</p>
+          <pre><code>&lt;label for="name"&gt;Họ tên:&lt;/label&gt;
+&lt;input type="text" id="name" 
+       name="name"&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>Input type="text"</h3>
+          <p class="tag-purpose">Ô nhập văn bản thường</p>
+          <p>Dùng cho tên, địa chỉ, tìm kiếm.</p>
+          <div class="demo-box">
+            <label>Tên:</label><br>
+            <input type="text" placeholder="Nhập tên của bạn">
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>Input type="email"</h3>
+          <p class="tag-purpose">Ô nhập email</p>
+          <p>Trình duyệt kiểm tra định dạng email tự động.</p>
+          <div class="demo-box">
+            <label>Email:</label><br>
+            <input type="email" placeholder="example@gmail.com">
+          </div>
+          <div class="demo-box">
+            <h4>Khi nào dùng?</h4>
+            <p>
+              Dùng khi người dùng cần nhập email đăng ký, đăng nhập hoặc liên hệ.
+            </p>
+
+            <h4>Ưu điểm</h4>
+            <ul>
+              <li>Kiểm tra đúng định dạng email</li>
+              <li>Hỗ trợ bàn phím email trên điện thoại</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>Input type="password"</h3>
+          <p class="tag-purpose">Ô nhập mật khẩu</p>
+          <p>Chữ bị che khuất khi nhập để bảo mật.</p>
+          <div class="demo-box">
+            <label>Mật khẩu:</label><br>
+            <input type="password" placeholder="Nhập mật khẩu">
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>Input type="radio"</h3>
+          <p class="tag-purpose">Chọn một trong nhiều tùy chọn</p>
+          <p>Chỉ có thể chọn 1, có cùng <code>name</code>.</p>
+          <div class="demo-box">
+            <label><input type="radio" name="gender"> Nam</label><br>
+            <label><input type="radio" name="gender"> Nữ</label>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>Input type="checkbox"</h3>
+          <p class="tag-purpose">Chọn nhiều tùy chọn</p>
+          <p>Có thể chọn 0, 1 hoặc nhiều.</p>
+          <div class="demo-box">
+            <label><input type="checkbox"> HTML</label><br>
+            <label><input type="checkbox"> CSS</label><br>
+            <label><input type="checkbox"> JavaScript</label>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>Input type="date"</h3>
+          <p class="tag-purpose">Chọn ngày</p>
+          <p>Trình duyệt cung cấp bộ chọn ngày.</p>
+          <div class="demo-box">
+            <label>Ngày sinh:</label><br>
+            <input type="date">
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;textarea&gt;</h3>
+          <p class="tag-purpose">Ô nhập nhiều dòng</p>
+          <p>Dùng cho nhận xét, mô tả dài.</p>
+          <pre><code>&lt;textarea rows="4" cols="30"&gt;
+  Nhập bình luận của bạn...
+&lt;/textarea&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;select&gt;</h3>
+          <p class="tag-purpose">Danh sách thả xuống</p>
+          <p>Người dùng chọn một trong các tùy chọn.</p>
+          <pre><code>&lt;select name="city"&gt;
+  &lt;option&gt;Chọn thành phố&lt;/option&gt;
+  &lt;option&gt;Hà Nội&lt;/option&gt;
+  &lt;option&gt;TP.HCM&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;button&gt;, type="submit"</h3>
+          <p class="tag-purpose">Nút bấm và gửi form</p>
+          <p><code>type="submit"</code> gửi dữ liệu. <code>type="reset"</code> xóa form.</p>
+          <div class="demo-box">
+            <button type="submit">Gửi</button>
+            <button type="reset">Xóa</button>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>Ưu điểm của Form</h3>
+
+          <div class="demo-box">
+            <h4>Ưu điểm</h4>
+
+            <ul>
+              <li>Cho phép nhập dữ liệu</li>
+              <li>Tương tác với người dùng</li>
+              <li>Dùng cho đăng ký, đăng nhập</li>
+            </ul>
+
+            <h4>Khi nào dùng?</h4>
+
+            <p>
+              Dùng khi website cần lấy thông tin người dùng.
+            </p>
+
+            <h4>Ví dụ thực tế</h4>
+
+            <ul>
+              <li>Form đăng nhập</li>
+              <li>Form liên hệ</li>
+              <li>Form thanh toán</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="demo-box" style="margin-top: 20px;">
+        <h4>Ví dụ Form hoàn chỉnh:</h4>
+        <pre><code>&lt;form method="POST" action="submit.php"&gt;
+  &lt;label&gt;Họ tên:&lt;/label&gt;&lt;br&gt;
+  &lt;input type="text" name="name" required&gt;&lt;br&gt;
+
+  &lt;label&gt;Email:&lt;/label&gt;&lt;br&gt;
+  &lt;input type="email" name="email" required&gt;&lt;br&gt;
+
+  &lt;label&gt;Giới tính:&lt;/label&gt;&lt;br&gt;
+  &lt;input type="radio" name="gender" value="nam"&gt; Nam
+  &lt;input type="radio" name="gender" value="nu"&gt; Nữ&lt;br&gt;
+
+  &lt;label&gt;Khóa học:&lt;/label&gt;&lt;br&gt;
+  &lt;select name="course"&gt;
+    &lt;option&gt;HTML&lt;/option&gt;
+    &lt;option&gt;CSS&lt;/option&gt;
+    &lt;option&gt;JavaScript&lt;/option&gt;
+  &lt;/select&gt;&lt;br&gt;
+
+  &lt;label&gt;Ghi chú:&lt;/label&gt;&lt;br&gt;
+  &lt;textarea rows="4"&gt;&lt;/textarea&gt;&lt;br&gt;
+
+  &lt;button type="submit"&gt;Đăng ký&lt;/button&gt;
+  &lt;button type="reset"&gt;Xóa&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- BANG -->
+    <section id="bang" class="section-block">
+      <div class="section-heading">
+        <p class="section-label">Phần 6</p>
+        <h2>Bảng (Table)</h2>
+        <p>Hiển thị dữ liệu theo hàng và cột.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Thẻ</th>
+              <th>Chức năng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>&lt;table&gt;</td>
+              <td>Tạo bảng</td>
+            </tr>
+            <tr>
+              <td>&lt;tr&gt;</td>
+              <td>Hàng bảng (table row)</td>
+            </tr>
+            <tr>
+              <td>&lt;th&gt;</td>
+              <td>Ô tiêu đề (table header)</td>
+            </tr>
+            <tr>
+              <td>&lt;td&gt;</td>
+              <td>Ô dữ liệu (table data)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <article class="tag-card">
+          <h3>Ưu điểm của Table</h3>
+
+          <div class="demo-box">
+            <h4>Ưu điểm</h4>
+
+            <ul>
+              <li>Hiển thị dữ liệu dạng hàng cột rõ ràng</li>
+              <li>Dễ đọc dữ liệu thống kê</li>
+              <li>Thường dùng cho bảng điểm, doanh thu</li>
+            </ul>
+
+            <h4>Khi nào dùng?</h4>
+
+            <p>
+              Dùng khi dữ liệu có quan hệ hàng và cột.
+            </p>
+
+            <h4>Ví dụ</h4>
+
+            <table class="custom-table">
+              <tr>
+                <th>Họ tên</th>
+                <th>Điểm</th>
+              </tr>
+
+              <tr>
+                <td>Trâm Anh</td>
+                <td>9</td>
+              </tr>
+
+              <tr>
+                <td>Nguyễn Văn A</td>
+                <td>8</td>
+              </tr>
+            </table>
+          </div>
+        </article>
+        <article class="tag-card">
+  <h3>Chỉnh nét kẻ bảng bằng CSS</h3>
+
+  <p class="tag-purpose">
+    Dùng thuộc tính border để tạo và chỉnh đường viền bảng.
+  </p>
+
+  <div class="demo-box">
+    <table style="border-collapse: collapse; width: 100%;">
+      <tr>
+        <th style="border: 2px solid black; padding: 8px;">
+          Kiểu viền
+        </th>
+        <th style="border: 2px solid black; padding: 8px;">
+          Ví dụ
+        </th>
+      </tr>
+
+      <tr>
+        <td style="border: 2px solid black; padding: 8px;">
+          solid
+        </td>
+        <td style="border: 2px solid black; padding: 8px;">
+          Viền liền
+        </td>
+      </tr>
+
+      <tr>
+        <td style="border: 2px dashed blue; padding: 8px;">
+          dashed
+        </td>
+        <td style="border: 2px dashed blue; padding: 8px;">
+          Viền đứt đoạn
+        </td>
+      </tr>
+
+      <tr>
+        <td style="border: 2px dotted green; padding: 8px;">
+          dotted
+        </td>
+        <td style="border: 2px dotted green; padding: 8px;">
+          Viền chấm chấm
+        </td>
+      </tr>
+
+      <tr>
+        <td style="border: 4px double red; padding: 8px;">
+          double
+        </td>
+        <td style="border: 4px double red; padding: 8px;">
+          Viền đôi
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <pre><code>table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}</code></pre>
+</article>
+
+<article class="tag-card">
+  <h3>Ưu điểm của từng loại nét kẻ</h3>
+
+  <div class="demo-box">
+    <h4>solid</h4>
+    <ul>
+      <li>Dễ đọc</li>
+      <li>Phổ biến nhất</li>
+      <li>Phù hợp bảng dữ liệu</li>
+    </ul>
+
+    <h4>Khi nào dùng?</h4>
+    <p>
+      Dùng cho bảng điểm, bảng thống kê, dữ liệu chính thức.
+    </p>
+
+    <hr>
+
+    <h4>dashed</h4>
+    <ul>
+      <li>Nhẹ mắt hơn</li>
+      <li>Tạo cảm giác mềm hơn</li>
+      <li>Dễ phân vùng nội dung</li>
+    </ul>
+
+    <h4>Khi nào dùng?</h4>
+    <p>
+      Dùng cho bảng demo, ghi chú hoặc giao diện hiện đại.
+    </p>
+
+    <hr>
+
+    <h4>dotted</h4>
+    <ul>
+      <li>Trang trí tốt</li>
+      <li>Tạo cảm giác nhẹ</li>
+    </ul>
+
+    <h4>Khi nào dùng?</h4>
+    <p>
+      Dùng cho giao diện vui vẻ hoặc bảng ít quan trọng.
+    </p>
+
+    <hr>
+
+    <h4>double</h4>
+    <ul>
+      <li>Nổi bật mạnh</li>
+      <li>Tạo cảm giác quan trọng</li>
+    </ul>
+
+    <h4>Khi nào dùng?</h4>
+    <p>
+      Dùng cho tiêu đề bảng hoặc phần cần nhấn mạnh.
+    </p>
+  </div>
+</article>
+
+<article class="tag-card">
+  <h3>So sánh các kiểu viền bảng</h3>
+
+  <table class="custom-table">
+    <tr>
+      <th>Kiểu</th>
+      <th>Độ nổi bật</th>
+      <th>Mức phổ biến</th>
+      <th>Phù hợp</th>
+    </tr>
+
+    <tr>
+      <td>solid</td>
+      <td>Cao</td>
+      <td>Rất phổ biến</td>
+      <td>Bảng dữ liệu chính</td>
+    </tr>
+
+    <tr>
+      <td>dashed</td>
+      <td>Trung bình</td>
+      <td>Khá phổ biến</td>
+      <td>Demo / phân vùng</td>
+    </tr>
+
+    <tr>
+      <td>dotted</td>
+      <td>Thấp</td>
+      <td>Ít dùng</td>
+      <td>Trang trí</td>
+    </tr>
+
+    <tr>
+      <td>double</td>
+      <td>Rất cao</td>
+      <td>Ít dùng</td>
+      <td>Nhấn mạnh tiêu đề</td>
+    </tr>
+  </table>
+</article>
+      </div>
+
+      <div class="demo-box" style="margin-top: 20px;">
+        <h4>Cú pháp:</h4>
+        <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Cột 1&lt;/th&gt;
+    &lt;th&gt;Cột 2&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Dữ liệu 1&lt;/td&gt;
+    &lt;td&gt;Dữ liệu 2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- CONTAINER -->
+    <section id="container" class="section-block">
+      <div class="section-heading">
+        <p class="section-label">Phần 7</p>
+        <h2>Container & Inline Elements</h2>
+        <p>Nhóm nội dung và định dạng các phần tử.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="tag-card">
+          <h3>&lt;div&gt;</h3>
+          <p class="tag-purpose">Khối container</p>
+          <p>Dùng để nhóm các thành phần, chia bố cục trang.</p>
+          <pre><code>&lt;div class="card"&gt;
+  &lt;h3&gt;Tiêu đề&lt;/h3&gt;
+  &lt;p&gt;Nội dung&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>&lt;span&gt;</h3>
+          <p class="tag-purpose">Inline element</p>
+          <p>Định dạng một phần nhỏ trong câu mà không xuống dòng.</p>
+          <div class="demo-box">
+            <p>Từ <span class="highlight-inline">đặc biệt</span> được làm nổi bật.</p>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>Inline Style</h3>
+          <p class="tag-purpose">CSS viết trực tiếp trong HTML</p>
+          <p>Nên tránh dùng, tốt hơn là dùng CSS file riêng.</p>
+          <pre><code>&lt;p style="color: red; font-weight: bold;"&gt;
+  Text đỏ và đậm
+&lt;/p&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>Meta Tags</h3>
+          <p class="tag-purpose">Thông tin cấu hình trang</p>
+          <p>Được đặt trong <code>&lt;head&gt;</code>.</p>
+          <pre><code>&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" 
+      content="width=device-width"&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>So sánh div và span</h3>
+          <table class="custom-table">
+            <tr>
+              <th>div</th>
+              <th>span</th>
+            </tr>
+            <tr>
+              <td>Block element</td>
+              <td>Inline element</td>
+            </tr>
+            <tr>
+              <td>Tự xuống dòng</td>
+              <td>Không xuống dòng</td>
+            </tr>
+            <tr>
+              <td>Dùng chia layout</td>
+              <td>Dùng style text nhỏ</td>
+            </tr>
+          </table>
+        </article>
+      </div>
+    </section>
+
+    <!-- MAU SAC -->
+    <section id="mau-sac" class="section-block">
+      <div class="section-heading">
+        <p class="section-label">Phần 8</p>
+        <h2>Màu sắc và Định dạng</h2>
+        <p>Sử dụng màu sắc để làm trang web trở nên đẹp mắt và hấp dẫn.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="tag-card">
+          <h3>Màu theo tên (Named Colors)</h3>
+          <p class="tag-purpose">Sử dụng tên tiếng Anh</p>
+          <p>Các màu cơ bản: red, blue, green, yellow, black, white, gray...</p>
+          <div class="demo-box">
+            <p style="color: red;">Chữ màu đỏ</p>
+            <p style="color: blue;">Chữ màu xanh</p>
+            <p style="color: green;">Chữ màu lục</p>
+            <p style="color: orange;">Chữ màu cam</p>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>Màu Hex (#RRGGBB)</h3>
+          <p class="tag-purpose">6 chữ số thập lục phân</p>
+          <p>#FF0000 = Đỏ, #00FF00 = Xanh, #0000FF = Lam...</p>
+          <div class="demo-box">
+            <p style="color: #FF0000;">Chữ #FF0000</p>
+            <p style="color: #00AA00;">Chữ #00AA00</p>
+            <p style="color: #0066FF;">Chữ #0066FF</p>
+            <p style="color: #FF6600;">Chữ #FF6600</p>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>Màu RGB (Đỏ, Xanh, Lam)</h3>
+          <p class="tag-purpose">Kết hợp 3 thành phần 0-255</p>
+          <p>rgb(255, 0, 0) = Đỏ, rgb(0, 255, 0) = Xanh...</p>
+          <div class="demo-box">
+            <p style="color: rgb(255, 0, 0);">Chữ rgb(255, 0, 0)</p>
+            <p style="color: rgb(0, 128, 0);">Chữ rgb(0, 128, 0)</p>
+            <p style="color: rgb(100, 150, 200);">Chữ rgb(100, 150, 200)</p>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>Nền (Background Color)</h3>
+          <p class="tag-purpose">background-color cho nền phần tử</p>
+          <p>Áp dụng cho paragraph, div, button...</p>
+          <div class="demo-box">
+            <p style="background-color: #FFFF00; padding: 10px;">Nền vàng</p>
+            <p style="background-color: #00CCFF; padding: 10px; color: white;">Nền xanh, chữ trắng</p>
+            <p style="background-color: #FF99CC; padding: 10px;">Nền hồng</p>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>Độ trong suốt (Opacity)</h3>
+          <p class="tag-purpose">rgba - thêm giá trị alpha (0-1)</p>
+          <p>rgba(255, 0, 0, 0.5) = Đỏ bán trong suốt</p>
+          <div class="demo-box">
+            <p style="background-color: rgba(255, 0, 0, 1); padding: 5px;">Opaque: 1 (không trong)</p>
+            <p style="background-color: rgba(255, 0, 0, 0.7); padding: 5px;">Opacity: 0.7</p>
+            <p style="background-color: rgba(255, 0, 0, 0.4); padding: 5px;">Opacity: 0.4 (trong hơn)</p>
+            <p style="background-color: rgba(255, 0, 0, 0.1); padding: 5px;">Opacity: 0.1 (rất trong)</p>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>Viền (Border)</h3>
+          <p class="tag-purpose">Thêm viền quanh phần tử</p>
+          <p>border: width style color</p>
+          <div class="demo-box">
+            <p style="border: 2px solid red; padding: 10px;">Viền đỏ 2px</p>
+            <p style="border: 3px dashed blue; padding: 10px;">Viền xanh đứt đoạn</p>
+            <p style="border: 1px dotted green; padding: 10px;">Viền xanh chấm chấm</p>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>Bo góc (Border Radius)</h3>
+          <p class="tag-purpose">Làm tròn góc phần tử</p>
+          <p>border-radius: 5px (bo tròn tất cả góc)</p>
+          <div class="demo-box">
+            <p style="background-color: #FF6B6B; padding: 10px; border-radius: 5px; color: white;">Bo góc 5px</p>
+            <p style="background-color: #4ECDC4; padding: 10px; border-radius: 15px; color: white;">Bo góc 15px</p>
+            <p style="background-color: #FFE66D; padding: 10px; border-radius: 50%; width: 100px; height: 100px; text-align: center;">Bo 50% (tròn)</p>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>Bóng đổ (Box Shadow)</h3>
+          <p class="tag-purpose">Thêm bóng cho phần tử</p>
+          <p>box-shadow: offsetX offsetY blur color</p>
+          <div class="demo-box">
+            <p style="background-color: white; padding: 10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.3); margin: 10px 0;">Bóng nhẹ</p>
+            <p style="background-color: white; padding: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); margin: 10px 0;">Bóng đậm</p>
+          </div>
+        </article>
+
+        <article class="tag-card">
+          <h3>Gradient (Chuyển màu)</h3>
+          <p class="tag-purpose">Chuyển mịn giữa 2 màu trở lên</p>
+          <p>linear-gradient(to right, color1, color2)</p>
+          <pre><code>background: linear-gradient(
+  to right, 
+  #FF0000, 
+  #FFFF00
+);</code></pre>
+        </article>
+      </div>
+
+      <div class="demo-box" style="margin-top: 20px;">
+        <h4>Ví dụ kết hợp:</h4>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body {
+      background-color: #F0F0F0;
+    }
+    .card {
+      background-color: white;
+      color: #333;
+      border: 2px solid #0066FF;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .card h2 {
+      color: #FF6600;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="card"&gt;
+    &lt;h2&gt;Card Đẹp&lt;/h2&gt;
+    &lt;p&gt;Nền trắng, viền xanh, bóng nhẹ&lt;/p&gt;
+    &lt;button&gt;Bấm vào&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- BAI TAP -->
+    <section id="bai-tap" class="section-block">
+      <div class="section-heading">
+        <p class="section-label">Bài tập</p>
+        <h2>10 Bài tập HTML cơ bản</h2>
+        <p>Thực hành các thẻ HTML bằng cách tạo các đoạn mã này.</p>
+      </div>
+
+      <div class="demo-box">
+        <h4>1. Tạo trang với tiêu đề, đoạn văn, liên kết</h4>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="vi"&gt;
+&lt;head&gt;
+  &lt;title&gt;Trang của tôi&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Chào mừng&lt;/h1&gt;
+  &lt;p&gt;Đây là trang HTML đầu tiên của tôi.&lt;/p&gt;
+  &lt;a href="https://google.com"&gt;Truy cập Google&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+
+      <div class="demo-box">
+        <h4>2. Chèn hình ảnh với mô tả</h4>
+        <pre><code>&lt;img src="photo.jpg" alt="Ảnh của tôi" width="300"&gt;
+&lt;p&gt;Ảnh được chèn thành công.&lt;/p&gt;</code></pre>
+      </div>
+
+      <div class="demo-box">
+        <h4>3. Tạo danh sách công việc</h4>
+        <pre><code>&lt;h2&gt;Công việc hôm nay&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Học HTML&lt;/li&gt;
+  &lt;li&gt;Học CSS&lt;/li&gt;
+  &lt;li&gt;Làm bài tập&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+      </div>
+
+      <div class="demo-box">
+        <h4>4. Tạo bảng thông tin học viên</h4>
+        <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Họ tên&lt;/th&gt;
+    &lt;th&gt;Tuổi&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Trâm Anh&lt;/td&gt;
+    &lt;td&gt;20&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+      </div>
+
+      <div class="demo-box">
+        <h4>5. Nhấn mạnh text quan trọng</h4>
+        <pre><code>&lt;p&gt;HTML rất &lt;strong&gt;quan trọng&lt;/strong&gt; 
+khi học web.&lt;/p&gt;
+&lt;p&gt;Điều này &lt;em&gt;thực sự&lt;/em&gt; đúng.&lt;/p&gt;</code></pre>
+      </div>
+
+      <div class="demo-box">
+        <h4>6-10. Kết hợp tất cả</h4>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="vi"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Portfolio&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Giới thiệu về tôi&lt;/h1&gt;
+  &lt;p&gt;Tôi là &lt;strong&gt;lập trình viên&lt;/strong&gt; 
+     và yêu thích lập trình web.&lt;/p&gt;
+  
+  &lt;h2&gt;Kỹ năng&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h2&gt;Liên hệ&lt;/h2&gt;
+  &lt;p&gt;&lt;a href="mailto:email@example.com"&gt;
+    Gửi email cho tôi
+  &lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- CHEAT SHEET -->
+    <section id="cheat-sheet" class="section-block final-section">
+      <div class="section-heading">
+        <p class="section-label">Ghi chú</p>
+        <h2>HTML Cheat Sheet</h2>
+        <p>Tham khảo nhanh các thẻ HTML cơ bản.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="tag-card">
+          <h3>Cấu trúc tài liệu</h3>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="vi"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Tiêu đề&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  Nội dung
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>Tiêu đề & Văn bản</h3>
+          <pre><code>&lt;h1&gt;Tiêu đề 1&lt;/h1&gt;
+&lt;h2&gt;Tiêu đề 2&lt;/h2&gt;
+&lt;p&gt;Đoạn văn&lt;/p&gt;
+&lt;br&gt; (xuống dòng)
+&lt;hr&gt; (đường kẻ)
+&lt;strong&gt;Đậm&lt;/strong&gt;
+&lt;em&gt;Nghiêng&lt;/em&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>Liên kết & Ảnh</h3>
+          <pre><code>&lt;a href="url"&gt;Liên kết&lt;/a&gt;
+&lt;a href="file.html"&gt;Trang&lt;/a&gt;
+&lt;a href="#id"&gt;Đến vị trí&lt;/a&gt;
+
+&lt;img src="url" alt="mô tả"&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>Danh sách</h3>
+          <pre><code>&lt;ul&gt;
+  &lt;li&gt;Mục 1&lt;/li&gt;
+  &lt;li&gt;Mục 2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Bước 1&lt;/li&gt;
+  &lt;li&gt;Bước 2&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>Bảng</h3>
+          <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Cột 1&lt;/th&gt;
+    &lt;th&gt;Cột 2&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Dữ liệu&lt;/td&gt;
+    &lt;td&gt;Dữ liệu&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>Container</h3>
+          <pre><code>&lt;div&gt;
+  Nhóm nội dung
+&lt;/div&gt;
+
+&lt;span&gt;Inline text&lt;/span&gt;
+
+&lt;p style="color: red;"&gt;
+  Inline style
+&lt;/p&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>Meta Tags</h3>
+          <pre><code>&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" 
+      content="width=device-width"&gt;
+&lt;meta name="description" 
+      content="Mô tả trang"&gt;
+&lt;meta name="keywords" 
+      content="html, css"&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>Các attribute phổ biến</h3>
+          <pre><code>id="..."      (định danh duy nhất)
+class="..."   (thêm nhiều class)
+style="..."   (inline CSS)
+title="..."   (tooltip)
+alt="..."     (mô tả hình)
+href="..."    (liên kết)
+src="..."     (nguồn ảnh/file)</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>Semantic HTML</h3>
+          <pre><code>&lt;header&gt;Phần đầu&lt;/header&gt;
+&lt;nav&gt;Menu&lt;/nav&gt;
+&lt;main&gt;Nội dung chính&lt;/main&gt;
+&lt;article&gt;Bài viết&lt;/article&gt;
+&lt;section&gt;Phần&lt;/section&gt;
+&lt;footer&gt;Chân trang&lt;/footer&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>Màu sắc & Styling</h3>
+          <pre><code>color: red;              (màu chữ)
+background-color: blue;  (nền)
+
+/* Hex color */
+color: #FF0000;
+
+/* RGB color */
+color: rgb(255, 0, 0);
+color: rgba(255, 0, 0, 0.5);
+
+border: 2px solid red;
+border-radius: 8px;
+box-shadow: 0 2px 5px rgba(0,0,0,0.2);</code></pre>
+        </article>
+      </div>
+
+      <div class="demo-box" style="margin-top: 20px;">
+        <h4>Quy tắc viết HTML tốt</h4>
+        <pre><code>✓ Luôn đóng thẻ: &lt;p&gt;...&lt;/p&gt;
+✓ Thụt lề để dễ đọc
+✓ Dùng &lt;strong&gt;, &lt;em&gt; thay cho &lt;b&gt;, &lt;i&gt;
+✓ Viết alt cho tất cả ảnh
+✓ Dùng semantic tags khi có thể
+✓ Không dùng inline style quá nhiều
+
+✗ Không: &lt;p&gt;text
+✗ Không viết hoa tên thẻ: &lt;P&gt; là sai
+✗ Không lồng sai: &lt;b&gt;&lt;i&gt;text&lt;/b&gt;&lt;/i&gt;</code></pre>
+      </div>
+    </section>
+
+    <article class="tag-card">
+      <h3>So sánh id và class</h3>
+      <table class="custom-table">
+        <tr>
+          <th>id</th>
+          <th>class</th>
+        </tr>
+        <tr>
+          <td>Chỉ dùng 1 lần</td>
+          <td>Dùng nhiều phần tử</td>
+        </tr>
+        <tr>
+          <td>Định danh duy nhất</td>
+          <td>Nhóm nhiều phần tử</td>
+        </tr>
+        <tr>
+          <td>#header</td>
+          <td>.card</td>
+        </tr>
+      </table>
+    </article>
+
+    <section id="loi-html" class="section-block">
+      <div class="section-heading">
+        <p class="section-label">Bonus</p>
+        <h2>Lỗi HTML thường gặp</h2>
+      </div>
+
+      <div class="card-grid">
+        <article class="tag-card">
+          <h3>Quên đóng thẻ</h3>
+          <pre><code>&lt;p&gt;Hello</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>Lồng thẻ sai</h3>
+          <pre><code>&lt;b&gt;&lt;i&gt;text&lt;/b&gt;&lt;/i&gt;</code></pre>
+        </article>
+
+        <article class="tag-card">
+          <h3>Quên alt cho ảnh</h3>
+          <pre><code>&lt;img src="image.jpg"&gt;</code></pre>
+        </article>
+      </div>
+    </section>
+
+<section id="push-github" class="section-block">
+  <div class="section-heading">
+    <p class="section-label">Thực hành GitHub</p>
+    <h2>Cách hiển thị và đẩy file HTML lên GitHub</h2>
+    <p>
+      Sau khi tạo file HTML, bạn có thể mở trên trình duyệt và đẩy code lên GitHub bằng Git.
+    </p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="tag-card">
+      <h3>Tạo file HTML</h3>
+      <p class="tag-purpose">Tạo file index.html bằng PowerShell</p>
+
+      <pre><code>ni index.html</code></pre>
+
+      <div class="demo-box">
+        <p>
+          Sau khi tạo file, dán toàn bộ code HTML vào bên trong file
+          <strong>index.html</strong>.
+        </p>
+      </div>
+    </article>
+
+    <article class="tag-card">
+      <h3>Nội dung hiển thị trong body</h3>
+      <p class="tag-purpose">
+        Mọi nội dung muốn hiển thị phải nằm trong body
+      </p>
+
+      <pre><code>&lt;body&gt;
+  &lt;h1&gt;Xin chào&lt;/h1&gt;
+  &lt;p&gt;Nội dung sẽ hiển thị ở đây&lt;/p&gt;
+&lt;/body&gt;</code></pre>
+
+      <div class="demo-box">
+        <h1>Xin chào</h1>
+        <p>Nội dung sẽ hiển thị ở đây</p>
+      </div>
+    </article>
+
+    <article class="tag-card">
+      <h3>Mở file HTML</h3>
+      <p class="tag-purpose">Xem giao diện trên trình duyệt</p>
+
+      <pre><code>start index.html</code></pre>
+
+      <div class="demo-box">
+        <ul>
+          <li>Mở bằng trình duyệt</li>
+          <li>Hoặc dùng Live Server trong VS Code</li>
+          <li>File phải có đuôi .html</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="tag-card">
+      <h3>Đẩy 1 file lên GitHub</h3>
+      <p class="tag-purpose">Push riêng một file HTML</p>
+
+      <pre><code>git add tenfile.html
+git commit -m "them file html"
+git push origin main</code></pre>
+    </article>
+
+    <article class="tag-card">
+      <h3>Đẩy toàn bộ project lên GitHub</h3>
+      <p class="tag-purpose">Push tất cả file mới</p>
+
+      <pre><code>git add .
+git commit -m "update html"
+git push origin main</code></pre>
+
+      <div class="demo-box">
+        <h4>Ý nghĩa</h4>
+
+        <ul>
+          <li><strong>git add .</strong> → thêm tất cả file</li>
+          <li><strong>git commit</strong> → tạo phiên bản lưu</li>
+          <li><strong>git push</strong> → đẩy lên GitHub</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="tag-card">
+      <h3>Quy trình hoàn chỉnh</h3>
+      <p class="tag-purpose">Từ tạo file đến hiển thị giao diện</p>
+
+      <pre><code>ni index.html
+
+start index.html
+
+git add .
+git commit -m "them giao dien html"
+git push origin main</code></pre>
+
+      <div class="demo-box">
+        <h4>Kết quả</h4>
+
+        <ol>
+          <li>Tạo được file HTML</li>
+          <li>Hiển thị giao diện trên trình duyệt</li>
+          <li>Đẩy code lên GitHub thành công</li>
+        </ol>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+  </main>
+</body>
+</html>
