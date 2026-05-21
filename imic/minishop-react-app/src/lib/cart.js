@@ -68,6 +68,16 @@ export function getCartSubtotal(items) {
   return items.reduce((total, item) => total + item.price * item.quantity, 0);
 }
 
+export const SHIPPING_FEE = 30000;
+
+export function getCartFinalTotal(items) {
+  if (items.length === 0) {
+    return 0;
+  }
+
+  return getCartSubtotal(items) + SHIPPING_FEE;
+}
+
 export function parseStoredCart(value) {
   if (!value) {
     return [];

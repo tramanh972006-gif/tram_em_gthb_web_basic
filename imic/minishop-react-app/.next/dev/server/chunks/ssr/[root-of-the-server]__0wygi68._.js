@@ -11,10 +11,14 @@ module.exports = mod;
 __turbopack_context__.s([
     "CART_STORAGE_KEY",
     ()=>CART_STORAGE_KEY,
+    "SHIPPING_FEE",
+    ()=>SHIPPING_FEE,
     "addCartItem",
     ()=>addCartItem,
     "getCartCount",
     ()=>getCartCount,
+    "getCartFinalTotal",
+    ()=>getCartFinalTotal,
     "getCartSubtotal",
     ()=>getCartSubtotal,
     "parseStoredCart",
@@ -82,6 +86,13 @@ function getCartCount(items) {
 }
 function getCartSubtotal(items) {
     return items.reduce((total, item)=>total + item.price * item.quantity, 0);
+}
+const SHIPPING_FEE = 30000;
+function getCartFinalTotal(items) {
+    if (items.length === 0) {
+        return 0;
+    }
+    return getCartSubtotal(items) + SHIPPING_FEE;
 }
 function parseStoredCart(value) {
     if (!value) {
@@ -168,20 +179,25 @@ function CartProvider({ children }) {
     function removeFromCart(slug) {
         setItems((currentItems)=>(0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$cart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["removeCartItem"])(currentItems, slug));
     }
+    function clearCart() {
+        setItems([]);
+    }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(CartContext.Provider, {
         value: {
             items,
             isHydrated,
             cartCount: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$cart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getCartCount"])(items),
             subtotal: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$cart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getCartSubtotal"])(items),
+            finalTotal: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$cart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getCartFinalTotal"])(items),
             addToCart,
             updateQuantity,
-            removeFromCart
+            removeFromCart,
+            clearCart
         },
         children: children
     }, void 0, false, {
         fileName: "[project]/src/components/cart-provider.js",
-        lineNumber: 71,
+        lineNumber: 76,
         columnNumber: 5
     }, this);
 }

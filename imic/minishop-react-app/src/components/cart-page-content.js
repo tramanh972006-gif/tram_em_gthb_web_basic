@@ -13,8 +13,13 @@ export function CartPageContent() {
     isHydrated,
     updateQuantity,
     removeFromCart,
+    clearCart,
   } = useCart();
   const [draftQuantities, setDraftQuantities] = useState({});
+
+  const shippingFee = subtotal >= 500000 ? 0 : 30000;
+
+  const finalTotal = subtotal + shippingFee;
 
   function handleQuantityChange(slug, nextValue) {
     if (nextValue === "") {
@@ -156,18 +161,37 @@ export function CartPageContent() {
               <strong>{formatVnd(subtotal)}</strong>
             </div>
 
+            <div className="cart-summary__row">
+              <span>Phí vận chuyển</span>
+              <strong>
+                {shippingFee === 0
+                  ? "Miễn phí"
+                  : formatVnd(shippingFee)}
+              </strong>
+            </div>
+
             <div className="cart-summary__row cart-summary__row--total">
               <span>Tổng cộng</span>
-              <strong>{formatVnd(subtotal)}</strong>
+              <strong>{formatVnd(finalTotal)}</strong>
             </div>
 
             <p className="cart-summary__note">
               Chưa có shipping fee hay checkout backend ở milestone này.
+
             </p>
 
             <Link href="/products" className="button button--secondary">
               Tiếp tục mua hàng
             </Link>
+
+            <button
+              type="button"
+              className="button button--danger"
+              onClick={clearCart}
+            >
+              Clear Cart
+            </button>
+            
           </aside>
         </div>
       </section>

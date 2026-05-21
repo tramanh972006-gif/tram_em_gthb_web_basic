@@ -6,6 +6,7 @@ import {
   addCartItem,
   getCartCount,
   getCartSubtotal,
+  getCartFinalTotal,
   parseStoredCart,
   removeCartItem,
   serializeCart,
@@ -67,6 +68,10 @@ export function CartProvider({ children }) {
     setItems((currentItems) => removeCartItem(currentItems, slug));
   }
 
+  function clearCart() {
+    setItems([]);
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -74,9 +79,11 @@ export function CartProvider({ children }) {
         isHydrated,
         cartCount: getCartCount(items),
         subtotal: getCartSubtotal(items),
+        finalTotal: getCartFinalTotal(items),
         addToCart,
         updateQuantity,
         removeFromCart,
+        clearCart,
       }}
     >
       {children}
