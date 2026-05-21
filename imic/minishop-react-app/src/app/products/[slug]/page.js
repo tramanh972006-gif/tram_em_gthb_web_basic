@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { AddToCartButton } from "@/components/add-to-cart-button";
 import {
   getProductBySlug,
   getProductSlugs,
   getRelatedProducts,
 } from "@/lib/products";
-import { formatVnd } from "@/lib/format-currency";
+import { formatVnd } from "@/lib/format-vnd";
 
 export function generateStaticParams() {
   return getProductSlugs();
@@ -73,6 +74,10 @@ export default async function ProductDetailPage({ params }) {
             <p className="product-detail__note">{product.note}</p>
 
             <div className="product-detail__actions">
+              <AddToCartButton product={product} />
+              <Link href="/cart" className="button button--secondary">
+                Mở giỏ hàng
+              </Link>
               <Link href="/products" className="button button--secondary">
                 Quay lại danh sách
               </Link>

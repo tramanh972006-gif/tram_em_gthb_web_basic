@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "246547399c62b043ab526936b18eec9f",
-    "previewModeSigningKey": "e637147c7d64db0b39559c12b93c6ed07e958350ae849d07a814854fa7924151",
-    "previewModeEncryptionKey": "738f4f885cd1d853c998ae4a5163c8883a2945f8069b0f07d54c03cea82f41da"
-  }
-}
+{"version":4,"routes":{"/products/air-runner-basic":{},"/products/street-flex-pro":{},"/products/court-classic-white":{},"/products/trail-guard-mid":{}},"dynamicRoutes":{"/products/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/products/[slug]","routeRegex":"^\\/products\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"e0bcc5ecd02e69516787e9c184374eab","previewModeSigningKey":"3135d7d2311ac222d0f9d3a22b4a43470d20c375c14f4fcbf9af2c95f7052244","previewModeEncryptionKey":"119ba261fa172860fdb8948f3bbee905d40a53a6e3ebed5deff1a9188691bd54"}}

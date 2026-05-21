@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///F:/LTWBS/imic/minishop-react-app/src/app/products/%5Bslug%5D/not-found.js"],"sourcesContent":["import Link from \"next/link\";\n\nexport default function ProductNotFound() {\n  return (\n    <main className=\"product-not-found\">\n      <div className=\"site-shell product-not-found__inner\">\n        <p className=\"product-not-found__eyebrow\">404</p>\n        <h1>Không tìm thấy sản phẩm</h1>\n        <p>\n          Slug này không khớp với catalog demo. Hãy quay lại danh sách để chọn\n          một sản phẩm hợp lệ.\n        </p>\n\n        <Link href=\"/products\" className=\"button button--primary\">\n          Về trang danh sách\n        </Link>\n      </div>\n    </main>\n  );\n}\n"],"names":["ProductNotFound","className","href"],"mappings":";;;;;AAAA;;;AAEe,SAASA;IACtB,qBACE,8OAAC;QAAKC,WAAU;kBACd,cAAA,8OAAC;YAAIA,WAAU;;8BACb,8OAAC;oBAAEA,WAAU;8BAA6B;;;;;;8BAC1C,8OAAC;8BAAG;;;;;;8BACJ,8OAAC;8BAAE;;;;;;8BAKH,8OAAC,0LAAI;oBAACC,MAAK;oBAAYD,WAAU;8BAAyB;;;;;;;;;;;;;;;;;AAMlE"}}]
+}

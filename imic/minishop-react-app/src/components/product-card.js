@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { formatCurrency } from "@/lib/format-currency";
+import { formatVnd } from "@/lib/format-vnd";
 
 export function ProductCard({ product }) {
   const isSale = Boolean(product.originalPrice);
@@ -25,10 +25,10 @@ export function ProductCard({ product }) {
           <p className="product-card__description">{product.description}</p>
 
           <div className="product-card__price-row">
-            <strong>{formatCurrency(product.price)}</strong>
+            <strong>{formatVnd(product.price)}</strong>
             {isSale ? (
               <span className="product-card__compare">
-                {formatCurrency(product.originalPrice)}
+                {formatVnd(product.originalPrice)}
               </span>
             ) : null}
           </div>

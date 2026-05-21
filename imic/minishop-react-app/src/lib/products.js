@@ -1,4 +1,4 @@
-import { formatCurrency } from "@/lib/format-currency";
+import { formatVnd } from "@/lib/format-vnd";
 
 export const products = [
   {
@@ -55,7 +55,7 @@ export const featuredProducts = products
   .filter((product) => product.featured)
   .map((product) => ({
     ...product,
-    priceLabel: formatCurrency(product.price),
+    priceLabel: formatVnd(product.price),
   }));
 
 export function getProductBySlug(slug) {
