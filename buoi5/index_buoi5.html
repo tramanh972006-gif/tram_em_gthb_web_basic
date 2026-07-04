@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ReactJS Basic</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:#f4f7fb;
+      color:#333;
+      line-height:1.7;
+    }
+
+    header{
+      background:linear-gradient(135deg,#4f46e5,#7c3aed);
+      color:white;
+      padding:50px 20px;
+      text-align:center;
+    }
+
+    header h1{
+      font-size:42px;
+      margin-bottom:10px;
+    }
+
+    header p{
+      font-size:18px;
+      opacity:0.9;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+      padding:40px 0;
+    }
+
+    section{
+      background:white;
+      margin-bottom:30px;
+      padding:30px;
+      border-radius:12px;
+      box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    h2{
+      color:#4f46e5;
+      margin-bottom:20px;
+      border-left:6px solid #4f46e5;
+      padding-left:15px;
+    }
+
+    h3{
+      color:#7c3aed;
+      margin-top:25px;
+      margin-bottom:15px;
+    }
+
+    p{
+      margin-bottom:15px;
+    }
+
+    ul{
+      margin-left:25px;
+      margin-bottom:15px;
+    }
+
+    li{
+      margin-bottom:10px;
+    }
+
+    .box{
+      background:#f8fafc;
+      border-left:5px solid #4f46e5;
+      padding:20px;
+      border-radius:8px;
+      margin:20px 0;
+    }
+
+    .tag{
+      display:inline-block;
+      background:#4f46e5;
+      color:white;
+      padding:8px 14px;
+      border-radius:20px;
+      margin:5px;
+      font-size:14px;
+    }
+
+    pre{
+      background:#111827;
+      color:#f9fafb;
+      padding:20px;
+      overflow:auto;
+      border-radius:10px;
+      margin-top:15px;
+      margin-bottom:20px;
+    }
+
+    code{
+      font-family: Consolas, monospace;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:20px;
+    }
+
+    table th{
+      background:#4f46e5;
+      color:white;
+      padding:12px;
+      border:1px solid #ddd;
+    }
+
+    table td{
+      border:1px solid #ddd;
+      padding:12px;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      background:#111827;
+      color:white;
+      margin-top:40px;
+    }
+
+    .highlight{
+      color:#4f46e5;
+      font-weight:bold;
+    }
+
+    a{
+      color:#4f46e5;
+      text-decoration:none;
+    }
+
+    a:hover{
+      text-decoration:underline;
+    }
+
+    @media(max-width:768px){
+      header h1{
+        font-size:30px;
+      }
+
+      section{
+        padding:20px;
+      }
+    }
+
+    nav{
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      background: white;
+      padding: 15px 5%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+      padding:100px 0 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>ReactJS Basic</h1>
+  <p>Giảng bài ReactJS cơ bản</p>
+</header>
+
+<div class="container">
+        <nav>
+            <div style="display:flex; gap:15px; flex-wrap:wrap; margin-bottom:30px;">
+                <a href="#giới-thiệu">Giới thiệu</a>
+                <a href="#lý-thuyết">Lý thuyết</a>
+                <a href="#npm">npm</a>
+                <a href="#next-vs-react-router">Next.js vs React Router</a>
+                <a href="#tạo-project">Tạo project</a>
+                <a href="#tạo-next-app">Next.js App</a>
+                <a href="#frameworks">Frameworks</a>
+                <a href="#fix-next-error">Fix lỗi Next.js</a>
+                <a href="#terminal-output">Terminal output</a>
+                <a href="#tư-duy-component">Tư duy component</a>
+                <a href="#thực-hành">Thực hành</a>
+                <a href="#mini-app">Mini app</a>
+                <a href="#kết-luận">Kết luận</a>
+                <a href="#hooks-rules">Hooks Rules</a>
+            </div>
+        </nav>
+
+  <!-- GIỚI THIỆU -->
+  <section id="giới-thiệu">
+    <h2>📘 Giới thiệu khóa học</h2>
+
+    <p>
+      Buổi học giúp học viên hiểu tư duy component trong ReactJS,
+      biết cách tạo project React và xây dựng mini app đầu tiên.
+    </p>
+
+    <div class="box">
+      <strong>🎯 Mục tiêu:</strong>
+      <ul>
+        <li>Hiểu React là gì</li>
+        <li>Hiểu JSX, Component, Props, State</li>
+        <li>Tạo project React</li>
+        <li>Xây dựng mini app danh sách sản phẩm</li>
+      </ul>
+    </div>
+
+    <div>
+      <span class="tag">ReactJS</span>
+      <span class="tag">JSX</span>
+      <span class="tag">Component</span>
+      <span class="tag">Props</span>
+      <span class="tag">State</span>
+      <span class="tag">NextJS</span>
+      <span class="tag">Vite</span>
+    </div>
+  </section>
+
+  <!-- LÝ THUYẾT -->
+  <section id="lý-thuyết">
+    <h2>🧠 Lý thuyết (20%)</h2>
+
+    <h3>1. SPA là gì?</h3>
+
+    <div class="box">
+      <p>
+        SPA = Single Page Application
+      </p>
+
+      <ul>
+        <li>Không reload toàn bộ trang</li>
+        <li>Chỉ cập nhật phần nội dung cần thay đổi</li>
+        <li>Trải nghiệm mượt hơn</li>
+      </ul>
+    </div>
+
+    <h3>2. JSX</h3>
+
+    <p>
+      JSX = HTML + JavaScript
+    </p>
+
+<pre><code>const element = &lt;h1&gt;Hello React&lt;/h1&gt;;</code></pre>
+
+    <h3>3. Component</h3>
+
+    <p>
+      Component là một phần giao diện UI độc lập có thể tái sử dụng.
+    </p>
+
+<pre><code>function Header() {
+  return &lt;h1&gt;Shop của tôi&lt;/h1&gt;;
+}</code></pre>
+
+    <h3>4. Props</h3>
+
+    <p>
+      Props dùng để truyền dữ liệu từ component cha → component con.
+    </p>
+
+<pre><code>function ProductCard(props) {
+  return &lt;h3&gt;{props.name}&lt;/h3&gt;;
+}
+
+&lt;ProductCard name="Áo" /&gt;</code></pre>
+
+    <h3>5. State</h3>
+
+    <p>
+      State là dữ liệu nội bộ của component.
+    </p>
+
+<pre><code>import { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+      {count}
+    &lt;/button&gt;
+  );
+}</code></pre>
+
+    <h3>🌐 Tài liệu chính thức</h3>
+
+    <ul>
+      <li>
+        React Official:
+        <a href="https://react.dev/" target="_blank">
+          https://react.dev/
+        </a>
+      </li>
+
+      <li>
+        NPM:
+        <a href="https://www.npmjs.com/" target="_blank">
+          https://www.npmjs.com/
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- NPM -->
+  <section id="npm">
+    <h2>📦 npm & Package Management</h2>
+
+    <h3>Cài thư viện</h3>
+
+<pre><code>npm install
+npm i</code></pre>
+
+    <h3>Cài 1 thư viện cụ thể</h3>
+
+<pre><code>npm install dotenv</code></pre>
+
+    <h3>Cài thư viện cho môi trường development</h3>
+
+<pre><code>npm install -D dotenv</code></pre>
+
+    <h3>Gỡ cài đặt thư viện</h3>
+
+<pre><code>npm uninstall dotenv</code></pre>
+
+    <h3>Cài phiên bản chính xác</h3>
+
+<pre><code>npm install lodash@4.17.21</code></pre>
+
+    <h3>Cài theo phạm vi phiên bản</h3>
+
+<pre><code>npm install package-name@"^1.2.3"</code></pre>
+
+    <div class="box">
+      <strong>Dấu ^ nghĩa là:</strong>
+
+      <ul>
+        <li>Cho phép cập nhật minor version</li>
+        <li>Cho phép cập nhật patch version</li>
+        <li>Không cập nhật major version</li>
+      </ul>
+    </div>
+
+    <h3>Cài phiên bản mới nhất</h3>
+
+<pre><code>npm install package-name@latest</code></pre>
+
+    <h3>Cài dưới dạng devDependency</h3>
+
+<pre><code>npm install package-name@1.2.3 --save-dev</code></pre>
+
+    <h3>Đổi tên folder project</h3>
+
+<p>
+  Có thể đổi tên folder project React/Next.js bằng lệnh:
+</p>
+
+<pre><code>ren buoi5-react-app ten-moi</code></pre>
+
+<p>Ví dụ:</p>
+
+<pre><code>ren buoi5-react-app react-shop</code></pre>
+
+<h3>Nếu đang ở bên trong folder project</h3>
+
+<pre><code>cd ..
+ren buoi5-react-app react-shop
+cd react-shop</code></pre>
+
+<h3>Chạy lại project sau khi đổi tên</h3>
+
+<pre><code>npm run dev</code></pre>
+
+<div class="box">
+  <strong>📌 Lưu ý:</strong>
+
+  <ul>
+    <li>Phải thoát khỏi folder trước khi rename</li>
+    <li>Sau khi đổi tên cần chạy lại server</li>
+    <li>Website thường chạy tại http://localhost:3000</li>
+  </ul>
+</div>
+
+  </section>
+
+  <!-- NEXT VS REACT ROUTER -->
+  <section id="next-vs-react-router">
+    <h2>⚔️ Next.js vs React Router</h2>
+
+    <table>
+      <tr>
+        <th>Next.js App Router</th>
+        <th>React Router</th>
+      </tr>
+
+      <tr>
+        <td>SEO tốt</td>
+        <td>Flexible hơn</td>
+      </tr>
+
+      <tr>
+        <td>SSR/SSG/ISR</td>
+        <td>Client-side app mạnh</td>
+      </tr>
+
+      <tr>
+        <td>Server Components</td>
+        <td>Tự kiểm soát kiến trúc</td>
+      </tr>
+
+      <tr>
+        <td>API routes</td>
+        <td>Dùng với backend riêng</td>
+      </tr>
+
+      <tr>
+        <td>Phù hợp website public</td>
+        <td>Phù hợp dashboard/admin</td>
+      </tr>
+    </table>
+
+    <h3>Rule of thumb</h3>
+
+    <div class="box">
+      <ul>
+        <li>
+          Public web cần SEO → <span class="highlight">Next.js</span>
+        </li>
+
+        <li>
+          Dashboard/internal tool → <span class="highlight">React Router + Vite</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CREATE PROJECT -->
+  <section id="tạo-project">
+    <h2>🚀 Tạo Project React</h2>
+
+    <h3>Tạo project bằng Vite</h3>
+
+<pre><code>npm create vite@latest
+npm install
+npm run dev</code></pre>
+
+    <h3>Tạo project Next.js</h3>
+
+<pre><code>npx create-next-app@latest</code></pre>
+
+    <h3>Tạo project React Router</h3>
+
+<pre><code>npx create-react-router@latest</code></pre>
+
+    <h3>Kiểm tra node và npm</h3>
+
+<pre><code>node -v
+npm -v</code></pre>
+
+    <h3>Ví dụ terminal thực tế</h3>
+
+<pre><code>PS E:\Lập trình Web Basic&gt; node -v
+v24.15.0
+
+PS E:\Lập trình Web Basic&gt; npm -v
+11.12.1</code></pre>
+  </section>
+
+  <!-- NEXT APP -->
+  <section id="tạo-next-app">
+    <h2>🛠️ Tạo Next.js App thực tế</h2>
+
+<pre><code>npx create-next-app@latest
+
+What is your project named?
+first-react-app
+
+Would you like to use Tailwind CSS?
+Yes
+
+Would you like to use App Router?
+Yes</code></pre>
+
+    <div class="box">
+      <strong>Sau khi tạo project:</strong>
+
+      <ul>
+        <li>next</li>
+        <li>react</li>
+        <li>react-dom</li>
+        <li>eslint</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FRAMEWORKS -->
+<section id="frameworks">
+  <h2>⚛️ Các React Framework phổ biến</h2>
+
+  <h3>Next.js (App Router)</h3>
+
+  <div class="box">
+    <p>
+      Next.js App Router là React framework tận dụng toàn bộ kiến trúc React
+      để xây dựng full-stack React app.
+    </p>
+  </div>
+
+<pre><code>npx create-next-app@latest</code></pre>
+
+  <p>
+    Next.js được phát triển bởi Vercel.
+  </p>
+
+  <ul>
+    <li>Hỗ trợ SSR / SSG / ISR</li>
+    <li>Có thể deploy lên Node.js hoặc Docker</li>
+    <li>Hỗ trợ static export</li>
+    <li>SEO rất tốt</li>
+  </ul>
+
+  <h3>React Router (v7)</h3>
+
+  <div class="box">
+    <p>
+      React Router là thư viện routing phổ biến nhất cho React.
+    </p>
+
+    <p>
+      Có thể kết hợp với Vite để tạo full-stack React framework.
+    </p>
+  </div>
+
+<pre><code>npx create-react-router@latest</code></pre>
+
+  <ul>
+    <li>Flexible hơn</li>
+    <li>Client-side app mạnh</li>
+    <li>Dễ custom kiến trúc</li>
+    <li>Phù hợp dashboard/admin</li>
+  </ul>
+
+  <p>
+    React Router được phát triển bởi Shopify.
+  </p>
+
+  <h3>Expo (React Native)</h3>
+
+  <div class="box">
+    <p>
+      Expo là React framework để tạo app Android, iOS và web.
+    </p>
+  </div>
+
+<pre><code>npx create-expo-app@latest</code></pre>
+
+  <ul>
+    <li>Dùng cho React Native</li>
+    <li>Tạo app mobile native</li>
+    <li>Dễ build và deploy</li>
+    <li>Hỗ trợ Android & iOS</li>
+  </ul>
+
+  <p>
+    Expo được phát triển bởi công ty Expo.
+  </p>
+</section>
+
+<!-- FIX LỖI CREATE NEXT APP -->
+<section id="fix-next-error">
+  <h2>🛠️ Fix lỗi khi create-next-app</h2>
+
+  <p>
+    Nếu bị lỗi:
+  </p>
+
+<pre><code>npm warn tar TAR_ENTRY_ERROR UNKNOWN: unknown error, write</code></pre>
+
+  <p>
+    Hãy làm các bước sau:
+  </p>
+
+  <h3>1. Dừng lệnh hiện tại</h3>
+
+<pre><code>Ctrl + C</code></pre>
+
+  <h3>2. Xóa folder đang tạo dở</h3>
+
+<pre><code>rmdir /s /q first-react-app</code></pre>
+
+  <h3>3. Chuyển project sang thư mục đơn giản hơn</h3>
+
+<pre><code>cd E:\
+mkdir react
+cd react</code></pre>
+
+  <h3>4. Clear npm cache</h3>
+
+<pre><code>npm cache clean --force</code></pre>
+
+  <h3>5. Chạy lại create-next-app</h3>
+
+<pre><code>npx create-next-app@latest</code></pre>
+
+  <div class="box">
+    <strong>📌 Nguyên nhân thường gặp:</strong>
+
+    <ul>
+      <li>Đường dẫn quá dài</li>
+      <li>Folder có ký tự đặc biệt</li>
+      <li>npm cache bị lỗi</li>
+      <li>Quyền ghi file bị lỗi</li>
+    </ul>
+  </div>
+</section>
+
+  <!-- TERMINAL OUTPUT -->
+<section id="terminal-output">
+  <h2>🖥️ Terminal Output Sau Khi Tạo Thành Công</h2>
+
+  <p>
+    Sau khi chạy lệnh tạo project React hoặc Next.js,
+    terminal sẽ hiển thị các thông báo thành công như bên dưới.
+  </p>
+
+  <h3>Ví dụ tạo Next.js App thành công</h3>
+
+<pre><code>PS F:\LTWBS> npx create-next-app@latest
+create-next-app@16.2.5
+
+Ok to proceed? (y) y
+
+√ What is your project named? ... buoi5-react-app
+
+√ Would you like to use the recommended Next.js defaults? » No, customize settings
+
+√ Would you like to use TypeScript? ... No
+
+√ Which linter would you like to use? » ESLint
+
+√ Would you like to use React Compiler? ... Yes
+
+√ Would you like to use Tailwind CSS? ... No
+
+√ Would you like your code inside a `src/` directory? ... Yes
+
+√ Would you like to use App Router? (recommended) ... Yes
+√ Would you like to customize the import alias (`@/*` by default)? ... No
+
+√ Would you like to include AGENTS.md to guide coding agents to write up-to-date Next.js code? ... No
+
+Creating a new Next.js app in F:\LTWBS\buoi5-react-app.
+
+Using npm.
+
+Initializing project with template: app 
+
+Installing dependencies:
+- next
+- react
+- react-dom
+
+Installing devDependencies:
+- babel-plugin-react-compiler
+- eslint
+- eslint-config-next
+
+added 337 packages, and audited 338 packages in 23m
+
+137 packages are looking for funding
+  run `npm fund` for details
+
+2 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+Generating route types...
+✓ Types generated successfully
+
+Success! Created buoi5-react-app at F:\LTWBS\buoi5-react-app
+
+PS F:\LTWBS> 
+</code></pre>
+
+  <h3>Chạy project thành công</h3>
+
+<pre><code>PS F:\LTWBS> cd buoi5-react-app
+PS F:\LTWBS\buoi5-react-app> npm run dev
+
+> buoi5-react-app@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.141:3000
+✓ Ready in 1149ms
+
+○ Compiling / ...
+ GET / 200 in 383ms (next.js: 22ms, application-code: 361ms)
+✓ Finished writing to filesystem cache in 12.5s
+ GET / 200 in 152ms (next.js: 34ms, application-code: 118ms)
+</code></pre>
+
+  <div class="box">
+    <strong>📌 Ý nghĩa:</strong>
+
+    <ul>
+      <li>
+        <span class="highlight">Success! Created...</span>
+        → Project đã tạo thành công
+      </li>
+
+      <li>
+        <span class="highlight">npm run dev</span>
+        → Chạy server development
+      </li>
+
+      <li>
+        <span class="highlight">http://localhost:3000</span>
+        → Website local để xem project
+      </li>
+
+      <li>
+        <span class="highlight">Ready in 2.3s</span>
+        → Server đã sẵn sàng hoạt động
+      </li>
+    </ul>
+  </div>
+</section>
+
+  <!-- TƯ DUY COMPONENT -->
+  <section id="tư-duy-component">
+    <h2>🧩 Tư duy Component</h2>
+
+    <p>
+      React không viết web bằng 1 file lớn.
+    </p>
+
+    <p>
+      React chia UI thành nhiều component nhỏ.
+    </p>
+
+<pre><code>App
+├── Header
+├── ProductList
+│     ├── ProductCard
+│     ├── ProductCard
+│     └── ProductCard
+└── Footer</code></pre>
+
+    <div class="box">
+      <strong>Nguyên tắc:</strong>
+
+      <ul>
+        <li>Mỗi phần UI = 1 component</li>
+        <li>Phần lặp lại → component</li>
+        <li>Dễ bảo trì</li>
+        <li>Dễ tái sử dụng</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- THỰC HÀNH -->
+  <section id="thực-hành">
+    <h2>💻 Thực hành (80%)</h2>
+
+    <h3>1. Tạo Header</h3>
+
+<pre><code>function Header() {
+  return &lt;h1&gt;Danh sách sản phẩm&lt;/h1&gt;;
+}</code></pre>
+
+    <h3>2. Tạo Footer</h3>
+
+<pre><code>function Footer() {
+  return &lt;p&gt;© 2026&lt;/p&gt;;
+}</code></pre>
+
+    <h3>3. Tạo ProductCard</h3>
+
+<pre><code>function ProductCard({ name, price, img }) {
+  return (
+    &lt;div&gt;
+      &lt;img src={img} width="150" /&gt;
+      &lt;h3&gt;{name}&lt;/h3&gt;
+      &lt;p&gt;{price}&lt;/p&gt;
+      &lt;button&gt;Xem chi tiết&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+    <h3>4. Hiển thị danh sách sản phẩm</h3>
+
+<pre><code>const products = [
+  {
+    id: 1,
+    name: "Áo",
+    price: "100k"
+  }
+];
+
+products.map(p =&gt; (
+  &lt;ProductCard key={p.id} {...p} /&gt;
+));</code></pre>
+  </section>
+
+  <!-- MINI APP -->
+  <section id="mini-app">
+    <h2>🛍️ Mini App: Danh sách sản phẩm</h2>
+
+<pre><code>function App() {
+
+  const products = [
+    {
+      id: 1,
+      name: "Áo",
+      price: "100k",
+      img: "https://via.placeholder.com/150"
+    }
+  ];
+
+  return (
+    &lt;&gt;
+      &lt;Header /&gt;
+
+      {products.map(p =&gt; (
+        &lt;ProductCard
+          key={p.id}
+          name={p.name}
+          price={p.price}
+          img={p.img}
+        /&gt;
+      ))}
+
+      &lt;Footer /&gt;
+    &lt;/&gt;
+  );
+}</code></pre>
+  </section>
+
+  <!-- KẾT LUẬN -->
+  <section id="kết-luận">
+    <h2>🎯 Kết luận</h2>
+
+    <div class="box">
+      <strong>React không khó.</strong>
+
+      <p style="margin-top:10px;">
+        Điều quan trọng nhất là:
+      </p>
+
+      <ul>
+        <li>Tư duy component</li>
+        <li>Biết chia UI</li>
+        <li>Biết truyền dữ liệu bằng props</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <strong>Tóm tắt 1 câu:</strong>
+
+      <p style="margin-top:10px;">
+        React = ghép nhiều component nhỏ thành UI lớn.
+      </p>
+    </div>
+  </section>
+
+  <!-- HOOKS RULES -->
+<section id="hooks-rules">
+  <h2>🪝 React Hooks Rules</h2>
+
+  <p>
+    Trong React, Hooks là các hàm đặc biệt cho phép bạn sử dụng
+    state và nhiều tính năng khác mà không cần viết class component.
+  </p>
+
+  <div class="box">
+    <strong>📌 Mục đích của Hooks:</strong>
+
+    <ul>
+      <li>Dùng state trong function component</li>
+      <li>Dùng lifecycle logic dễ hơn</li>
+      <li>Tái sử dụng logic bằng custom hooks</li>
+      <li>Code ngắn gọn hơn class component</li>
+    </ul>
+  </div>
+
+  <h3>1. Không gọi Hooks trong điều kiện hoặc vòng lặp</h3>
+
+  <p>
+    Hooks phải luôn được gọi ở cấp cao nhất của component.
+  </p>
+
+  <div class="box">
+    <strong>❌ Sai:</strong>
+
+<pre><code>function App() {
+
+  if (true) {
+    const [count, setCount] = useState(0);
+  }
+
+  return &lt;h1&gt;Hello&lt;/h1&gt;;
+}</code></pre>
+
+    <p>
+      React sẽ không đảm bảo đúng thứ tự Hooks sau mỗi lần render.
+    </p>
+  </div>
+
+  <div class="box">
+    <strong>✅ Đúng:</strong>
+
+<pre><code>function App() {
+
+  const [count, setCount] = useState(0);
+
+  if (count &gt; 5) {
+    console.log("Count lớn hơn 5");
+  }
+
+  return &lt;h1&gt;{count}&lt;/h1&gt;;
+}</code></pre>
+
+    <p>
+      Hook luôn được gọi ở đầu component.
+    </p>
+  </div>
+
+  <h3>📌 Các trường hợp KHÔNG được gọi Hooks</h3>
+
+  <table>
+    <tr>
+      <th>Trường hợp</th>
+      <th>Có được gọi Hooks?</th>
+    </tr>
+
+    <tr>
+      <td>if / else</td>
+      <td>❌ Không</td>
+    </tr>
+
+    <tr>
+      <td>for loop</td>
+      <td>❌ Không</td>
+    </tr>
+
+    <tr>
+      <td>while loop</td>
+      <td>❌ Không</td>
+    </tr>
+
+    <tr>
+      <td>Nested function</td>
+      <td>❌ Không</td>
+    </tr>
+
+    <tr>
+      <td>Top-level component</td>
+      <td>✅ Có</td>
+    </tr>
+  </table>
+
+  <h3>2. Chỉ gọi Hooks bên trong React Function</h3>
+
+  <p>
+    Hooks chỉ được gọi bên trong:
+  </p>
+
+  <ul>
+    <li>Function Component</li>
+    <li>Custom Hook</li>
+  </ul>
+
+  <div class="box">
+    <strong>✅ Đúng:</strong>
+
+<pre><code>function Counter() {
+
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;button&gt;{count}&lt;/button&gt;
+  );
+}</code></pre>
+  </div>
+
+  <div class="box">
+    <strong>✅ Custom Hook:</strong>
+
+<pre><code>function useCounter() {
+
+  const [count, setCount] = useState(0);
+
+  return {
+    count,
+    setCount
+  };
+}</code></pre>
+  </div>
+
+  <div class="box">
+    <strong>❌ Sai:</strong>
+
+<pre><code>function tinhTong() {
+
+  const [count, setCount] = useState(0);
+
+  return count;
+}</code></pre>
+
+    <p>
+      Đây chỉ là hàm JavaScript thông thường,
+      không phải React Component hoặc Custom Hook.
+    </p>
+  </div>
+
+  <h3>🎯 Tóm tắt Rules of Hooks</h3>
+
+  <div class="box">
+    <ul>
+      <li>
+        Luôn gọi Hooks ở đầu component
+      </li>
+
+      <li>
+        Không gọi Hooks trong if, loop hoặc function lồng nhau
+      </li>
+
+      <li>
+        Chỉ gọi Hooks trong React Component hoặc Custom Hook
+      </li>
+
+      <li>
+        Custom Hook thường bắt đầu bằng chữ <strong>use</strong>
+      </li>
+    </ul>
+  </div>
+
+  <h3>Ví dụ useEffect</h3>
+
+<pre><code>import { useEffect } from "react";
+
+function App() {
+
+  useEffect(() =&gt; {
+    console.log("Component mounted");
+  }, []);
+
+  return &lt;h1&gt;Hello React&lt;/h1&gt;;
+}</code></pre>
+
+  <div class="box">
+    <strong>📌 Ghi nhớ:</strong>
+
+    <p>
+      React dựa vào thứ tự Hooks để hoạt động đúng.
+      Nếu gọi Hooks không đúng vị trí,
+      state có thể bị lệch hoặc gây lỗi logic.
+    </p>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <h3>ReactJS Basic Course</h3>
+  <p>Hướng dẫn ReactJS cơ bản</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "lap-trinh-web-basic",
+  "version": "1.0.0",
+  "description": "Basic web programming exercises",
+  "scripts": {
+    "runbtvn": "node imic/buoi3/btvn.js"
+  }
+}

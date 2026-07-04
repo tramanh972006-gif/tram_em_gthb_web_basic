@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Display & Layout Lesson</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Be Vietnam Pro',sans-serif;
+      background:#0f172a;
+      color:#e2e8f0;
+      line-height:1.8;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    .container{
+      width:1200px;
+      max-width:95%;
+      margin:auto;
+    }
+
+    header{
+      padding:100px 0;
+      background:
+      linear-gradient(rgba(15,23,42,.88),rgba(15,23,42,.96)),
+      url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2070&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-badge{
+      display:inline-block;
+      background:#2563eb;
+      padding:8px 18px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:24px;
+    }
+
+    h1{
+      font-size:64px;
+      line-height:1.1;
+      margin-bottom:24px;
+      font-weight:800;
+    }
+
+    .hero-text{
+      max-width:850px;
+      color:#cbd5e1;
+      font-size:20px;
+    }
+
+    nav{
+      position:sticky;
+      top:0;
+      background:#111827;
+      z-index:999;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-inner{
+      display:flex;
+      gap:20px;
+      overflow:auto;
+      padding:18px 0;
+    }
+
+    .nav-inner a{
+      color:#cbd5e1;
+      text-decoration:none;
+      white-space:nowrap;
+      transition:.3s;
+    }
+
+    .nav-inner a:hover{
+      color:#60a5fa;
+    }
+
+    section{
+      padding:80px 0;
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .section-label{
+      color:#60a5fa;
+      text-transform:uppercase;
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:1px;
+      margin-bottom:12px;
+    }
+
+    h2{
+      font-size:42px;
+      margin-bottom:20px;
+    }
+
+    .section-desc{
+      color:#cbd5e1;
+      max-width:900px;
+      margin-bottom:40px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:24px;
+    }
+
+    .card{
+      background:#111827;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      padding:28px;
+      transition:.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:#3b82f6;
+    }
+
+    .card h3{
+      color:#93c5fd;
+      margin-bottom:18px;
+      font-size:24px;
+    }
+
+    .card p{
+      color:#cbd5e1;
+      margin-bottom:14px;
+    }
+
+    ul{
+      padding-left:20px;
+    }
+
+    li{
+      margin-bottom:10px;
+      color:#dbeafe;
+    }
+
+    .code{
+      margin-top:20px;
+      background:#020617;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:20px;
+      overflow:auto;
+    }
+
+    pre{
+      white-space:pre-wrap;
+      color:#93c5fd;
+      font-size:14px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:20px;
+    }
+
+    th,td{
+      border:1px solid rgba(255,255,255,.1);
+      padding:16px;
+      text-align:left;
+    }
+
+    th{
+      background:#1e293b;
+      color:#60a5fa;
+    }
+
+    td{
+      background:#111827;
+      color:#dbeafe;
+    }
+
+    .highlight{
+      color:#facc15;
+      font-weight:700;
+    }
+
+    .demo-box{
+      width:120px;
+      height:120px;
+      background:#2563eb;
+      margin-top:20px;
+      border-radius:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+    }
+
+    footer{
+      padding:40px 0;
+      text-align:center;
+      color:#94a3b8;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<header>
+
+  <div class="container">
+
+    <div class="hero-badge">
+      CSS Layout & Display
+    </div>
+
+    <h1>
+      CSS Display
+      <br>
+      Flexbox & Layout
+    </h1>
+
+    <p class="hero-text">
+      Bài giảng chi tiết giúp học viên hiểu cách hoạt động của CSS layout,
+      display, margin, padding, flexbox, grid và các kỹ thuật căn chỉnh giao diện hiện đại.
+    </p>
+
+  </div>
+
+</header>
+
+<nav>
+
+  <div class="container nav-inner">
+
+    <a href="#basic-css">CSS Cơ Bản</a>
+    <a href="#display-basic">Display Basic</a>
+    <a href="#display-advanced">Display Advanced</a>
+    <a href="#display-table">Display Table</a>
+    <a href="#flex-axis">Flex Axes</a>
+    <a href="#alignment">Alignment</a>
+    <a href="#grow-shrink">Flex Grow/Shrink</a>
+
+  </div>
+
+</nav>
+
+<section id="basic-css">
+
+  <div class="container">
+
+    <p class="section-label">
+      01. CSS Basics
+    </p>
+
+    <h2>
+      Các thuộc tính CSS cơ bản
+    </h2>
+
+    <p class="section-desc">
+      Đây là những thuộc tính nền tảng quan trọng nhất khi xây dựng giao diện web.
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>Width & Height</h3>
+
+        <p>
+          width dùng để xác định chiều rộng.
+          height dùng để xác định chiều cao của element.
+        </p>
+
+        <div class="demo-box">
+          Box
+        </div>
+
+        <div class="code">
+<pre>
+.box{
+  width:120px;
+  height:120px;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Margin</h3>
+
+        <p>
+          Margin tạo khoảng cách giữa element này với element khác
+          hoặc giữa element với element cha.
+        </p>
+
+        <div class="code">
+<pre>
+.box{
+  margin:20px;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Padding</h3>
+
+        <p>
+          Padding tạo khoảng cách giữa nội dung bên trong
+          và viền của element cha.
+        </p>
+
+        <div class="code">
+<pre>
+.box{
+  padding:20px;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Background & Color</h3>
+
+        <p>
+          background đổi màu nền.
+          color đổi màu chữ.
+        </p>
+
+        <div class="code">
+<pre>
+.box{
+  background:#2563eb;
+  color:white;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Font Styling</h3>
+
+        <ul>
+          <li>font-size → kích thước chữ</li>
+          <li>font-family → kiểu font</li>
+          <li>font-weight → độ đậm nhạt</li>
+          <li>font-style → in nghiêng</li>
+          <li>text-decoration → gạch chân/gạch ngang</li>
+        </ul>
+
+        <div class="code">
+<pre>
+.title{
+  font-size:32px;
+  font-family:Arial;
+  font-weight:700;
+  font-style:italic;
+  text-decoration:underline;
+}
+</pre>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="display-basic">
+
+  <div class="container">
+
+    <p class="section-label">
+      02. Display Basic
+    </p>
+
+    <h2>
+      Các dạng display cơ bản
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>display: block</h3>
+
+        <ul>
+          <li>Chiếm toàn bộ chiều rộng</li>
+          <li>Tự xuống dòng</li>
+          <li>Thiết lập được width/height</li>
+        </ul>
+
+        <div class="code">
+<pre>
+div{
+  display:block;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>display: inline</h3>
+
+        <ul>
+          <li>Không xuống dòng</li>
+          <li>Chiếm vừa đủ nội dung</li>
+          <li>Không set được width/height</li>
+        </ul>
+
+        <div class="code">
+<pre>
+span{
+  display:inline;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>display: inline-block</h3>
+
+        <ul>
+          <li>Nằm cùng hàng</li>
+          <li>Set được width/height</li>
+          <li>Kết hợp inline + block</li>
+        </ul>
+
+        <div class="code">
+<pre>
+button{
+  display:inline-block;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>display: none</h3>
+
+        <ul>
+          <li>Ẩn hoàn toàn element</li>
+          <li>Không chiếm không gian</li>
+        </ul>
+
+        <div class="code">
+<pre>
+.hidden{
+  display:none;
+}
+</pre>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="display-advanced">
+
+  <div class="container">
+
+    <p class="section-label">
+      03. Advanced Layout
+    </p>
+
+    <h2>
+      Flexbox & Grid
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>display: flex</h3>
+
+        <p>
+          Flexbox dùng để xây dựng layout linh hoạt theo một chiều:
+          hàng hoặc cột.
+        </p>
+
+        <div class="code">
+<pre>
+.container{
+  display:flex;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>display: grid</h3>
+
+        <p>
+          Grid dùng cho layout phức tạp nhiều hàng và nhiều cột.
+        </p>
+
+        <div class="code">
+<pre>
+.container{
+  display:grid;
+  grid-template-columns:
+  repeat(3,1fr);
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>inline-flex</h3>
+
+        <p>
+          Kích hoạt flexbox nhưng element cha
+          hoạt động như inline.
+        </p>
+
+        <div class="code">
+<pre>
+.container{
+  display:inline-flex;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>inline-grid</h3>
+
+        <p>
+          Kích hoạt grid nhưng phần tử cha
+          vẫn là inline element.
+        </p>
+
+        <div class="code">
+<pre>
+.container{
+  display:inline-grid;
+}
+</pre>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="display-table">
+
+  <div class="container">
+
+    <p class="section-label">
+      04. Table Display
+    </p>
+
+    <h2>
+      Các dạng display kiểu bảng
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>display: table</h3>
+
+        <div class="code">
+<pre>
+.container{
+  display:table;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>display: table-row</h3>
+
+        <div class="code">
+<pre>
+.row{
+  display:table-row;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>display: table-cell</h3>
+
+        <div class="code">
+<pre>
+.cell{
+  display:table-cell;
+}
+</pre>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="flex-axis">
+
+  <div class="container">
+
+    <p class="section-label">
+      05. Flexbox Axes
+    </p>
+
+    <h2>
+      Main Axis & Cross Axis
+    </h2>
+
+    <p class="section-desc">
+      Hướng của trục phụ thuộc vào thuộc tính
+      <span class="highlight">flex-direction</span>.
+    </p>
+
+    <table>
+
+      <tr>
+        <th>flex-direction</th>
+        <th>Main Axis</th>
+        <th>Cross Axis</th>
+      </tr>
+
+      <tr>
+        <td>row</td>
+        <td>Horizontal (Left → Right)</td>
+        <td>Vertical (Top → Bottom)</td>
+      </tr>
+
+      <tr>
+        <td>column</td>
+        <td>Vertical (Top → Bottom)</td>
+        <td>Horizontal (Left → Right)</td>
+      </tr>
+
+      <tr>
+        <td>row-reverse</td>
+        <td>Horizontal (Right → Left)</td>
+        <td>Vertical (Top → Bottom)</td>
+      </tr>
+
+      <tr>
+        <td>column-reverse</td>
+        <td>Vertical (Bottom → Top)</td>
+        <td>Horizontal (Left → Right)</td>
+      </tr>
+
+    </table>
+
+  </div>
+
+</section>
+
+<section id="alignment">
+
+  <div class="container">
+
+    <p class="section-label">
+      06. Alignment
+    </p>
+
+    <h2>
+      Các thuộc tính căn chỉnh
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>justify-content</h3>
+
+        <p>
+          Căn chỉnh theo main axis.
+        </p>
+
+        <div class="code">
+<pre>
+.container{
+  justify-content:center;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>align-items</h3>
+
+        <p>
+          Căn chỉnh theo cross axis.
+        </p>
+
+        <div class="code">
+<pre>
+.container{
+  align-items:center;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>align-content</h3>
+
+        <p>
+          Quản lý khoảng cách giữa nhiều dòng item
+          khi dùng flex-wrap.
+        </p>
+
+        <div class="code">
+<pre>
+.container{
+  align-content:space-between;
+}
+</pre>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="grow-shrink">
+
+  <div class="container">
+
+    <p class="section-label">
+      07. Flex Grow & Shrink
+    </p>
+
+    <h2>
+      Điều chỉnh kích thước item
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>flex-grow</h3>
+
+        <p>
+          Xác định item được phép giãn ra bao nhiêu.
+        </p>
+
+        <div class="code">
+<pre>
+.item{
+  flex-grow:1;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>flex-shrink</h3>
+
+        <p>
+          Xác định item co lại như thế nào
+          khi thiếu không gian.
+        </p>
+
+        <div class="code">
+<pre>
+.item{
+  flex-shrink:1;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Ví dụ đầy đủ</h3>
+
+        <div class="code">
+<pre>
+.container{
+  display:flex;
+}
+
+.item-1{
+  flex-grow:1;
+}
+
+.item-2{
+  flex-grow:2;
+}
+</pre>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <div class="container">
+    CSS Display & Flexbox Lesson © 2026
+  </div>
+
+</footer>
+
+</body>
+</html>

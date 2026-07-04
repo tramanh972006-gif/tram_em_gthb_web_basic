@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buoi 3 - JavaScript co ban</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./main.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-layout">
+      <div class="hero-copy">
+        <p class="eyebrow">Buoi 3 · JavaScript co ban</p>
+        <h1>Bien, dieu kien, vong lap, ham</h1>
+        <p class="hero-text">Trang nay dung de trinh chieu truc tiep trong lop, tap trung vao logic JavaScript co ban va cac bai tap mau.</p>
+      </div>
+    </div>
+  </header>
+
+  <nav class="quick-nav">
+    <div class="container">
+      <div class="nav-links">
+        <a href="#bien">Biến</a>
+        <a href="#dieu-kien">Điều kiện</a>
+        <a href="#vong-lap">Vòng lặp</a>
+        <a href="#ham">Hàm</a>
+        <a href="#baitaptrenlop">Bài tập trên lớp</a>
+        <a href="#baitapvenha">Bài tập về nhà</a>
+        <a href="#cheatsheet">Cheat Sheet</a>
+        <a href="#math">Math</a>
+        <a href="#break-continue">Break Continue</a>
+        <a href="#so-sanh">So sánh</a>
+        <a href="#huong-dan-run">Chạy file JS</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- BIEN -->
+      <section class="section-block" id="bien">
+        <div class="section-heading">
+          <p class="section-label">Phần 1</p>
+          <h2>Biến (Variables)</h2>
+          <p>Biến là nơi lưu trữ dữ liệu. Trong JavaScript, sử dụng <span class="highlight-inline">let</span>, <span class="highlight-inline">const</span>, hoặc <span class="highlight-inline">var</span>.</p>
+        </div>
+        
+        <div class="hero-grid">
+          <div class="hero-card">
+            <h3>Let</h3>
+            <p class="tag-purpose">Có thể thay đổi giá trị</p>
+            <p>Có phạm vi khối, không thể khai báo lại.</p>
+            <pre><code>let name = "Trâm Anh";
+name = "Tân"; // OK
+let name = "Minh"; // Lỗi!</code></pre>
+          </div>
+          
+          <div class="hero-card">
+            <h3>Const</h3>
+            <p class="tag-purpose">Không thể thay đổi giá trị</p>
+            <p>Thường dùng cho giá trị không đổi.</p>
+            <pre><code>const age = 20;
+age = 21; // Lỗi!
+const MAX = 100; // Hằng số</code></pre>
+          </div>
+          
+          <div class="hero-card">
+            <h3>Var</h3>
+            <p class="tag-purpose">Cách cũ (không nên dùng)</p>
+            <p>Có phạm vi global, dễ gây lỗi.</p>
+            <pre><code>var x = 5;
+x = 10; // OK
+if(true) {
+  var x = 20; // Ghi đè global
+}</code></pre>
+          </div>
+        </div>
+
+        <div class="demo-box">
+          <h4>Ví dụ thực hành:</h4>
+          <pre><code>// Khai báo biến
+let ho = "Đặng";
+let ten = "Thị Trâm Anh";
+const namSinh = 2000;
+
+// Sử dụng biến
+console.log(ho + " " + ten);
+console.log("Năm sinh: " + namSinh);
+
+// Tính tuổi
+let tuoi = 2024 - namSinh;
+console.log("Tuổi: " + tuoi);</code></pre>
+        </div>
+      </section>
+
+      <!-- DIEU KIEN -->
+      <section class="section-block" id="dieu-kien">
+        <div class="section-heading">
+          <p class="section-label">Phần 2</p>
+          <h2>Điều kiện (Conditionals)</h2>
+          <p>Cho phép mã chạy hoặc không chạy dựa trên điều kiện thực hoặc sai.</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="tag-card">
+            <h3>If - Else</h3>
+            <p class="tag-purpose">Chạy mã khi điều kiện đúng</p>
+            <pre><code>let diem = 8;
+
+if (diem >= 8) {
+  console.log("Giỏi");
+} else if (diem >= 6) {
+  console.log("Khá");
+} else {
+  console.log("Chưa đạt");
+}</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Switch</h3>
+            <p class="tag-purpose">Chọn một trường hợp trong nhiều trường hợp</p>
+            <pre><code>let ngay = 3;
+
+switch(ngay) {
+  case 1:
+    console.log("Thứ hai");
+    break;
+  case 2:
+    console.log("Thứ ba");
+    break;
+  default:
+    console.log("Ngày khác");
+}</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Toán tử Ternary</h3>
+            <p class="tag-purpose">Điều kiện viết gọn một dòng</p>
+            <pre><code>let tuoi = 20;
+
+// Cách thường
+let trangThai = tuoi >= 18 
+  ? "Đã trưởng thành" 
+  : "Chưa trưởng thành";
+
+console.log(trangThai);</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Toán tử so sánh</h3>
+            <p class="tag-purpose">Các phép so sánh thường dùng</p>
+            <pre><code>let x = 5;
+
+console.log(x == "5");    // true
+console.log(x === "5");   // false
+console.log(x > 3);       // true
+console.log(x <= 5);      // true
+console.log(x != 10);     // true</code></pre>
+          </div>
+        </div>
+
+        <div class="demo-box">
+          <h4>Bài tập: Kiểm tra xem số có phải số chẵn không</h4>
+          <pre><code>let so = 7;
+
+if (so % 2 === 0) {
+  console.log(so + " là số chẵn");
+} else {
+  console.log(so + " là số lẻ");
+}
+
+// Hoặc dùng ternary
+console.log(so % 2 === 0 ? "Chẵn" : "Lẻ");</code></pre>
+        </div>
+      </section>
+
+      <!-- VONG LAP -->
+      <section class="section-block" id="vong-lap">
+        <div class="section-heading">
+          <p class="section-label">Phần 3</p>
+          <h2>Vòng lặp (Loops)</h2>
+          <p>Lặp lại một đoạn mã nhiều lần cho đến khi điều kiện không còn đúng.</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="tag-card">
+            <h3>For Loop</h3>
+            <p class="tag-purpose">Lặp từ đến với số lần xác định</p>
+            <pre><code>// In ra 1 đến 5
+for (let i = 1; i <= 5; i++) {
+  console.log(i);
+}
+
+// In ra mảng
+let fruits = ["Táo", "Cam"];
+for (let j = 0; j < fruits.length; j++) {
+  console.log(fruits[j]);
+}</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>While Loop</h3>
+            <p class="tag-purpose">Lặp khi điều kiện còn đúng</p>
+            <pre><code>let i = 1;
+
+while (i <= 5) {
+  console.log(i);
+  i++; // Tăng i lên 1
+}
+
+// Do-While: chạy ít nhất 1 lần
+let x = 10;
+do {
+  console.log(x);
+  x++;
+} while (x <= 5);</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>ForEach</h3>
+            <p class="tag-purpose">Duyệt qua từng phần tử mảng</p>
+            <pre><code>let colors = ["Đỏ", "Xanh", "Vàng"];
+
+// Cách 1: forEach
+colors.forEach(function(mau) {
+  console.log(mau);
+});
+
+// Cách 2: Arrow function
+colors.forEach(mau => {
+  console.log(mau);
+});</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>For-In / For-Of</h3>
+            <p class="tag-purpose">Duyệt key hoặc value</p>
+            <pre><code>let obj = {ten: "Trâm", tuoi: 20};
+
+// for-in: duyệt key
+for (let key in obj) {
+  console.log(key, obj[key]);
+}
+
+// for-of: duyệt value (mảng)
+let arr = [10, 20, 30];
+for (let val of arr) {
+  console.log(val);
+}</code></pre>
+          </div>
+        </div>
+
+        <div class="demo-box">
+          <h4>Bài tập: Tính tổng từ 1 đến 100</h4>
+          <pre><code>let tong = 0;
+
+for (let i = 1; i <= 100; i++) {
+  tong += i;
+}
+
+console.log("Tổng: " + tong); // 5050
+
+// Hoặc dùng while
+let i = 1, sum = 0;
+while (i <= 100) {
+  sum += i;
+  i++;
+}
+console.log("Tổng: " + sum);</code></pre>
+        </div>
+      </section>
+
+      <!-- HAM -->
+      <section class="section-block final-section" id="ham">
+        <div class="section-heading">
+          <p class="section-label">Phần 4</p>
+          <h2>Hàm (Functions)</h2>
+          <p>Hàm là một khối mã có tên, có thể tái sử dụng nhiều lần với các tham số khác nhau.</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="tag-card">
+            <h3>Hàm thường</h3>
+            <p class="tag-purpose">Khai báo với function</p>
+            <pre><code>function chao(ten) {
+  return "Xin chào " + ten;
+}
+
+console.log(chao("Trâm"));
+// "Xin chào Trâm"</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Arrow Function</h3>
+            <p class="tag-purpose">Cách viết gọn hơn</p>
+            <pre><code>// Cách 1
+const cong = (a, b) => {
+  return a + b;
+};
+
+// Cách 2 (ngắn hơn)
+const cong2 = (a, b) => a + b;
+
+console.log(cong(5, 3)); // 8</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Tham số mặc định</h3>
+            <p class="tag-purpose">Giá trị default nếu không truyền</p>
+            <pre><code>function tinhtien(gia, soluong = 1) {
+  return gia * soluong;
+}
+
+console.log(tinhtien(100));      // 100
+console.log(tinhtien(100, 5));   // 500</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Hàm không return</h3>
+            <p class="tag-purpose">Thực hiện hành động mà không trả về</p>
+            <pre><code>function dophim(ten) {
+  console.log("Đang phát: " + ten);
+}
+
+dophim("Avatar");
+// Không trả về giá trị (undefined)</code></pre>
+          </div>
+        </div>
+
+        <div class="demo-box">
+          <h4>Bài tập: Hàm tính giai thừa</h4>
+          <pre><code>function tinhGiaiThua(n) {
+  if (n <= 1) return 1;
+  return n * tinhGiaiThua(n - 1);
+}
+
+console.log(tinhGiaiThua(5)); // 120
+
+// Hoặc dùng vòng lặp
+function giaiThua(n) {
+  let kq = 1;
+  for (let i = 2; i <= n; i++) {
+    kq *= i;
+  }
+  return kq;
+}
+
+console.log(giaiThua(5)); // 120</code></pre>
+        </div>
+      </section>
+
+      <!-- BAI TAP TREN LOP -->
+<section class="section-block" id="baitaptrenlop">
+  <div class="section-heading">
+    <p class="section-label">Thực hành trên lớp</p>
+    <h2>Bài tập JavaScript tổng hợp</h2>
+    <p>Luyện tập function, array, object, loop, map/reduce/filter và format dữ liệu.</p>
+  </div>
+
+  <div class="demo-box">
+    <h4>1. Tính điểm trung bình</h4>
+    <pre><code>function calculateAverage(scores) {
+  let total = scores.reduce((sum, score) => sum + score, 0);
+  return total / scores.length;
+}
+
+console.log(calculateAverage([8, 9, 7.5, 10]));</code></pre>
+  </div>
+
+  <div class="demo-box">
+    <h4>2. Kiểm tra số chẵn</h4>
+    <pre><code>function isEven(number) {
+  return number % 2 === 0;
+}
+
+console.log(isEven(17));
+console.log(isEven(20));</code></pre>
+  </div>
+
+  <div class="demo-box">
+    <h4>3. Tìm phần tử lớn nhất</h4>
+    <pre><code>function findMax(arr) {
+  let max = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+
+  return max;
+}
+
+console.log(findMax([12, 7, 23, 9, 25]));</code></pre>
+  </div>
+
+  <div class="demo-box">
+    <h4>4. Thao tác mảng sản phẩm</h4>
+    <pre><code>const products = [
+  {id: 1, name: "Áo thun", price: 120000, stock: 18},
+  {id: 2, name: "Giày thể thao", price: 560000, stock: 0},
+  {id: 3, name: "Mũ lưỡi trai", price: 85000, stock: 5}
+];
+
+function formatProducts(products) {
+  return products.map(product => {
+    let status = product.stock > 0
+      ? "Còn hàng"
+      : "Hết hàng";
+
+    return `${product.name} - ${product.price} đ - ${status}`;
+  });
+}
+
+console.log(formatProducts(products));</code></pre>
+  </div>
+
+  <div class="demo-box">
+    <h4>5. Duyệt object và format dữ liệu</h4>
+    <pre><code>const student = {
+  name: "Trâm Anh",
+  age: 20,
+  major: "CNTT"
+};
+
+for (let key in student) {
+  console.log(key + ": " + student[key]);
+}</code></pre>
+  </div>
+
+  <div class="demo-box">
+    <h4>6. Kết quả hiển thị mẫu</h4>
+    <pre><code>Áo thun - 120000 đ - Còn hàng
+Giày thể thao - 560000 đ - Hết hàng
+Mũ lưỡi trai - 85000 đ - Còn hàng</code></pre>
+  </div>
+</section>
+
+      <!-- BAI TAP VE NHA -->
+      <section class="section-block">
+        <div class="section-heading">
+          <p class="section-label">Bài tập về nhà</p>
+          <h2>10 Bài tập luyện JavaScript cơ bản</h2>
+          <p>Làm từng bài một, chạy code trong Console (F12) để kiểm tra kết quả.</p>
+        </div>
+
+        <div class="demo-box">
+          <h4>1. Khai báo biến và giới thiệu</h4>
+          <pre><code>let ten = "Đặng Thị Trâm Anh";
+let tuoi = 20;
+console.log(`Xin chào, tôi là ${ten}, năm nay tôi ${tuoi} tuổi.`);</code></pre>
+        </div>
+
+        <div class="demo-box">
+          <h4>2. Tính tổng hai số</h4>
+          <pre><code>function tinhTong(a, b) {
+  return a + b;
+}
+
+console.log(tinhTong(10, 20)); // 30</code></pre>
+        </div>
+
+        <div class="demo-box">
+          <h4>3. Kiểm tra số chẵn hay lẻ</h4>
+          <pre><code>function kiemTraChanLe(so) {
+  if (so % 2 === 0) {
+    return "Chẵn";
+  } else {
+    return "Lẻ";
+  }
+}
+
+console.log(kiemTraChanLe(7)); // Lẻ
+console.log(kiemTraChanLe(8)); // Chẵn</code></pre>
+        </div>
+
+        <div class="demo-box">
+          <h4>4. Tìm số lớn nhất trong mảng</h4>
+          <pre><code>let arr = [5, 12, 3, 8, 20];
+let max = Math.max(...arr);
+console.log(max); // 20
+
+// Hoặc dùng vòng lặp
+let max2 = arr[0];
+for (let i = 1; i < arr.length; i++) {
+  if (arr[i] > max2) {
+    max2 = arr[i];
+  }
+}
+console.log(max2); // 20</code></pre>
+        </div>
+
+        <div class="demo-box">
+          <h4>5. Tính tổng các phần tử trong mảy</h4>
+          <pre><code>let arr = [1, 2, 3, 4, 5];
+
+// Cách 1: dùng reduce
+let tong = arr.reduce((sum, x) => sum + x, 0);
+console.log(tong); // 15
+
+// Cách 2: dùng vòng lặp
+let sum = 0;
+for (let x of arr) {
+  sum += x;
+}
+console.log(sum); // 15</code></pre>
+        </div>
+
+        <div class="demo-box">
+          <h4>6. Đếm số phần tử lớn hơn 10</h4>
+          <pre><code>let arr = [5, 12, 8, 15, 20, 3];
+
+// Cách 1: dùng filter
+let count = arr.filter(x => x > 10).length;
+console.log(count); // 3
+
+// Cách 2: dùng vòng lặp
+let dem = 0;
+for (let x of arr) {
+  if (x > 10) dem++;
+}
+console.log(dem); // 3</code></pre>
+        </div>
+
+        <div class="demo-box">
+          <h4>7. Viết hàm đảo ngược chuỗi</h4>
+          <pre><code>function daoNguocChuoi(str) {
+  return str.split("").reverse().join("");
+}
+
+console.log(daoNguocChuoi("Hello")); // olleH
+console.log(daoNguocChuoi("Trâm")); // mârT</code></pre>
+        </div>
+
+        <div class="demo-box">
+          <h4>8. Lọc ra các số dương từ mảng hỗn hợp</h4>
+          <pre><code>let arr = [-5, 10, -3, 8, 0, 15];
+
+// Dùng filter
+let soDuong = arr.filter(x => x > 0);
+console.log(soDuong); // [10, 8, 15]</code></pre>
+        </div>
+
+        <div class="demo-box">
+          <h4>9. Đếm số lần xuất hiện của một ký tự</h4>
+          <pre><code>function demKyTu(str, kyTu) {
+  let dem = 0;
+  for (let char of str) {
+    if (char === kyTu) dem++;
+  }
+  return dem;
+}
+
+console.log(demKyTu("hello world", "l")); // 3
+console.log(demKyTu("javascript", "a")); // 2</code></pre>
+        </div>
+
+        <div class="demo-box">
+          <h4>10. Quản lý danh sách sinh viên (Add, Edit, Delete)</h4>
+          <pre><code>let students = [
+  {id: 1, name: "An", age: 20},
+  {id: 2, name: "Bình", age: 21}
+];
+
+// Thêm sinh viên
+function themSV(students, sv) {
+  return [...students, sv];
+}
+
+// Xóa sinh viên
+function xoaSV(students, id) {
+  return students.filter(s => s.id !== id);
+}
+
+// Sửa sinh viên
+function suaSV(students, id, updates) {
+  return students.map(s => 
+    s.id === id ? {...s, ...updates} : s
+  );
+}
+
+console.log(themSV(students, {id: 3, name: "Trâm", age: 20}));
+console.log(xoaSV(students, 1));
+console.log(suaSV(students, 1, {age: 22}));</code></pre>
+        </div>
+      </section>
+
+      <!-- CHEAT SHEET -->
+      <section class="section-block">
+        <div class="section-heading">
+          <p class="section-label">Ghi chú học tập</p>
+          <h2>JavaScript Cheat Sheet</h2>
+          <p>Các khái niệm, toán tử và hàm cần nhớ.</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="tag-card">
+            <h3>Khai báo biến</h3>
+            <pre><code>let a = 10;
+const PI = 3.14;
+var x = 5; // ⚠️ Tránh dùng
+
+// Dùng let chính!</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>In ra màn hình</h3>
+            <pre><code>console.log("Hello");
+console.log(42);
+console.log(variable);</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Toán tử</h3>
+            <pre><code>// Toán học
++ - * / %
+
+// So sánh
+=== !== > < >= <=
+
+// Logic
+&& (AND)
+|| (OR)
+! (NOT)</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Mảng cơ bản</h3>
+            <pre><code>let arr = [1, 2, 3];
+arr.push(4);     // thêm
+arr.pop();       // xóa cuối
+arr.length;      // độ dài
+arr[0];          // lấy phần tử</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Xử lý mảy nâng cao</h3>
+            <pre><code>// Lọc
+arr.filter(x => x > 0);
+
+// Biến đổi
+arr.map(x => x * 2);
+
+// Tính tổng
+arr.reduce((a, b) => a + b, 0);
+
+// Tìm max
+Math.max(...arr);</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Chuỗi</h3>
+            <pre><code>let str = "hello";
+str.length;
+str.toUpperCase();
+str.toLowerCase();
+str.split("");  // tách
+str.trim();     // bỏ khoảng trắng</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Object</h3>
+            <pre><code>let sv = {
+  ten: "An",
+  tuoi: 20
+};
+console.log(sv.ten);
+
+// Spread (cập nhật)
+{...sv, tuoi: 21}</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Template String</h3>
+            <pre><code>let ten = "Trâm";
+console.log(`Xin chào ${ten}`);
+
+// Viết gọn hơn với +
+console.log("Xin chào " + ten);</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Kiểm tra dữ liệu</h3>
+            <pre><code>// Mảng?
+Array.isArray(arr);
+
+// Rỗng?
+arr.length === 0;
+
+// Ép kiểu
+Number(x);
+String(x);
+Boolean(x);</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Tính toán phổ biến</h3>
+            <pre><code>// Tổng
+arr.reduce((s, x) => s + x, 0);
+
+// Trung bình
+tong / arr.length;
+
+// Số max
+Math.max(...arr);
+
+// Số min
+Math.min(...arr);</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Arrow Function</h3>
+            <pre><code>// Đầy đủ
+(a, b) => {
+  return a + b;
+}
+
+// Gọn
+(a, b) => a + b
+
+// 1 tham số
+x => x * 2</code></pre>
+          </div>
+
+          <div class="tag-card">
+            <h3>Gợi ý bài toán</h3>
+            <pre><code>Tính tổng    → reduce
+Tìm max     → Math.max
+Lọc         → filter
+Sửa         → map
+Thêm        → spread [...]
+Xóa         → filter
+Đảo         → reverse</code></pre>
+          </div>
+        </div>
+
+        <div class="demo-box">
+          <h4>Tóm tắt gọn (Học thuộc)</h4>
+          <pre><code>let arr = [1,2,3];
+
+// Tổng
+arr.reduce((a,b) => a+b, 0);
+
+// Lọc
+arr.filter(x => x > 0);
+
+// Sửa
+arr.map(x => x*2);
+
+// Max
+Math.max(...arr);
+
+// Update object
+let obj = {...old, ...new};
+
+// Thêm phần tử
+let newArr = [...arr, x];
+
+// Xóa phần tử
+arr.filter(x => x !== value);</code></pre>
+        </div>
+      </section>
+
+      <!-- ========================= -->
+<!-- PHAN MATH -->
+<!-- ========================= -->
+
+<section class="section-block" id="math">
+  <div class="section-heading">
+    <p class="section-label">Math Object</p>
+    <h2>Math trong JavaScript</h2>
+    <p>Dùng để xử lý các phép toán nâng cao.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <div class="tag-card">
+      <h3>Math.random()</h3>
+      <p class="tag-purpose">Sinh số ngẫu nhiên</p>
+      <pre><code>console.log(Math.random());
+
+// Random từ 1 -> 10
+let number = Math.floor(Math.random() * 10) + 1;
+console.log(number);</code></pre>
+    </div>
+
+    <div class="tag-card">
+      <h3>Math.floor()</h3>
+      <p class="tag-purpose">Làm tròn xuống</p>
+      <pre><code>console.log(Math.floor(4.9)); // 4
+console.log(Math.floor(7.1)); // 7</code></pre>
+    </div>
+
+    <div class="tag-card">
+      <h3>Math.ceil()</h3>
+      <p class="tag-purpose">Làm tròn lên</p>
+      <pre><code>console.log(Math.ceil(4.1)); // 5
+console.log(Math.ceil(7.01));</code></pre>
+    </div>
+
+    <div class="tag-card">
+      <h3>Math.round()</h3>
+      <p class="tag-purpose">Làm tròn gần nhất</p>
+      <pre><code>console.log(Math.round(4.4)); // 4
+console.log(Math.round(4.5)); // 5</code></pre>
+    </div>
+
+    <div class="tag-card">
+      <h3>Math.max()</h3>
+      <p class="tag-purpose">Tìm số lớn nhất</p>
+      <pre><code>console.log(Math.max(4, 8, 2, 10));</code></pre>
+    </div>
+
+    <div class="tag-card">
+      <h3>Math.min()</h3>
+      <p class="tag-purpose">Tìm số nhỏ nhất</p>
+      <pre><code>console.log(Math.min(4, 8, 2, 10));</code></pre>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================= -->
+<!-- BREAK CONTINUE -->
+<!-- ========================= -->
+
+<section class="section-block" id="break-continue">
+  <div class="section-heading">
+    <p class="section-label">Break & Continue</p>
+    <h2>Break và Continue</h2>
+    <p>Điều khiển vòng lặp.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <div class="tag-card">
+      <h3>Break</h3>
+      <p class="tag-purpose">Thoát khỏi vòng lặp</p>
+      <pre><code>for (let i = 1; i <= 10; i++) {
+  if (i === 5) {
+    break;
+  }
+
+  console.log(i);
+}</code></pre>
+    </div>
+
+    <div class="tag-card">
+      <h3>Continue</h3>
+      <p class="tag-purpose">Bỏ qua lần lặp hiện tại</p>
+      <pre><code>for (let i = 1; i <= 5; i++) {
+
+  if (i === 3) {
+    continue;
+  }
+
+  console.log(i);
+}</code></pre>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================= -->
+<!-- CAC KIEU SO SANH -->
+<!-- ========================= -->
+
+<section class="section-block">
+  <div class="section-heading">
+    <p class="section-label">So sánh</p>
+    <h2>Các kiểu so sánh trong JavaScript</h2>
+    <p>Phân biệt == và === rất quan trọng.</p>
+  </div>
+
+  <div class="demo-box">
+    <pre><code>console.log(5 == "5");   
+// true
+// So sánh giá trị
+
+console.log(5 === "5");  
+// false
+// So sánh giá trị + kiểu dữ liệu
+
+console.log(10 != "10"); 
+// false
+
+console.log(10 !== "10");
+// true</code></pre>
+  </div>
+</section>
+
+<!-- ========================= -->
+<!-- HUONG DAN CHAY FILE -->
+<!-- ========================= -->
+
+<section class="section-block" id="huong-dan-run">
+  <div class="section-heading">
+    <p class="section-label">Hướng dẫn</p>
+    <h2>Cách chạy file JavaScript</h2>
+    <p>Hướng dẫn chạy file .js trên VS Code và terminal.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <div class="tag-card">
+      <h3>Chạy bằng trình duyệt</h3>
+      <pre><code>&lt;script src="./main.js"&gt;&lt;/script&gt;
+
+Mở file HTML bằng trình duyệt
+→ F12
+→ Console</code></pre>
+    </div>
+
+    <div class="tag-card">
+      <h3>Chạy bằng Node.js</h3>
+      <pre><code>node main.js</code></pre>
+    </div>
+
+    <div class="tag-card">
+      <h3>Terminal VS Code</h3>
+      <pre><code>Ctrl + `
+
+Hoặc:
+Terminal → New Terminal</code></pre>
+    </div>
+
+    <div class="tag-card">
+      <h3>Chạy file bài tập</h3>
+      <pre><code>node buoi3/btvn.js</code></pre>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================= -->
+<!-- FILE RUN.SH -->
+<!-- ========================= -->
+
+<section class="section-block">
+  <div class="section-heading">
+    <p class="section-label">Automation</p>
+    <h2>run.sh và package.json script</h2>
+    <p>Rút gọn lệnh chạy chương trình.</p>
+  </div>
+
+  <div class="demo-box">
+    <h4>File run.sh</h4>
+    <pre><code>#!/bin/bash
+
+node main.js</code></pre>
+  </div>
+
+  <div class="demo-box">
+    <h4>Chạy script</h4>
+    <pre><code>./run.sh</code></pre>
+  </div>
+
+  <div class="demo-box">
+    <h4>package.json</h4>
+    <pre><code>{
+  "scripts": {
+    "start": "node main.js",
+    "average": "node average.js",
+    "products": "node products.js"
+  }
+}</code></pre>
+  </div>
+
+  <div class="demo-box">
+    <h4>Chạy npm script</h4>
+    <pre><code>npm run start
+npm run average
+npm run products</code></pre>
+  </div>
+</section>
+    </div>
+  </main>
+</body>
+</html>

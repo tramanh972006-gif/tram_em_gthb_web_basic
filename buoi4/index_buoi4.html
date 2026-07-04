@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReactJS cơ bản: tư duy component</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        main {
+            padding: 40px 30px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        section h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        ul {
+            margin-left: 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+
+        li::marker {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .content-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin: 12px 0;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+
+        .content-item strong {
+            color: #667eea;
+        }
+
+        .highlight {
+            background: #e8eaf6;
+            padding: 3px 6px;
+            border-radius: 3px;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        footer {
+            background: #f5f5f5;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px 5px 5px 0;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .learning-objectives {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .learning-objectives ul {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            main {
+                padding: 20px 15px;
+            }
+
+            section h2 {
+                font-size: 1.4em;
+            }
+        }
+
+        nav{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            z-index: 999;
+            background: white;
+            padding: 15px 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .container{
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ReactJS cơ bản</h1>
+            <p>Tư duy component</p>
+        </header>
+
+        <nav>
+            <div style="padding: 15px; background: #f0f0f0; border-bottom: 1px solid #ddd;">
+                <a href="#muc-tieu">Mục tiêu</a>
+                <a href="#noi-dung-chinh">Nội dung chính</a>
+                <a href="#thuc-hanh-tren-lop">Thực hành trên lớp</a>
+                <a href="#bai-tap-ve-nha">Bài tập về nhà</a>
+                <a href="#san-pham-buoi-hoc">Sản phẩm buổi học</a>
+                <a href="#tags">Tags</a>
+                <a href="#roadmap-frontend">Frontend Roadmap</a>
+                <a href="#figma">Figma</a>
+                <a href="#ui-libraries">UI Libraries</a>
+                <a href="#react-dev-learn">React.dev Learn</a>
+                <a href="#component-mindset">Component Mindset</a>
+                <a href="#react-full-flow">React Full Flow</a>
+                <a href="#full-react-example">Full React Example</a>
+                <a href="#ket-luan">Kết luận</a>
+            </div>
+        </nav>
+
+        <main>
+            <!-- Mục tiêu -->
+            <section id="muc-tieu">
+                <h2>📚 Mục tiêu</h2>
+                <div class="learning-objectives">
+                    <ul>
+                        <li><strong>Hiểu SPA (Single Page Application)</strong> - Ứng dụng web tải một trang duy nhất và cập nhật động nội dung mà không cần reload</li>
+                        <li><strong>Nắm vững khái niệm JSX</strong> - Cú pháp kết hợp HTML và JavaScript, cho phép viết UI một cách khai báo</li>
+                        <li><strong>Hiểu về component trong React</strong> - Các building block tái sử dụng để xây dựng giao diện</li>
+                        <li><strong>Làm quen với props và state</strong> - Props cho truyền dữ liệu từ component cha, state để quản lý dữ liệu nội bộ</li>
+                        <li><strong>Tạo được project React đầu tiên</strong> - Thiết lập môi trường và chạy một ứng dụng React thực tế</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Nội dung chính -->
+            <section id="noi-dung-chinh">
+                <h2>📖 Nội dung chính</h2>
+                
+                <h3>Các chủ đề sẽ được học:</h3>
+                <div class="content-item">
+                    <strong>1. React là gì, vì sao dùng React</strong>
+                    <p style="margin-top: 8px;">Tìm hiểu về React, lợi ích và các trường hợp sử dụng React trong phát triển ứng dụng web.</p>
+                </div>
+
+                <div class="content-item">
+                    <strong>2. Tạo project bằng Vite</strong>
+                    <p style="margin-top: 8px;">Hướng dẫn khởi tạo một dự án React sử dụng Vite build tool cho hiệu suất tối ưu.</p>
+                </div>
+
+                <div class="content-item">
+                    <strong>3. JSX</strong>
+                    <p style="margin-top: 8px;">Tìm hiểu JSX - cú pháp cho phép viết HTML trong JavaScript và cách nó hoạt động.</p>
+                </div>
+
+                <div class="content-item">
+                    <strong>4. Component</strong>
+                    <p style="margin-top: 8px;">Khái niệm component, cách tạo và sử dụng component trong React.</p>
+                </div>
+
+                <div class="content-item">
+                    <strong>5. Props, State</strong>
+                    <p style="margin-top: 8px;">Hiểu về props (truyền dữ liệu giữa component) và state (quản lý trạng thái).</p>
+                </div>
+
+                <div class="content-item">
+                    <strong>6. Chia giao diện thành nhiều component nhỏ</strong>
+                    <p style="margin-top: 8px;">Kỹ thuật thiết kế component trong lập trình React - cơ bản của khóa học.</p>
+                </div>
+            </section>
+
+            <!-- Thực hành trên lớp -->
+            <section id="thuc-hanh-tren-lop">
+                <h2>💻 Thực hành trên lớp</h2>
+                <p style="margin-bottom: 15px;">Trong buổi học, chúng ta sẽ:</p>
+                <ul>
+                    <li>Tạo app React đầu tiên</li>
+                    <li>Xây dựng các component chính:
+                        <ul style="margin-top: 8px; margin-bottom: 8px;">
+                            <li><span class="highlight">Header</span> - Phần đầu trang</li>
+                            <li><span class="highlight">Footer</span> - Phần cuối trang</li>
+                            <li><span class="highlight">ProductCard</span> - Thẻ hiển thị sản phẩm</li>
+                        </ul>
+                    </li>
+                    <li>Hiển thị danh sách sản phẩm tĩnh</li>
+                </ul>
+            </section>
+
+            <!-- Bài tập về nhà -->
+            <section id="bai-tap-ve-nha">
+                <h2>🏠 Bài tập về nhà</h2>
+                <ul>
+                    <li><strong>Yêu cầu 1:</strong> Tạo trang danh sách sản phẩm gồm <span class="highlight">ít nhất 8 sản phẩm</span></li>
+                    <li><strong>Yêu cầu 2:</strong> Mỗi sản phẩm phải bao gồm:
+                        <ul style="margin-top: 8px; margin-bottom: 8px;">
+                            <li>Ảnh sản phẩm</li>
+                            <li>Tên sản phẩm</li>
+                            <li>Giá sản phẩm</li>
+                            <li>Nút "Xem chi tiết"</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Sản phẩm buổi học -->
+            <section id="san-pham-buoi-hoc">
+                <h2>🎯 Sản phẩm buổi học</h2>
+                <div class="content-item">
+                    <strong>✓ App React đầu tiên chạy được</strong>
+                    <p style="margin-top: 8px;">Sau buổi học, bạn sẽ có một ứng dụng React hoạt động được trên máy tính của mình.</p>
+                </div>
+            </section>
+
+            <!-- Tags -->
+            <section id="tags">
+                <h2>🏷️ Các kỹ năng sẽ học</h2>
+                <div>
+                    <span class="badge">React Basics</span>
+                    <span class="badge">JSX</span>
+                    <span class="badge">Components</span>
+                    <span class="badge">Props</span>
+                    <span class="badge">State</span>
+                    <span class="badge">Vite</span>
+                    <span class="badge">SPA</span>
+                </div>
+            </section>
+
+            <!-- THÊM vào trong <main> trước phần footer -->
+
+<!-- ROADMAP FRONTEND -->
+<section id="roadmap-frontend">
+    <h2>🗺️ Frontend Roadmap</h2>
+
+    <div class="content-item">
+        <strong>Frontend Developer cần học gì?</strong>
+        <p style="margin-top: 8px;">
+            Lộ trình Frontend giúp bạn biết nên học theo thứ tự nào để trở thành lập trình viên giao diện web.
+        </p>
+    </div>
+
+    <h3>Lộ trình cơ bản</h3>
+
+    <div class="content-item">
+        <strong>1. HTML</strong>
+        <p style="margin-top: 8px;">
+            Xây dựng cấu trúc trang web.
+        </p>
+    </div>
+
+    <div class="content-item">
+        <strong>2. CSS</strong>
+        <p style="margin-top: 8px;">
+            Thiết kế giao diện, màu sắc, bố cục.
+        </p>
+    </div>
+
+    <div class="content-item">
+        <strong>3. JavaScript</strong>
+        <p style="margin-top: 8px;">
+            Xử lý tương tác và logic.
+        </p>
+    </div>
+
+    <div class="content-item">
+        <strong>4. Git & GitHub</strong>
+        <p style="margin-top: 8px;">
+            Quản lý source code và làm việc nhóm.
+        </p>
+    </div>
+
+    <div class="content-item">
+        <strong>5. ReactJS</strong>
+        <p style="margin-top: 8px;">
+            Xây dựng giao diện theo tư duy component.
+        </p>
+    </div>
+
+    <div class="content-item">
+        <strong>6. API & Fetch</strong>
+        <p style="margin-top: 8px;">
+            Lấy dữ liệu từ server.
+        </p>
+    </div>
+
+    <div class="content-item">
+        <strong>7. Build & Deploy</strong>
+        <p style="margin-top: 8px;">
+            Đưa website lên internet.
+        </p>
+    </div>
+
+    <h3>Website roadmap</h3>
+
+    <div class="content-item">
+        <p>
+            Xem roadmap chi tiết:
+            <a href="https://roadmap.sh/frontend" target="_blank">
+                https://roadmap.sh/frontend
+            </a>
+        </p>
+    </div>
+</section>
+
+<!-- FIGMA -->
+<section id="figma">
+    <h2>🎨 Figma</h2>
+
+    <div class="content-item">
+        <strong>Figma là gì?</strong>
+        <p style="margin-top: 8px;">
+            Figma là công cụ thiết kế giao diện UI/UX phổ biến nhất hiện nay.
+        </p>
+    </div>
+
+    <h3>Figma dùng để làm gì?</h3>
+
+    <ul>
+        <li>Thiết kế website</li>
+        <li>Thiết kế app mobile</li>
+        <li>Prototype UI</li>
+        <li>Thiết kế layout trước khi code</li>
+    </ul>
+
+    <h3>Ưu điểm</h3>
+
+    <ul>
+        <li>Làm việc online</li>
+        <li>Dễ chia sẻ</li>
+        <li>Hỗ trợ teamwork</li>
+        <li>Frontend dễ convert sang HTML/CSS</li>
+    </ul>
+
+    <h3>Khi nào dùng?</h3>
+
+    <p>
+        Dùng trước khi code giao diện thật.
+    </p>
+</section>
+
+<!-- UI LIBRARIES -->
+<section id="ui-libraries">
+    <h2>🧩 UI Libraries & CSS Frameworks</h2>
+
+    <h3>Bootstrap</h3>
+
+    <div class="content-item">
+        <strong>Bootstrap là gì?</strong>
+        <p style="margin-top: 8px;">
+            Framework CSS giúp tạo giao diện nhanh bằng class có sẵn.
+        </p>
+    </div>
+
+    <h3>Ưu điểm</h3>
+
+    <ul>
+        <li>Làm giao diện rất nhanh</li>
+        <li>Có sẵn grid system</li>
+        <li>Nhiều component đẹp</li>
+        <li>Responsive tốt</li>
+    </ul>
+
+    <h3>Khi nào dùng?</h3>
+
+    <p>
+        Dùng khi cần làm website nhanh hoặc admin dashboard.
+    </p>
+
+    <h3>Ví dụ</h3>
+
+<pre><code>&lt;button class="btn btn-primary"&gt;
+  Submit
+&lt;/button&gt;</code></pre>
+
+    <h3>Tailwind CSS</h3>
+
+    <div class="content-item">
+        <strong>Tailwind là gì?</strong>
+        <p style="margin-top: 8px;">
+            Utility-first CSS framework.
+        </p>
+    </div>
+
+    <h3>Ưu điểm</h3>
+
+    <ul>
+        <li>Custom giao diện rất mạnh</li>
+        <li>Code nhanh</li>
+        <li>Dễ maintain</li>
+        <li>Phổ biến trong React</li>
+    </ul>
+
+    <h3>Khi nào dùng?</h3>
+
+    <p>
+        Dùng khi làm React, NextJS hoặc UI hiện đại.
+    </p>
+
+    <h3>Ví dụ</h3>
+
+<pre><code>&lt;button class="bg-blue-500 text-white p-2 rounded"&gt;
+  Submit
+&lt;/button&gt;</code></pre>
+
+    <h3>Ant Design</h3>
+
+    <div class="content-item">
+        <strong>Ant Design là gì?</strong>
+        <p style="margin-top: 8px;">
+            UI Component Library cho React.
+        </p>
+    </div>
+
+    <h3>Ưu điểm</h3>
+
+    <ul>
+        <li>Component chuyên nghiệp</li>
+        <li>Rất mạnh cho dashboard</li>
+        <li>Có sẵn table, modal, form</li>
+    </ul>
+
+    <h3>Khi nào dùng?</h3>
+
+    <p>
+        Dùng cho hệ thống quản trị và ứng dụng doanh nghiệp.
+    </p>
+
+    <h3>Ví dụ</h3>
+
+<pre><code>import { Button } from "antd";
+
+&lt;Button type="primary"&gt;
+  Save
+&lt;/Button&gt;</code></pre>
+
+    <h3>So sánh Bootstrap - Tailwind - Ant Design</h3>
+
+    <table style="width:100%; border-collapse: collapse; margin-top: 15px;">
+        <tr>
+            <th style="border:1px solid #ccc; padding:10px;">Công cụ</th>
+            <th style="border:1px solid #ccc; padding:10px;">Đặc điểm</th>
+            <th style="border:1px solid #ccc; padding:10px;">Phù hợp</th>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #ccc; padding:10px;">Bootstrap</td>
+            <td style="border:1px solid #ccc; padding:10px;">Code nhanh</td>
+            <td style="border:1px solid #ccc; padding:10px;">Website cơ bản</td>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #ccc; padding:10px;">Tailwind</td>
+            <td style="border:1px solid #ccc; padding:10px;">Custom mạnh</td>
+            <td style="border:1px solid #ccc; padding:10px;">React hiện đại</td>
+        </tr>
+
+        <tr>
+            <td style="border:1px solid #ccc; padding:10px;">Ant Design</td>
+            <td style="border:1px solid #ccc; padding:10px;">Component có sẵn</td>
+            <td style="border:1px solid #ccc; padding:10px;">Dashboard/Admin</td>
+        </tr>
+    </table>
+</section>
+
+<!-- REACT DEV LEARN -->
+<section id="react-dev-learn">
+    <h2>⚛️ Nội dung React.dev Learn</h2>
+
+    <div class="content-item">
+        <strong>React.dev là gì?</strong>
+        <p style="margin-top: 8px;">
+            Đây là tài liệu chính thức của React.
+        </p>
+    </div>
+
+    <h3>Các nội dung quan trọng</h3>
+
+    <div class="content-item">
+        <strong>Describing the UI</strong>
+        <p style="margin-top: 8px;">
+            Học cách mô tả UI bằng component.
+        </p>
+    </div>
+
+    <div class="content-item">
+        <strong>Adding Interactivity</strong>
+        <p style="margin-top: 8px;">
+            Xử lý sự kiện, state, tương tác người dùng.
+        </p>
+    </div>
+
+    <div class="content-item">
+        <strong>Managing State</strong>
+        <p style="margin-top: 8px;">
+            Quản lý dữ liệu và trạng thái ứng dụng.
+        </p>
+    </div>
+
+    <div class="content-item">
+        <strong>Escape Hatches</strong>
+        <p style="margin-top: 8px;">
+            Làm việc với DOM và các tính năng nâng cao.
+        </p>
+    </div>
+
+    <h3>Link học chính thức</h3>
+
+    <div class="content-item">
+        <a href="https://react.dev/learn" target="_blank">
+            https://react.dev/learn
+        </a>
+    </div>
+</section>
+
+<!-- COMPONENT MINDSET -->
+<section id="component-mindset">
+    <h2>🧠 Tư duy Component (Quan trọng nhất)</h2>
+
+    <div class="content-item">
+        <strong>React không viết UI bằng 1 file lớn.</strong>
+
+        <p style="margin-top: 8px;">
+            React chia giao diện thành nhiều component nhỏ.
+        </p>
+    </div>
+
+<pre><code>App
+├── Header
+├── ProductList
+│     ├── ProductCard
+│     ├── ProductCard
+│     └── ProductCard
+└── Footer</code></pre>
+
+    <h3>Nguyên tắc quan trọng</h3>
+
+    <ul>
+        <li>Mỗi phần UI = 1 component</li>
+        <li>Phần nào lặp lại → tạo component</li>
+        <li>Component giúp tái sử dụng code</li>
+        <li>Dễ sửa và bảo trì</li>
+    </ul>
+
+    <h3>Ví dụ thực tế</h3>
+
+<pre><code>function Header() {
+  return &lt;h1&gt;Shop của tôi&lt;/h1&gt;;
+}</code></pre>
+
+    <h3>Sử dụng component</h3>
+
+<pre><code>&lt;Header /&gt;</code></pre>
+
+    <h3>Ví dụ LEGO</h3>
+
+    <div class="content-item">
+        <strong>React giống LEGO</strong>
+
+        <p style="margin-top: 8px;">
+            Component = từng miếng LEGO nhỏ.
+            Ghép lại tạo thành app lớn.
+        </p>
+    </div>
+</section>
+
+<!-- REACT FULL FLOW -->
+<section id="react-full-flow">
+    <h2>🔄 Luồng dữ liệu trong React</h2>
+
+<pre><code>Data → Props → Component → UI</code></pre>
+
+    <h3>Giải thích</h3>
+
+    <ul>
+        <li>Data = dữ liệu</li>
+        <li>Props = truyền dữ liệu</li>
+        <li>Component = xử lý UI</li>
+        <li>UI = giao diện hiển thị</li>
+    </ul>
+</section>
+
+<!-- FULL REACT EXAMPLE -->
+<section id="full-react-example">
+    <h2>💻 Full React Example</h2>
+
+<pre><code>function ProductCard({ name, price }) {
+  return (
+    &lt;div&gt;
+      &lt;h3&gt;{name}&lt;/h3&gt;
+      &lt;p&gt;{price}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+function App() {
+  return (
+    &lt;ProductCard
+      name="Áo"
+      price="100k"
+    /&gt;
+  );
+}</code></pre>
+</section>
+
+<!-- KẾT LUẬN -->
+<section id="ket-luan">
+    <h2>🎯 Kết luận</h2>
+
+    <div class="content-item">
+        <strong>Nhớ 4 thứ quan trọng nhất:</strong>
+
+        <ul style="margin-top: 10px;">
+            <li>JSX</li>
+            <li>Component</li>
+            <li>Props</li>
+            <li>State</li>
+        </ul>
+    </div>
+
+    <div class="content-item">
+        <strong>Tóm tắt 1 câu:</strong>
+
+        <p style="margin-top: 8px;">
+            React = ghép nhiều component nhỏ thành UI lớn.
+        </p>
+    </div>
+</section>
+        </main>
+
+        <footer>
+            <p><strong>Khóa học:</strong> Lập trình Web Basic - ReactJS cơ bản</p>
+            <p style="font-size: 0.9em; color: #999;">Tư duy component là nền tảng của React development</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MiniShop Course - React + Next.js</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Be Vietnam Pro',sans-serif;
+      background:#0f172a;
+      color:#e2e8f0;
+      line-height:1.7;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    .container{
+      width:1200px;
+      max-width:95%;
+      margin:auto;
+    }
+
+    header{
+      padding:80px 0;
+      background:
+      linear-gradient(rgba(15,23,42,.85),rgba(15,23,42,.95)),
+      url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2070&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-badge{
+      display:inline-block;
+      padding:8px 16px;
+      background:#2563eb;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:600;
+      margin-bottom:20px;
+    }
+
+    h1{
+      font-size:64px;
+      line-height:1.1;
+      margin-bottom:24px;
+      font-weight:800;
+    }
+
+    .hero-text{
+      max-width:850px;
+      color:#cbd5e1;
+      font-size:20px;
+      margin-bottom:30px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+      margin-top:50px;
+    }
+
+    .hero-card{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      padding:24px;
+      border-radius:20px;
+      backdrop-filter:blur(10px);
+    }
+
+    .hero-card h3{
+      margin-bottom:12px;
+      color:#60a5fa;
+    }
+
+    nav{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:#111827;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-inner{
+      display:flex;
+      gap:20px;
+      overflow:auto;
+      padding:16px 0;
+    }
+
+    .nav-inner a{
+      color:#cbd5e1;
+      text-decoration:none;
+      white-space:nowrap;
+      transition:.3s;
+      font-size:15px;
+    }
+
+    .nav-inner a:hover{
+      color:#60a5fa;
+    }
+
+    section{
+      padding:80px 0;
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .section-label{
+      color:#60a5fa;
+      text-transform:uppercase;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:10px;
+      letter-spacing:1px;
+    }
+
+    h2{
+      font-size:42px;
+      margin-bottom:20px;
+    }
+
+    .section-desc{
+      color:#cbd5e1;
+      margin-bottom:40px;
+      max-width:850px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:24px;
+    }
+
+    .card{
+      background:#111827;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:20px;
+      padding:28px;
+      transition:.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+      border-color:#3b82f6;
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      color:#93c5fd;
+      font-size:22px;
+    }
+
+    .card p{
+      color:#cbd5e1;
+      margin-bottom:12px;
+    }
+
+    ul{
+      padding-left:20px;
+    }
+
+    li{
+      margin-bottom:10px;
+      color:#dbeafe;
+    }
+
+    .milestone{
+      margin-bottom:30px;
+      padding:30px;
+      border-radius:20px;
+      background:#111827;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .milestone h3{
+      color:#60a5fa;
+      margin-bottom:18px;
+      font-size:28px;
+    }
+
+    .tag{
+      display:inline-block;
+      background:#1d4ed8;
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:13px;
+      margin-bottom:15px;
+    }
+
+    .code{
+      background:#020617;
+      border:1px solid rgba(255,255,255,.08);
+      padding:20px;
+      border-radius:16px;
+      overflow:auto;
+      margin-top:20px;
+    }
+
+    pre{
+      white-space:pre-wrap;
+      color:#93c5fd;
+      font-size:14px;
+    }
+
+    .highlight{
+      color:#facc15;
+      font-weight:600;
+    }
+
+    footer{
+      padding:40px 0;
+      text-align:center;
+      color:#94a3b8;
+    }
+
+    .timeline{
+      position:relative;
+      margin-top:40px;
+    }
+
+    .timeline::before{
+      content:'';
+      position:absolute;
+      left:20px;
+      top:0;
+      width:4px;
+      height:100%;
+      background:#2563eb;
+    }
+
+    .timeline-item{
+      position:relative;
+      padding-left:70px;
+      margin-bottom:40px;
+    }
+
+    .timeline-item::before{
+      content:'';
+      width:18px;
+      height:18px;
+      background:#60a5fa;
+      border-radius:50%;
+      position:absolute;
+      left:13px;
+      top:6px;
+    }
+
+    .timeline-item h4{
+      margin-bottom:10px;
+      font-size:24px;
+      color:#93c5fd;
+    }
+
+    .timeline-item p{
+      color:#cbd5e1;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+
+    <div class="hero-badge">
+      ReactJS + Next.js Course
+    </div>
+
+    <h1>
+      MiniShop Course
+      <br>
+      Build While Learning
+    </h1>
+
+    <p class="hero-text">
+      Khóa học thực chiến giúp học viên học React + Next.js theo kiểu vừa học vừa build project thật.
+      Mỗi buổi học đều có output chạy được ngay trên browser và có roadmap rõ ràng từ frontend tới backend.
+    </p>
+
+    <div class="hero-grid">
+
+      <div class="hero-card">
+        <h3>Frontend</h3>
+        <p>
+          React 19, App Router, Tailwind CSS, reusable component,
+          layout, state management, responsive UI.
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <h3>Backend</h3>
+        <p>
+          REST API, Prisma, database, order flow,
+          admin CRUD, auth & protected routes.
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <h3>Teaching Style</h3>
+        <p>
+          Theory → Demo → Practice.
+          Mỗi milestone đều có speaker notes,
+          quick check và misconception traps.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</header>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="#goals">Buổi 1</a>
+    <a href="#architecture">Kiến trúc học tập</a>
+    <a href="#tech">Tech Stack</a>
+    <a href="#milestones">10 Milestones</a>
+    <a href="#speaker">Speaker Notes</a>
+    <a href="#checks">Quick Checks</a>
+    <a href="#demo-commands">Demo Commands</a>
+    <a href="#practice-components">Component Practice</a>
+    <a href="#featured-products">Featured Products</a>
+    <a href="#component-mindset">Mindset</a>
+    <a href="#tailwind-css-preview">File CSS</a>
+    <a href="#react-render-demo">React Render Demo</a>
+    <a href="#final-project">Final Project</a>
+    <a href="#next-image-guide">Next.js Image</a>
+    <a href="#buoi-2-product-listing">Buổi 2</a>
+  </div>
+</nav>
+
+<section id="goals">
+  <div class="container">
+    <h2> Buổi 1: Giới thiệu khóa học</h2>
+
+    <p class="section-label">01. Mục tiêu</p>
+
+    <h2>
+      Build While Learning
+    </h2>
+
+    <p class="section-desc">
+      Học viên không chỉ học lý thuyết React mà sẽ build nguyên một MiniShop hoàn chỉnh.
+      Sau khóa học có thể hiểu rõ frontend, backend, routing, API và deploy thực tế.
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Storefront</h3>
+
+        <ul>
+          <li>Landing page</li>
+          <li>Product listing</li>
+          <li>Product detail</li>
+          <li>Cart</li>
+          <li>Checkout</li>
+          <li>Order success</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Backend System</h3>
+
+        <ul>
+          <li>Database thật bằng Prisma</li>
+          <li>REST API</li>
+          <li>CRUD Admin</li>
+          <li>Authentication</li>
+          <li>Protected routes</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Teaching Objectives</h3>
+
+        <ul>
+          <li>Hiểu React component mindset</li>
+          <li>Hiểu App Router</li>
+          <li>Biết chia UI</li>
+          <li>Biết flow frontend-backend</li>
+          <li>Deploy project thực tế</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="architecture">
+  <div class="container">
+
+    <p class="section-label">02. Kiến trúc học tập</p>
+
+    <h2>
+      Course Structure
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>1. Theory</h3>
+
+        <p>
+          Giải thích khái niệm cốt lõi:
+          SPA, JSX, Component, Routing,
+          Server Component, API, Database.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>2. Demo</h3>
+
+        <p>
+          Dựng phần chạy được ngay trên lớp.
+          Học viên luôn thấy kết quả trong browser.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>3. Practice</h3>
+
+        <p>
+          Bài tập mở rộng + checklist tự kiểm tra +
+          milestone output.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="tech">
+  <div class="container">
+
+    <p class="section-label">03. Tech Stack</p>
+
+    <h2>
+      Chọn giải pháp kỹ thuật
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Next.js App Router</h3>
+
+        <p>
+          Dùng cho:
+        </p>
+
+        <ul>
+          <li>Routing</li>
+          <li>Server Components</li>
+          <li>API Routes</li>
+          <li>Server Actions</li>
+        </ul>
+
+      </div>
+
+      <div class="card">
+        <h3>React 19</h3>
+
+        <p>
+          Dạy tư duy component,
+          state management,
+          reusable UI,
+          rendering flow.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>JavaScript</h3>
+
+        <p>
+          Giảm ma sát ban đầu cho người học,
+          tập trung vào tư duy trước khi học TypeScript.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Tailwind CSS</h3>
+
+        <p>
+          Build UI nhanh,
+          phù hợp dạy layout,
+          spacing,
+          responsive design.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Prisma</h3>
+
+        <p>
+          ORM giúp học viên có database thật
+          mà vẫn dễ debug và dễ học.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Zod</h3>
+
+        <p>
+          Validation rõ ràng,
+          dễ debug,
+          dễ explain cho học viên.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="milestones">
+  <div class="container">
+
+    <p class="section-label">04. Learning Roadmap</p>
+
+    <h2>
+      10 Milestones
+    </h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <h4>Buổi 1 - Setup + React Basics</h4>
+        <p>
+          Setup Next.js, hiểu App Router,
+          JSX, component, props.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Buổi 2 - Layout + Tailwind</h4>
+        <p>
+          Header, Footer, Hero section,
+          responsive layout.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Buổi 3 - Product Listing</h4>
+        <p>
+          Render product list,
+          map array,
+          reusable ProductCard.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Buổi 4 - Product Detail</h4>
+        <p>
+          Dynamic route,
+          params,
+          detail page.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Buổi 5 - Cart</h4>
+        <p>
+          State management,
+          localStorage,
+          add/remove item.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Buổi 6 - Prisma + Database</h4>
+        <p>
+          Setup Prisma,
+          schema,
+          seed database.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Buổi 7 - REST API</h4>
+        <p>
+          GET, POST, PUT, DELETE.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Buổi 8 - Checkout + Order Flow</h4>
+        <p>
+          Form submit,
+          validation,
+          order success.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Buổi 9 - Admin CRUD</h4>
+        <p>
+          Dashboard admin,
+          quản lý sản phẩm.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Buổi 10 - Auth + Deploy</h4>
+        <p>
+          Login,
+          protected routes,
+          deploy production.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="speaker">
+  <div class="container">
+
+    <p class="section-label">05. Speaker Notes</p>
+
+    <h2>
+      Notes cho giảng viên
+    </h2>
+
+    <div class="milestone">
+
+      <span class="tag">Teaching Mindset</span>
+
+      <h3>
+        Cách giảng React hiệu quả
+      </h3>
+
+      <ul>
+        <li>
+          Đừng bắt học viên nhớ syntax trước.
+        </li>
+
+        <li>
+          Luôn giải thích flow trước:
+          dữ liệu đi từ đâu → render ra đâu.
+        </li>
+
+        <li>
+          Mỗi buổi phải có output nhìn thấy được.
+        </li>
+
+        <li>
+          Học viên mới thường sợ backend,
+          hãy demo flow thật đơn giản trước.
+        </li>
+
+        <li>
+          Dạy theo mindset:
+          component = LEGO blocks của UI.
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="milestone">
+
+      <span class="tag">Common Mistakes</span>
+
+      <h3>
+        Misconception Traps
+      </h3>
+
+      <ul>
+        <li>
+          Nghĩ React thay thế HTML/CSS/JS.
+        </li>
+
+        <li>
+          Không hiểu state trigger re-render.
+        </li>
+
+        <li>
+          Nhầm giữa frontend route và backend API.
+        </li>
+
+        <li>
+          Không hiểu component tree.
+        </li>
+
+        <li>
+          Viết tất cả trong một file.
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="checks">
+  <div class="container">
+
+    <p class="section-label">06. Quick Checks</p>
+
+    <h2>
+      Câu hỏi kiểm tra nhanh
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>React Basics</h3>
+
+        <ul>
+          <li>Component là gì?</li>
+          <li>Props dùng để làm gì?</li>
+          <li>State khác variable thường ở đâu?</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Next.js</h3>
+
+        <ul>
+          <li>App Router là gì?</li>
+          <li>Route handler dùng để làm gì?</li>
+          <li>Dynamic route hoạt động ra sao?</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Backend</h3>
+
+        <ul>
+          <li>REST API là gì?</li>
+          <li>Prisma giúp gì?</li>
+          <li>Validation để làm gì?</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="demo-commands">
+  <div class="container">
+
+    <p class="section-label">07. Demo Commands</p>
+
+    <h2>
+      Terminal Commands
+    </h2>
+
+    <div class="code">
+<pre>
+npx create-next-app@latest
+
+npm run dev
+
+npm install prisma
+
+npx prisma init
+
+npm install zod
+
+npm install tailwindcss @tailwindcss/postcss postcss
+</pre>
+    </div>
+
+  </div>
+</section>
+
+<section id="practice-components">
+  <div class="container">
+
+    <p class="section-label">08. Thực hành Component</p>
+
+    <h2>
+      Tách UI thành nhiều component nhỏ
+    </h2>
+
+    <p class="section-desc">
+      Đây là phần quan trọng nhất của React.
+      Học viên cần hiểu tư duy:
+      <span class="highlight">
+        "UI lớn = ghép từ nhiều component nhỏ"
+      </span>.
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>1. SiteHeader</h3>
+
+        <p>
+          Component header dùng để hiển thị phần đầu website.
+          Đây là component có thể tái sử dụng cho nhiều page.
+        </p>
+
+        <div class="code">
+<pre>
+export function SiteHeader() {
+  return (
+    &lt;header className="w-full h-16 flex items-center justify-center bg-zinc-50 dark:bg-black"&gt;
+      &lt;h1 className="text-xl font-bold text-black dark:text-zinc-50"&gt;
+        Site Header
+      &lt;/h1&gt;
+    &lt;/header&gt;
+  );
+}
+</pre>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>2. HeroSection</h3>
+
+        <p>
+          Hero section là phần nổi bật đầu trang.
+          Thường chứa slogan, CTA hoặc banner chính.
+        </p>
+
+        <div class="code">
+<pre>
+export function HeroSection() {
+
+  return (
+
+   &lt;section className="w-full h-96 flex items-center justify-center bg-zinc-50 dark:bg-black"&gt;
+
+     &lt;h1 className="text-4xl font-bold text-black dark:text-zinc-50"&gt;
+
+       Hero Section
+
+     &lt;/h1&gt;
+
+   &lt;/section&gt;
+
+  );
+
+}
+</pre>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>3. Home Page</h3>
+
+        <p>
+          Ghép nhiều component lại để tạo thành page hoàn chỉnh.
+        </p>
+
+        <div class="code">
+<pre>
+import { SiteHeader } from "../components/site-header";
+import { HeroSection } from "../components/hero-section";
+
+export default function Home() {
+  return (
+    &lt;&gt;
+      &lt;SiteHeader /&gt;
+
+      &lt;main className="w-full h-full flex items-center justify-center"&gt;
+        &lt;HeroSection /&gt;
+      &lt;/main&gt;
+    &lt;/&gt;
+  );
+}
+</pre>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="featured-products">
+  <div class="container">
+
+    <p class="section-label">09. Featured Products</p>
+
+    <h2>
+      Dựng Product Card tĩnh
+    </h2>
+
+    <p class="section-desc">
+      Học viên sẽ luyện:
+      component,
+      props,
+      chia UI,
+      reusable card
+      và layout bằng Tailwind CSS.
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Product Card #1</h3>
+
+        <p>
+          Product Name:
+          <span class="highlight">
+            MacBook Pro M4
+          </span>
+        </p>
+
+        <p>
+          Price:
+          <span class="highlight">
+            49.990.000đ
+          </span>
+        </p>
+
+        <div class="code">
+<pre>
+export function ProductCard() {
+  return (
+    &lt;div className="border rounded-2xl p-4"&gt;
+      &lt;img src="/macbook.jpg" /&gt;
+
+      &lt;h3&gt;MacBook Pro M4&lt;/h3&gt;
+
+      &lt;p&gt;49.990.000đ&lt;/p&gt;
+
+      &lt;button&gt;
+        Xem chi tiết
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</pre>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Product Card #2</h3>
+
+        <p>
+          Product Name:
+          <span class="highlight">
+            iPhone 17 Pro
+          </span>
+        </p>
+
+        <p>
+          Price:
+          <span class="highlight">
+            34.990.000đ
+          </span>
+        </p>
+
+        <div class="code">
+<pre>
+&lt;ProductCard
+  name="iPhone 17 Pro"
+  price="34.990.000đ"
+/&gt;
+</pre>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Product Card #3</h3>
+
+        <p>
+          Product Name:
+          <span class="highlight">
+            AirPods Pro
+          </span>
+        </p>
+
+        <p>
+          Price:
+          <span class="highlight">
+            6.990.000đ
+          </span>
+        </p>
+
+        <div class="code">
+<pre>
+&lt;ProductCard
+  name="AirPods Pro"
+  price="6.990.000đ"
+/&gt;
+</pre>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="component-mindset">
+  <div class="container">
+
+    <p class="section-label">10. Component Mindset</p>
+
+    <h2>
+      Tư duy React quan trọng nhất
+    </h2>
+
+    <div class="milestone">
+
+      <span class="tag">
+        React Mindset
+      </span>
+
+      <h3>
+        React = Ghép nhiều component nhỏ
+      </h3>
+
+      <p style="margin-bottom:20px;">
+        Khi nhìn giao diện:
+      </p>
+
+      <ul>
+        <li>
+          Đừng nghĩ:
+          "viết 1 trang web lớn"
+        </li>
+
+        <li>
+          Hãy nghĩ:
+          "trang này gồm những component nào?"
+        </li>
+
+        <li>
+          UI lặp lại →
+          tách component
+        </li>
+
+        <li>
+          Component =
+          LEGO blocks của UI
+        </li>
+      </ul>
+
+      <div class="code">
+<pre>
+App
+ ├── SiteHeader
+ ├── HeroSection
+ ├── FeaturedProducts
+ │     ├── ProductCard
+ │     ├── ProductCard
+ │     └── ProductCard
+ └── Footer
+</pre>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="tailwind-css-preview">
+
+  <div class="container">
+
+    <p class="section-label">
+      11. File CSS Preview
+    </p>
+
+    <h2>
+      Nội dung từ file CSS riêng
+    </h2>
+
+    <p class="section-desc">
+      Section này hiển thị toàn bộ các class và biến CSS
+      mà bạn đã định nghĩa trong file globals.css.
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>:root Variables</h3>
+
+        <div class="code">
+<pre>
+:root {
+  --bg: #f5efe6;
+  --surface: #fffaf3;
+  --surface-strong: #ffffff;
+  --text: #1f1a17;
+  --muted: #675e57;
+  --accent: #c2410c;
+  --accent-strong: #9a3412;
+  --border: rgba(31, 26, 23, 0.12);
+  --shadow: 0 24px 60px rgba(31, 26, 23, 0.12);
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Dark Mode</h3>
+
+        <div class="code">
+<pre>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Body Styling</h3>
+
+        <div class="code">
+<pre>
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>.site-header</h3>
+
+        <div class="code">
+<pre>
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--border);
+  background: rgba(245, 239, 230, 0.8);
+  backdrop-filter: blur(10px);
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>.site-shell</h3>
+
+        <div class="code">
+<pre>
+.site-shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>.site-header__inner</h3>
+
+        <div class="code">
+<pre>
+.site-header__inner {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>.site-brand</h3>
+
+        <div class="code">
+<pre>
+.site-brand {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>.site-nav</h3>
+
+        <div class="code">
+<pre>
+.site-nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Hover Effects</h3>
+
+        <div class="code">
+<pre>
+.site-nav a:hover,
+.site-brand:hover {
+  color: var(--accent);
+}
+</pre>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="react-render-demo">
+
+  <div class="container">
+
+    <p class="section-label">
+      12. React Render List Demo
+    </p>
+
+    <h2>
+      FeaturedProducts + ProductCard
+    </h2>
+
+    <p class="section-desc">
+      Section này mô phỏng dữ liệu và component React:
+      ProductCard, FeaturedProducts và Home page render list sản phẩm bằng map().
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>ProductCard Component</h3>
+
+        <div class="code">
+<pre>
+export function ProductCard({ product }) {
+  return (
+    &lt;article
+      className="product-card"
+      aria-label={`${product.badge} - ${product.name}`}
+    &gt;
+      &lt;div className="product-card__image"&gt;
+        &lt;span&gt;{product.badge}&lt;/span&gt;
+      &lt;/div&gt;
+
+      &lt;div className="product-card__body"&gt;
+
+        &lt;p className="product-card__category"&gt;
+          {product.category}
+        &lt;/p&gt;
+
+        &lt;h2 className="product-card__name"&gt;
+          {product.name}
+        &lt;/h2&gt;
+
+        &lt;p className="product-card__description"&gt;
+          {product.description}
+        &lt;/p&gt;
+
+        &lt;div className="product-card__footer"&gt;
+          &lt;strong&gt;{product.price}&lt;/strong&gt;
+          &lt;span&gt;{product.note}&lt;/span&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/article&gt;
+  );
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>FeaturedProducts Component</h3>
+
+        <div class="code">
+<pre>
+import { ProductCard } from "./product-card";
+
+export function FeaturedProducts({ products }) {
+  return (
+    &lt;section className="featured" id="featured"&gt;
+
+      &lt;div className="site-shell"&gt;
+
+        &lt;div className="section-heading"&gt;
+          &lt;p className="section-heading__eyebrow"&gt;
+            Sản phẩm nổi bật
+          &lt;/p&gt;
+
+          &lt;h2&gt;
+            3 sản phẩm cơ bản để học
+            cách render list sản phẩm
+          &lt;/h2&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+
+      &lt;div className="featured_grid"&gt;
+
+        {products.map((product) =&gt; (
+          &lt;ProductCard
+            key={product.id}
+            product={product}
+          /&gt;
+        ))}
+
+      &lt;/div&gt;
+
+    &lt;/section&gt;
+  );
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Products Data + Home Page</h3>
+
+        <div class="code">
+<pre>
+import Image from "next/image";
+import { SiteHeader } from "../components/site-header";
+import { HeroSection } from "../components/hero-section";
+import { FeaturedProducts } from "../components/featured-products";
+
+const products = [
+  {
+    id: 1,
+    badge: "New",
+    category: "Electronics",
+    name: "Wireless Headphones",
+    description:
+      "High-quality wireless headphones with noise cancellation.",
+    price: "$99.99",
+    note: "Limited time offer!",
+  },
+
+  {
+    id: 2,
+    badge: "Sale",
+    category: "Clothing",
+    name: "Cotton T-Shirt",
+    description:
+      "Comfortable and stylish cotton t-shirt.",
+    price: "$19.99",
+    note: "Up to 50% off!",
+  },
+
+  {
+    id: 3,
+    badge: "Best Seller",
+    category: "Home & Kitchen",
+    name: "Stainless Steel Cookware",
+    description:
+      "Durable and easy-to-clean stainless steel cookware set.",
+    price: "$149.99",
+    note: "Free shipping!",
+  },
+];
+
+export default function Home() {
+  return (
+    &lt;&gt;
+      &lt;SiteHeader /&gt;
+
+      &lt;main className="w-full h-full flex flex-col gap-12"&gt;
+
+        &lt;HeroSection /&gt;
+
+        &lt;FeaturedProducts
+          products={products}
+        /&gt;
+
+      &lt;/main&gt;
+    &lt;/&gt;
+  );
+}
+</pre>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="final-project">
+
+  <div class="container">
+
+    <p class="section-label">
+      13. Full Global CSS
+    </p>
+
+    <h2>
+      Toàn bộ nội dung globals.css
+    </h2>
+
+    <p class="section-desc">
+      File Global CSS của project chứa các biến CSS, class chung và styling cơ bản cho toàn bộ website.
+    </p>
+
+    <div class="code">
+<pre>
+
+@import "tailwindcss";
+
+:root {
+  --bg: #f5efe6;
+  --surface: #fffaf3;
+  --surface-strong: #ffffff;
+  --text: #1f1a17;
+  --muted: #675e57;
+  --accent: #c2410c;
+  --accent-strong: #9a3412;
+  --border: rgba(31, 26, 23, 0.12);
+  --shadow: 0 24px 60px rgba(31, 26, 23, 0.12);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(194, 65, 12, 0.12), transparent 30%),
+    linear-gradient(180deg, #fffaf3 0%, #f5efe6 100%);
+  color: var(--text);
+  font-family: var(--font-inter), Arial, sans-serif;
+}
+
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--border);
+  background: rgba(245, 239, 230, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.site-shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.site-header__inner {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.site-brand {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+
+.site-nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+
+.site-nav a:hover,
+.site-brand:hover {
+  color: var(--accent);
+}
+
+.featured {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0px, 1fr));
+  gap: 20px;
+}
+.section-heading {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.section-heading__eyebrow {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.section-heading h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.section-heading p {
+  color: var(--muted);
+}
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0px, 1fr));
+  gap: 20px;
+}
+.product-card {
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+}
+
+.product-card__image {
+  width: 100%;
+  object-fit: cover;
+  display: grid;
+  background: linear-gradient(135deg, rgba(194, 65, 12, 0.2), rgba(255, 255, 255, 0.82));
+}
+
+.product-card__image span {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 1000px;
+  background: rgba(255, 255, 255, 0.88);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.product-card__body {
+  padding: 18px;
+}
+.product-card__name {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+.product-card__description {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.product-card__footer {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+</pre>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="next-image-guide">
+
+  <div class="container">
+
+    <p class="section-label">
+      14. Next.js Image Component
+    </p>
+
+    <h2>
+      Hiển thị ảnh trong Next.js
+    </h2>
+
+    <p class="section-desc">
+      Trong Next.js, cách hiển thị ảnh phụ thuộc vào vị trí lưu ảnh.
+      Có 2 cách phổ biến:
+      dùng thư mục <span class="highlight">public</span>
+      hoặc import ảnh từ <span class="highlight">src/assets</span>.
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>1. Ảnh trong thư mục public</h3>
+
+        <p>
+          Đây là cách phổ biến nhất trong Next.js.
+          Ảnh đặt trong public sẽ được truy cập trực tiếp bằng URL.
+        </p>
+
+        <div class="code">
+<pre>
+public/
+  assets/
+    logo.png
+</pre>
+        </div>
+
+        <p style="margin-top:20px;">
+          Dùng với thẻ img:
+        </p>
+
+        <div class="code">
+<pre>
+export default function Home() {
+  return (
+    &lt;img
+      src="/assets/logo.png"
+      alt="Logo"
+    /&gt;
+  );
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Dùng next/image với public</h3>
+
+        <p>
+          next/image giúp tối ưu hình ảnh,
+          lazy loading và responsive tự động.
+        </p>
+
+        <div class="code">
+<pre>
+import Image from "next/image";
+
+export default function Home() {
+  return (
+    &lt;Image
+      src="/assets/logo.png"
+      alt="Logo"
+      width={200}
+      height={200}
+    /&gt;
+  );
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>2. Ảnh trong src/assets</h3>
+
+        <p>
+          Khi muốn import ảnh như module JavaScript,
+          có thể để ảnh trong src/assets.
+        </p>
+
+        <div class="code">
+<pre>
+src/
+  assets/
+    logo.png
+
+  app/
+    page.jsx
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Import ảnh bằng module</h3>
+
+        <div class="code">
+<pre>
+import Image from "next/image";
+import logo from "@/assets/logo.png";
+
+export default function Home() {
+  return (
+    &lt;Image
+      src={logo}
+      alt="Logo"
+      width={200}
+      height={200}
+    /&gt;
+  );
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Dùng img với ảnh import</h3>
+
+        <p>
+          Có thể lấy đường dẫn thật của ảnh bằng logo.src
+        </p>
+
+        <div class="code">
+<pre>
+import logo from "@/assets/logo.png";
+
+export default function Home() {
+  return (
+    &lt;img
+      src={logo.src}
+      alt="Logo"
+    /&gt;
+  );
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Nên dùng cách nào?</h3>
+
+        <ul>
+          <li>
+            Logo, banner, icon tĩnh →
+            dùng public/assets
+          </li>
+
+          <li>
+            Muốn import như module →
+            dùng src/assets
+          </li>
+
+          <li>
+            next/image là lựa chọn tốt nhất
+            cho performance
+          </li>
+
+          <li>
+            Không viết:
+            /public/assets/logo.png
+          </li>
+
+          <li>
+            Đúng phải là:
+            /assets/logo.png
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Ví dụ chuẩn với public</h3>
+
+        <div class="code">
+<pre>
+&lt;Image
+  src="/assets/logo.png"
+  alt="Logo"
+  width={200}
+  height={200}
+/&gt;
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Vì sao Next.js dùng public?</h3>
+
+        <ul>
+          <li>
+            Đơn giản và dễ quản lý ảnh
+          </li>
+
+          <li>
+            URL ngắn gọn
+          </li>
+
+          <li>
+            Tối ưu cho static assets
+          </li>
+
+          <li>
+            Dễ deploy production
+          </li>
+
+          <li>
+            Học viên mới dễ hiểu hơn
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="buoi-2-product-listing">
+
+  <div class="container">
+
+    <h2>
+      Buổi 2: Product Listing Tĩnh
+    </h2>
+
+    <p class="section-label">
+      Render danh sách sản phẩm bằng React
+    </p>
+
+    <p class="section-desc">
+      Học viên sẽ làm quen với cách hiển thị nhiều sản phẩm
+      bằng component, props và map() trong React.
+      Đây là bước quan trọng để hiểu cách React render UI từ data.
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>Mục tiêu</h3>
+
+        <ul>
+          <li>
+            Hiển thị danh sách sản phẩm bằng component
+          </li>
+
+          <li>
+            Truyền dữ liệu qua props
+          </li>
+
+          <li>
+            Dùng map() để render list UI
+          </li>
+
+          <li>
+            Conditional rendering theo trạng thái sản phẩm
+          </li>
+
+          <li>
+            Tách ProductCard tái sử dụng nhiều lần
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Lý thuyết</h3>
+
+        <ul>
+          <li>
+            Props:
+            truyền data từ component cha xuống component con
+          </li>
+
+          <li>
+            map():
+            sinh giao diện từ mảng data
+          </li>
+
+          <li>
+            Conditional rendering:
+            chỉ render UI cần thiết
+          </li>
+
+          <li>
+            Product model:
+            tên, giá, slug, ảnh, trạng thái
+          </li>
+
+          <li>
+            Format tiền + badge sale/stock
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Ví dụ Product Data</h3>
+
+        <div class="code">
+<pre>
+const products = [
+  {
+    id: 1,
+    name: "MacBook Pro M4",
+    price: 49990000,
+    slug: "macbook-pro-m4",
+    image: "/macbook.jpg",
+    inStock: true,
+    sale: true,
+  },
+
+  {
+    id: 2,
+    name: "iPhone 17 Pro",
+    price: 34990000,
+    slug: "iphone-17-pro",
+    image: "/iphone.jpg",
+    inStock: true,
+    sale: false,
+  },
+
+  {
+    id: 3,
+    name: "AirPods Pro",
+    price: 6990000,
+    slug: "airpods-pro",
+    image: "/airpods.jpg",
+    inStock: false,
+    sale: false,
+  },
+];
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Render List bằng map()</h3>
+
+        <div class="code">
+<pre>
+export function ProductList({ products }) {
+  return (
+    &lt;div className="grid"&gt;
+
+      {products.map((product) =&gt; (
+        &lt;ProductCard
+          key={product.id}
+          product={product}
+        /&gt;
+      ))}
+
+    &lt;/div&gt;
+  );
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Conditional Rendering</h3>
+
+        <div class="code">
+<pre>
+{
+  product.inStock ? (
+    &lt;span&gt;Còn hàng&lt;/span&gt;
+  ) : (
+    &lt;span&gt;Hết hàng&lt;/span&gt;
+  )
+}
+</pre>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Format Giá Tiền</h3>
+
+        <div class="code">
+<pre>
+function formatPrice(price) {
+  return price.toLocaleString("vi-VN") + "đ";
+}
+</pre>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  <div class="container">
+    MiniShop Course © React + Next.js Teaching Template
+  </div>
+</footer>
+
+</body>
+</html>

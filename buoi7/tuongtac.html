@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Ultimate CSS Visual Playground</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Be Vietnam Pro',sans-serif;
+  background:#020617;
+  color:#e2e8f0;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:420px 1fr;
+  min-height:100vh;
+}
+
+.sidebar{
+  background:#0f172a;
+  border-right:1px solid rgba(255,255,255,.08);
+  overflow:auto;
+  height:100vh;
+  padding:24px;
+}
+
+.sidebar h1{
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.sidebar p{
+  color:#94a3b8;
+  line-height:1.7;
+  margin-bottom:30px;
+}
+
+.group{
+  margin-bottom:32px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  padding-bottom:24px;
+}
+
+.group h2{
+  color:#60a5fa;
+  margin-bottom:20px;
+  font-size:20px;
+}
+
+.control{
+  margin-bottom:18px;
+}
+
+.control label{
+  display:block;
+  margin-bottom:8px;
+  color:#cbd5e1;
+  font-size:14px;
+}
+
+.control input,
+.control select,
+.control textarea{
+  width:100%;
+  border:none;
+  outline:none;
+  background:#1e293b;
+  color:white;
+  padding:12px;
+  border-radius:12px;
+}
+
+.preview{
+  padding:30px;
+  overflow:auto;
+}
+
+.preview h2{
+  font-size:38px;
+  margin-bottom:12px;
+}
+
+.preview p{
+  color:#94a3b8;
+  margin-bottom:24px;
+}
+
+.playground{
+  border:4px dashed #64748b;
+  border-radius:30px;
+  min-height:700px;
+  padding:30px;
+  background:#0f172a;
+  position:relative;
+}
+
+.label{
+  position:absolute;
+  top:18px;
+  left:18px;
+  background:#1e293b;
+  color:#93c5fd;
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:13px;
+}
+
+.parent{
+  border:3px dashed #38bdf8;
+  background:rgba(56,189,248,.08);
+  min-height:550px;
+  padding:40px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+
+  transition:.3s;
+}
+
+.box{
+  width:200px;
+  height:200px;
+  background:#2563eb;
+  color:white;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-size:24px;
+  font-weight:700;
+
+  transition:.3s;
+  border-radius:20px;
+  text-align:center;
+  padding:20px;
+}
+
+.code{
+  margin-top:30px;
+  background:#111827;
+  border-radius:24px;
+  padding:24px;
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.code h3{
+  color:#60a5fa;
+  margin-bottom:16px;
+}
+
+pre{
+  white-space:pre-wrap;
+  color:#cbd5e1;
+  line-height:1.8;
+}
+
+.info-grid{
+  margin-top:24px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+
+.info-card{
+  background:#111827;
+  border-radius:20px;
+  padding:20px;
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.info-card h3{
+  color:#60a5fa;
+  margin-bottom:12px;
+}
+
+.info-card p{
+  color:#cbd5e1;
+  line-height:1.7;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+
+    <h1>Ultimate CSS Playground</h1>
+
+    <p>
+      Điều chỉnh trực tiếp mọi thuộc tính CSS và xem thay đổi realtime.
+    </p>
+
+    <!-- SIZE -->
+
+    <div class="group">
+
+      <h2>1. Width / Height</h2>
+
+      <div class="control">
+        <label>Width</label>
+        <input type="range" id="width" min="50" max="500" value="200">
+      </div>
+
+      <div class="control">
+        <label>Height</label>
+        <input type="range" id="height" min="50" max="500" value="200">
+      </div>
+
+    </div>
+
+    <!-- SPACING -->
+
+    <div class="group">
+
+      <h2>2. Margin / Padding</h2>
+
+      <div class="control">
+        <label>Margin</label>
+        <input type="range" id="margin" min="0" max="120" value="0">
+      </div>
+
+      <div class="control">
+        <label>Padding</label>
+        <input type="range" id="padding" min="0" max="120" value="20">
+      </div>
+
+    </div>
+
+    <!-- COLORS -->
+
+    <div class="group">
+
+      <h2>3. Colors</h2>
+
+      <div class="control">
+        <label>Background</label>
+        <input type="color" id="background" value="#2563eb">
+      </div>
+
+      <div class="control">
+        <label>Text Color</label>
+        <input type="color" id="color" value="#ffffff">
+      </div>
+
+      <div class="control">
+        <label>Opacity</label>
+        <input type="range" id="opacity" min="0" max="1" step="0.1" value="1">
+      </div>
+
+    </div>
+
+    <!-- BORDER -->
+
+    <div class="group">
+
+      <h2>4. Border</h2>
+
+      <div class="control">
+        <label>Border Width</label>
+        <input type="range" id="borderWidth" min="0" max="20" value="0">
+      </div>
+
+      <div class="control">
+        <label>Border Radius</label>
+        <input type="range" id="radius" min="0" max="100" value="20">
+      </div>
+
+      <div class="control">
+        <label>Border Style</label>
+
+        <select id="borderStyle">
+          <option>solid</option>
+          <option>dashed</option>
+          <option>dotted</option>
+          <option>double</option>
+        </select>
+
+      </div>
+
+      <div class="control">
+        <label>Border Color</label>
+        <input type="color" id="borderColor" value="#ffffff">
+      </div>
+
+    </div>
+
+    <!-- TEXT -->
+
+    <div class="group">
+
+      <h2>5. Typography</h2>
+
+      <div class="control">
+        <label>Text</label>
+        <textarea id="text">Demo Box</textarea>
+      </div>
+
+      <div class="control">
+        <label>Font Size</label>
+        <input type="range" id="fontSize" min="10" max="80" value="24">
+      </div>
+
+      <div class="control">
+        <label>Font Weight</label>
+
+        <select id="fontWeight">
+          <option>300</option>
+          <option>400</option>
+          <option>500</option>
+          <option selected>700</option>
+          <option>800</option>
+        </select>
+
+      </div>
+
+      <div class="control">
+        <label>Font Style</label>
+
+        <select id="fontStyle">
+          <option>normal</option>
+          <option>italic</option>
+        </select>
+
+      </div>
+
+      <div class="control">
+        <label>Text Decoration</label>
+
+        <select id="textDecoration">
+          <option>none</option>
+          <option>underline</option>
+          <option>line-through</option>
+        </select>
+
+      </div>
+
+      <div class="control">
+        <label>Text Align</label>
+
+        <select id="textAlign">
+          <option>left</option>
+          <option selected>center</option>
+          <option>right</option>
+        </select>
+
+      </div>
+
+    </div>
+
+    <!-- DISPLAY -->
+
+    <div class="group">
+
+      <h2>6. Display</h2>
+
+      <div class="control">
+
+        <label>Display</label>
+
+        <select id="display">
+          <option>block</option>
+          <option>inline-block</option>
+          <option selected>flex</option>
+          <option>grid</option>
+          <option>none</option>
+        </select>
+
+      </div>
+
+    </div>
+
+    <!-- FLEX -->
+
+    <div class="group">
+
+      <h2>7. Flexbox</h2>
+
+      <div class="control">
+
+        <label>flex-direction</label>
+
+        <select id="direction">
+          <option>row</option>
+          <option>column</option>
+          <option>row-reverse</option>
+          <option>column-reverse</option>
+        </select>
+
+      </div>
+
+      <div class="control">
+
+        <label>justify-content</label>
+
+        <select id="justify">
+          <option>flex-start</option>
+          <option selected>center</option>
+          <option>flex-end</option>
+          <option>space-between</option>
+          <option>space-around</option>
+          <option>space-evenly</option>
+        </select>
+
+      </div>
+
+      <div class="control">
+
+        <label>align-items</label>
+
+        <select id="align">
+          <option>flex-start</option>
+          <option selected>center</option>
+          <option>flex-end</option>
+          <option>stretch</option>
+        </select>
+
+      </div>
+
+      <div class="control">
+
+        <label>Gap</label>
+
+        <input type="range" id="gap" min="0" max="100" value="20">
+
+      </div>
+
+    </div>
+
+    <!-- TRANSFORM -->
+
+    <div class="group">
+
+      <h2>8. Transform</h2>
+
+      <div class="control">
+        <label>Rotate</label>
+        <input type="range" id="rotate" min="-180" max="180" value="0">
+      </div>
+
+      <div class="control">
+        <label>Scale</label>
+        <input type="range" id="scale" min="0.5" max="2" step="0.1" value="1">
+      </div>
+
+    </div>
+
+    <!-- SHADOW -->
+
+    <div class="group">
+
+      <h2>9. Shadow</h2>
+
+      <div class="control">
+        <label>Box Shadow</label>
+
+        <select id="shadow">
+          <option value="none">none</option>
+
+          <option value="0 10px 30px rgba(0,0,0,.4)">
+            soft
+          </option>
+
+          <option value="0 20px 60px rgba(59,130,246,.5)">
+            blue glow
+          </option>
+
+          <option value="0 0 30px rgba(255,255,255,.5)">
+            white glow
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+  </aside>
+
+  <!-- PREVIEW -->
+
+  <main class="preview">
+
+    <h2>Live CSS Visualization</h2>
+
+    <p>
+      Khung nét đứt là container cha.
+      Thay đổi CSS để nhìn trực quan behavior của từng thuộc tính.
+    </p>
+
+    <div class="playground">
+
+      <div class="label">
+        Parent Container
+      </div>
+
+      <div class="parent" id="parent">
+
+        <div class="box" id="box">
+          Demo Box
+        </div>
+
+        <div class="box">
+          Box 2
+        </div>
+
+        <div class="box">
+          Box 3
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="code">
+
+      <h3>Generated CSS</h3>
+
+      <pre id="cssCode"></pre>
+
+    </div>
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <h3>Main Axis</h3>
+
+        <p>
+          justify-content căn chỉnh theo main axis của flexbox.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>Cross Axis</h3>
+
+        <p>
+          align-items căn chỉnh theo cross axis.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>Margin</h3>
+
+        <p>
+          Margin là khoảng cách bên ngoài element.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>Padding</h3>
+
+        <p>
+          Padding là khoảng cách bên trong element.
+        </p>
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+<script>
+
+const box = document.getElementById("box");
+const parent = document.getElementById("parent");
+const cssCode = document.getElementById("cssCode");
+
+const ids = [
+  "width",
+  "height",
+  "margin",
+  "padding",
+  "background",
+  "color",
+  "opacity",
+  "borderWidth",
+  "radius",
+  "borderStyle",
+  "borderColor",
+  "text",
+  "fontSize",
+  "fontWeight",
+  "fontStyle",
+  "textDecoration",
+  "textAlign",
+  "display",
+  "direction",
+  "justify",
+  "align",
+  "gap",
+  "rotate",
+  "scale",
+  "shadow"
+];
+
+const controls = {};
+
+ids.forEach(id=>{
+  controls[id] = document.getElementById(id);
+});
+
+function update(){
+
+  box.style.width =
+    controls.width.value + "px";
+
+  box.style.height =
+    controls.height.value + "px";
+
+  box.style.margin =
+    controls.margin.value + "px";
+
+  box.style.padding =
+    controls.padding.value + "px";
+
+  box.style.background =
+    controls.background.value;
+
+  box.style.color =
+    controls.color.value;
+
+  box.style.opacity =
+    controls.opacity.value;
+
+  box.style.borderWidth =
+    controls.borderWidth.value + "px";
+
+  box.style.borderStyle =
+    controls.borderStyle.value;
+
+  box.style.borderColor =
+    controls.borderColor.value;
+
+  box.style.borderRadius =
+    controls.radius.value + "px";
+
+  box.innerText =
+    controls.text.value;
+
+  box.style.fontSize =
+    controls.fontSize.value + "px";
+
+  box.style.fontWeight =
+    controls.fontWeight.value;
+
+  box.style.fontStyle =
+    controls.fontStyle.value;
+
+  box.style.textDecoration =
+    controls.textDecoration.value;
+
+  box.style.textAlign =
+    controls.textAlign.value;
+
+  box.style.display =
+    controls.display.value;
+
+  box.style.transform =
+    `rotate(${controls.rotate.value}deg)
+     scale(${controls.scale.value})`;
+
+  box.style.boxShadow =
+    controls.shadow.value;
+
+  parent.style.flexDirection =
+    controls.direction.value;
+
+  parent.style.justifyContent =
+    controls.justify.value;
+
+  parent.style.alignItems =
+    controls.align.value;
+
+  parent.style.gap =
+    controls.gap.value + "px";
+
+  cssCode.textContent = `
+.box{
+  width:${controls.width.value}px;
+  height:${controls.height.value}px;
+
+  margin:${controls.margin.value}px;
+  padding:${controls.padding.value}px;
+
+  background:${controls.background.value};
+  color:${controls.color.value};
+
+  opacity:${controls.opacity.value};
+
+  border:${controls.borderWidth.value}px
+         ${controls.borderStyle.value}
+         ${controls.borderColor.value};
+
+  border-radius:${controls.radius.value}px;
+
+  font-size:${controls.fontSize.value}px;
+  font-weight:${controls.fontWeight.value};
+  font-style:${controls.fontStyle.value};
+
+  text-decoration:${controls.textDecoration.value};
+  text-align:${controls.textAlign.value};
+
+  display:${controls.display.value};
+
+  transform:
+    rotate(${controls.rotate.value}deg)
+    scale(${controls.scale.value});
+
+  box-shadow:${controls.shadow.value};
+}
+
+.parent{
+  display:flex;
+
+  flex-direction:${controls.direction.value};
+
+  justify-content:${controls.justify.value};
+
+  align-items:${controls.align.value};
+
+  gap:${controls.gap.value}px;
+}
+`;
+
+}
+
+Object.values(controls).forEach(control=>{
+  control.addEventListener("input",update);
+});
+
+update();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trực Quan Hóa Thuộc Tính CSS</title>
+    <style>
+        /* CSS Giao diện chính */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .control-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+        .preview-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        h2 {
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ddd;
+            font-size: 18px;
+            color: #0056b3;
+        }
+        h3 {
+            font-size: 14px;
+            margin: 15px 0 5px 0;
+            color: #555;
+        }
+        .group {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        button {
+            background: #e7e7e7;
+            border: none;
+            padding: 6px 12px;
+            margin: 3px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        button:hover {
+            background: #ddd;
+        }
+        button.active {
+            background: #007bff;
+            color: white;
+        }
+
+        /* Vùng hiển thị kết quả test */
+        .test-zone {
+            border: 3px dashed #ccc;
+            padding: 20px;
+            background-color: #ffffff;
+            min-height: 400px;
+            transition: all 0.3s;
+        }
+
+        /* Thẻ mục tiêu chịu tác động của CSS trực tiếp */
+        #target-element {
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            padding: 15px;
+            background-color: #ff5722;
+            color: #ffffff;
+            font-size: 16px;
+            font-family: Arial;
+            font-weight: normal;
+            font-style: normal;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+            border: 2px solid #333;
+        }
+
+        /* Các thẻ con phụ trợ để test các thuộc tính quan hệ cha-con */
+        .child-box {
+            background: #ffeb3b;
+            color: #000;
+            padding: 5px;
+            margin: 2px;
+            border: 1px solid #000;
+            font-size: 12px;
+            display: inline-block;
+        }
+        .sibling-box {
+            background: #9c27b0;
+            color: white;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- BẢNG ĐIỀU KHIỂN TƯƠNG TÁC -->
+    <div class="control-panel">
+        <h2>Bảng Điều Khiển CSS</h2>
+
+        <!-- Size -->
+        <div class="group">
+            <h3>Kích thước (width / height)</h3>
+            <button onclick="changeCSS('width', '150px', this)" class="active">W: 150px</button>
+            <button onclick="changeCSS('width', '300px', this)">W: 300px</button>
+            <button onclick="changeCSS('width', 'auto', this)">W: auto</button>
+            <br>
+            <button onclick="changeCSS('height', '150px', this)" class="active">H: 150px</button>
+            <button onclick="changeCSS('height', '250px', this)">H: 250px</button>
+            <button onclick="changeCSS('height', 'auto', this)">H: auto</button>
+        </div>
+
+        <!-- Margin & Padding -->
+        <div class="group">
+            <h3>Khoảng cách (margin / padding)</h3>
+            <button onclick="changeCSS('margin', '10px', this)" class="active">Margin: 10px</button>
+            <button onclick="changeCSS('margin', '40px', this)">Margin: 40px</button>
+            <br>
+            <button onclick="changeCSS('padding', '15px', this)" class="active">Padding: 15px</button>
+            <button onclick="changeCSS('padding', '35px', this)">Padding: 35px</button>
+        </div>
+
+        <!-- Color & Background -->
+        <div class="group">
+            <h3>Màu sắc (background / color)</h3>
+            <button onclick="changeCSS('backgroundColor', '#ff5722', this)" class="active">Nền: Cam</button>
+            <button onclick="changeCSS('backgroundColor', '#4caf50', this)">Nền: Xanh lá</button>
+            <br>
+            <button onclick="changeCSS('color', '#ffffff', this)" class="active">Chữ: Trắng</button>
+            <button onclick="changeCSS('color', '#000000', this)">Chữ: Đen</button>
+        </div>
+
+        <!-- Typography -->
+        <div class="group">
+            <h3>Font & Định dạng chữ</h3>
+            <button onclick="changeCSS('fontSize', '16px', this)" class="active">Size: 16px</button>
+            <button onclick="changeCSS('fontSize', '24px', this)">Size: 24px</button>
+            <br>
+            <button onclick="changeCSS('fontFamily', 'Arial', this)" class="active">Font: Arial</button>
+            <button onclick="changeCSS('fontFamily', 'Times New Roman', this)">Font: Serif</button>
+            <br>
+            <button onclick="changeCSS('fontWeight', 'normal', this)" class="active">Bình thường</button>
+            <button onclick="changeCSS('fontWeight', 'bold', this)">Đậm (bold)</button>
+            <br>
+            <button onclick="changeCSS('fontStyle', 'normal', this)" class="active">Thẳng</button>
+            <button onclick="changeCSS('fontStyle', 'italic', this)">Nghiêng (italic)</button>
+            <br>
+            <button onclick="changeCSS('textDecoration', 'none', this)" class="active">Không gạch</button>
+            <button onclick="changeCSS('textDecoration', 'underline', this)">Gạch chân</button>
+            <button onclick="changeCSS('textDecoration', 'line-through', this)">Gạch ngang</button>
+        </div>
+
+        <!-- Basic Display -->
+        <div class="group">
+            <h3>Display cơ bản (Mục tiêu)</h3>
+            <button onclick="changeCSS('display', 'block', this)" class="active">block</button>
+            <button onclick="changeCSS('display', 'inline', this)">inline</button>
+            <button onclick="changeCSS('display', 'inline-block', this)">inline-block</button>
+            <button onclick="changeCSS('display', 'none', this)">none</button>
+        </div>
+
+        <!-- Advanced Display (Layout áp dụng lên vùng Vùng Chứa) -->
+        <div class="group">
+            <h3>Display nâng cao & Table (Vùng chứa)</h3>
+            <button onclick="changeZoneDisplay('block', this)" class="active">Gốc (Block)</button>
+            <button onclick="changeZoneDisplay('flex', this)">flex</button>
+            <button onclick="changeZoneDisplay('grid', this)">grid</button>
+            <button onclick="changeZoneDisplay('inline-flex', this)">inline-flex</button>
+            <button onclick="changeZoneDisplay('inline-grid', this)">inline-grid</button>
+            <button onclick="changeZoneDisplay('table', this)">table</button>
+            <button onclick="changeZoneLayoutRow('table-row', this)">Đổi con thành table-row</button>
+        </div>
+
+        <!-- Flex Direction Axes -->
+        <div class="group" id="flex-axis-group" style="display:none;">
+            <h3>Trục Flex Direction (Main/Cross Axis)</h3>
+            <button onclick="changeFlexDirection('row', this)" class="active">row (X: Trái→Phải | Y: Trên→Dưới)</button>
+            <button onclick="changeFlexDirection('column', this)">column (X: Trên→Dưới | Y: Trái→Phải)</button>
+            <button onclick="changeFlexDirection('row-reverse', this)">row-reverse</button>
+            <button onclick="changeFlexDirection('column-reverse', this)">column-reverse</button>
+        </div>
+    </div>
+
+    <!-- KHU VỰC HIỂN THỊ KẾT QUẢ TRỰC QUAN -->
+    <div class="preview-panel">
+        <h2 style="border-bottom: 2px solid #28a745;">Khu vực hiển thị trực quan (Vùng chứa nét đứt)</h2>
+        <p style="font-size: 13px; margin: 0 0 10px 0; color: #666;">
+            * Thẻ màu tím xung quanh giúp bạn quan sát khoảng cách <b>margin</b>.
+            * Thẻ màu vàng bên trong giúp bạn quan sát khoảng cách <b>padding</b>.
+        </p>
+
+        <!-- Vùng chứa (Test-zone) -->
+        <div class="test-zone" id="test-zone">
+            <div class="sibling-box">Khối ngoài 1</div>
+
+            <!-- Phần tử mục tiêu thay đổi thuộc tính -->
+            <div id="target-element">
+                Phần tử mục tiêu
+                <div class="child-box">Con 1</div>
+                <div class="child-box">Con 2</div>
+            </div>
+
+            <div class="sibling-box">Khối ngoài 2</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const target = document.getElementById('target-element');
+    const zone = document.getElementById('test-zone');
+    const flexGroup = document.getElementById('flex-axis-group');
+
+    // Hàm thay đổi CSS trực tiếp cho Element Mục Tiêu
+    function changeCSS(property, value, btn) {
+        target.style[property] = value;
+        setActive(btn);
+    }
+
+    // Hàm thay đổi cấu trúc Display cho Vùng Chứa (Cha)
+    function changeZoneDisplay(displayValue, btn) {
+        zone.style.display = displayValue;
+
+        // Cấu hình bổ sung trực quan cho Grid/Flex khi kích hoạt
+        if(displayValue === 'grid') {
+            zone.style.gridTemplateColumns = 'repeat(3, 1fr)';
+            flexGroup.style.display = 'none';
+        } else if(displayValue.includes('flex')) {
+            flexGroup.style.display = 'block';
+            zone.style.gridTemplateColumns = 'none';
+        } else {
+            flexGroup.style.display = 'none';
+            zone.style.gridTemplateColumns = 'none';
+        }
+
+        // Reset lại cấu trúc nếu thoát chế độ Table
+        if(displayValue !== 'table') {
+            resetTableStructure();
+        }
+
+        setActive(btn);
+    }
+
+    // Hàm thay đổi trục cho Flexbox
+    function changeFlexDirection(direction, btn) {
+        zone.style.flexDirection = direction;
+        setActive(btn);
+    }
+
+    // Hàm giả lập cấu trúc Table-row và Table-cell
+    function changeZoneLayoutRow(type, btn) {
+        zone.style.display = 'table';
+        target.style.display = 'table-cell';
+
+        document.querySelectorAll('.sibling-box').forEach(el => {
+            el.style.display = 'table-cell';
+        });
+        alert('Đã chuyển đổi: Vùng chứa thành <table>, Phần tử mục tiêu và các Khối ngoài thành các ô <td> (table-cell)');
+    }
+
+    function resetTableStructure() {
+        target.style.display = 'block';
+        document.querySelectorAll('.sibling-box').forEach(el => {
+            el.style.display = 'inline-block';
+        });
+    }
+
+    // Tiện ích đổi màu nút đang chọn
+    function setActive(button) {
+        const siblings = button.parentNode.querySelectorAll('button');
+        siblings.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
