@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trang web toàn diện về các thẻ HTML - dành cho người mới bắt đầu">
+    <meta name="author" content="HTML Tutorial">
+    <meta name="keywords" content="HTML, tags, tutorial, web, education">
+    <title>Hướng dẫn Toàn Diện Về HTML - Tất Cả Các Thẻ và Chức Năng</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            background-color: #333;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: #667eea;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        section h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+        
+        section h3 {
+            color: #764ba2;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        article {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-left: 4px solid #667eea;
+        }
+        
+        aside {
+            background-color: #e8f4f8;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            border-left: 4px solid #0066cc;
+        }
+        
+        figure {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        
+        figcaption {
+            font-style: italic;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        blockquote {
+            border-left: 5px solid #667eea;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            font-style: italic;
+            color: #555;
+        }
+        
+        code {
+            background-color: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+        
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        pre code {
+            color: #f8f8f2;
+            padding: 0;
+            background-color: transparent;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        table caption {
+            text-align: left;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            text-align: left;
+        }
+        
+        table thead {
+            background-color: #667eea;
+            color: white;
+        }
+        
+        table tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        
+        table tbody tr:hover {
+            background-color: #f0f0f0;
+        }
+        
+        table tfoot {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        
+        form {
+            display: grid;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        fieldset {
+            border: 2px solid #667eea;
+            border-radius: 4px;
+            padding: 1rem;
+        }
+        
+        legend {
+            padding: 0 0.5rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        button {
+            padding: 0.7rem 1.5rem;
+            background-color: #667eea;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #764ba2;
+        }
+        
+        .highlight {
+            background-color: #ffeb3b;
+            padding: 0.1rem 0.3rem;
+        }
+        
+        .strong-text {
+            font-weight: bold;
+        }
+        
+        .emphasized-text {
+            font-style: italic;
+        }
+        
+        .deleted-text {
+            text-decoration: line-through;
+            color: #999;
+        }
+        
+        .inserted-text {
+            background-color: #c8e6c9;
+            text-decoration: underline;
+        }
+        
+        .subscript {
+            font-size: 0.8em;
+            vertical-align: sub;
+        }
+        
+        .superscript {
+            font-size: 0.8em;
+            vertical-align: super;
+        }
+        
+        .keyboard-input {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            display: inline-block;
+        }
+        
+        .example-box {
+            background-color: #fffacd;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        
+        .list-example {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+        
+        progress {
+            width: 100%;
+            height: 20px;
+            margin: 1rem 0;
+        }
+        
+        meter {
+            margin: 1rem 0;
+        }
+        
+        details {
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #667eea;
+            user-select: none;
+        }
+        
+        summary:hover {
+            color: #764ba2;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .tag-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tag-item {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border-radius: 4px;
+            border: 2px solid #667eea;
+        }
+        
+        .tag-item code {
+            display: block;
+            margin-top: 0.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER - Phần đầu trang -->
+    <header>
+        <h1>🌐 Hướng Dẫn Toàn Diện Về HTML</h1>
+        <p>Khám phá tất cả các thẻ và chức năng HTML dành cho người mới bắt đầu</p>
+    </header>
+
+    <!-- NAV - Menu điều hướng -->
+    <nav>
+        <ul>
+            <li><a href="#text-formatting">Định Dạng Text</a></li>
+            <li><a href="#lists">Danh Sách</a></li>
+            <li><a href="#links-media">Liên Kết & Media</a></li>
+            <li><a href="#tables">Bảng</a></li>
+            <li><a href="#forms">Biểu Mẫu</a></li>
+            <li><a href="#semantic">Thẻ Semantic</a></li>
+            <li><a href="#interactive">Yếu Tố Tương Tác</a></li>
+        </ul>
+    </nav>
+
+    <!-- MAIN - Nội dung chính -->
+    <main>
+        <!-- SECTION 1: Text Formatting -->
+        <section id="text-formatting">
+            <h2>1️⃣ Định Dạng Văn Bản (Text Formatting)</h2>
+            
+            <article>
+                <h3>Các Thẻ Tiêu Đề (Heading Tags)</h3>
+                <p>Có 6 mức tiêu đề từ H1 đến H6:</p>
+                <h1>Đây là tiêu đề H1 - Quan trọng nhất</h1>
+                <h2>Đây là tiêu đề H2</h2>
+                <h3>Đây là tiêu đề H3</h3>
+                <h4>Đây là tiêu đề H4</h4>
+                <h5>Đây là tiêu đề H5</h5>
+                <h6>Đây là tiêu đề H6 - Ít quan trọng nhất</h6>
+            </article>
+
+            <article>
+                <h3>Thẻ Định Dạng Văn Bản</h3>
+                <p>Đây là văn bản <strong>In đậm (Strong)</strong> - dùng cho nội dung quan trọng.</p>
+                <p>Đây là văn bản <b>In đậm (Bold)</b> - chỉ định dạng.</p>
+                <p>Đây là văn bản <em>Nghiêng (Emphasis)</em> - dùng cho nội dung nhấn mạnh.</p>
+                <p>Đây là văn bản <i>Nghiêng (Italic)</i> - chỉ định dạng.</p>
+                <p>Đây là văn bản <mark>Được đánh dấu (Mark)</mark> - làm nổi bật.</p>
+                <p>Đây là văn bản <small>Nhỏ (Small)</small> - chữ nhỏ hơn.</p>
+                <p>Công thức hóa học: H<sub>2</sub>O (Subscript)</p>
+                <p>Công thức toán: x<sup>2</sup> + y<sup>2</sup> = z<sup>2</sup> (Superscript)</p>
+                <p>Đây là văn bản <del>bị xóa</del> và <ins>được chèn thêm</ins>.</p>
+                <p><u>Văn bản được gạch dưới</u></p>
+            </article>
+
+            <article>
+                <h3>Thẻ Mã và Kỹ Thuật</h3>
+                <p>Để viết mã nội tuyến, dùng thẻ <code>&lt;code&gt;</code>.</p>
+                <p>Nhấn <kbd>Ctrl</kbd> + <kbd>C</kbd> để sao chép.</p>
+                <p>Biến trong chương trình: <var>username</var>, <var>password</var></p>
+                <p>Kết quả mẫu: <samp>Lỗi 404 - Không tìm thấy trang</samp></p>
+                
+                <h4>Khối mã (Code Block):</h4>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Trang Web&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Xin chào!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </article>
+
+            <article>
+                <h3>Thẻ Trích Dẫn và Tài Liệu Tham Khảo</h3>
+                <blockquote>
+                    <p>"HTML là nền tảng của web. Nó cung cấp cấu trúc cho nội dung."</p>
+                    <footer>— Một lập trình viên web</footer>
+                </blockquote>
+                
+                <p>Sách "<cite>Learning HTML & CSS</cite>" là một tài liệu tuyệt vời.</p>
+                <p><abbr title="HyperText Markup Language">HTML</abbr> được sử dụng rộng rãi trên web.</p>
+                <p><q>Luôn sử dụng semantic HTML</q> là một lời khuyên tốt.</p>
+            </article>
+
+            <article>
+                <h3>Đoạn văn (Paragraph)</h3>
+                <p>Thẻ &lt;p&gt; được dùng để tạo các đoạn văn bản. Mỗi đoạn sẽ được tách biệt với nhau bằng khoảng cách.</p>
+                <p>Đây là đoạn thứ hai. Các đoạn có thể chứa bất kỳ nội dung nào như văn bản, liên kết, hình ảnh, v.v.</p>
+            </article>
+        </section>
+
+        <!-- SECTION 2: Lists -->
+        <section id="lists">
+            <h2>📋 Danh Sách (Lists)</h2>
+
+            <article>
+                <h3>Danh Sách Không Có Thứ Tự (Unordered List)</h3>
+                <p>Dùng thẻ &lt;ul&gt; và &lt;li&gt;:</p>
+                <ul class="list-example">
+                    <li>Mục thứ nhất</li>
+                    <li>Mục thứ hai</li>
+                    <li>Mục thứ ba
+                        <ul>
+                            <li>Mục con 1</li>
+                            <li>Mục con 2</li>
+                        </ul>
+                    </li>
+                    <li>Mục thứ tư</li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Danh Sách Có Thứ Tự (Ordered List)</h3>
+                <p>Dùng thẻ &lt;ol&gt; và &lt;li&gt;:</p>
+                <ol class="list-example">
+                    <li>Bước đầu tiên</li>
+                    <li>Bước thứ hai</li>
+                    <li>Bước thứ ba
+                        <ol>
+                            <li>Bước con 1</li>
+                            <li>Bước con 2</li>
+                        </ol>
+                    </li>
+                    <li>Bước cuối cùng</li>
+                </ol>
+            </article>
+
+            <article>
+                <h3>Danh Sách Định Nghĩa (Definition List)</h3>
+                <p>Dùng thẻ &lt;dl&gt;, &lt;dt&gt;, và &lt;dd&gt;:</p>
+                <dl>
+                    <dt><strong>HTML</strong></dt>
+                    <dd>HyperText Markup Language - Ngôn ngữ đánh dấu siêu văn bản</dd>
+                    
+                    <dt><strong>CSS</strong></dt>
+                    <dd>Cascading Style Sheets - Được dùng để tạo kiểu cho các phần tử HTML</dd>
+                    
+                    <dt><strong>JavaScript</strong></dt>
+                    <dd>Ngôn ngữ lập trình tương tác trên trình duyệt</dd>
+                </dl>
+            </article>
+        </section>
+
+        <!-- SECTION 3: Links and Media -->
+        <section id="links-media">
+            <h2>🔗 Liên Kết và Phương Tiện (Links & Media)</h2>
+
+            <article>
+                <h3>Thẻ Liên Kết (Anchor Tag)</h3>
+                <p>Thẻ <a href="https://www.w3.org/html/" target="_blank" rel="noopener noreferrer">a</a> được dùng để tạo liên kết.</p>
+                <p>
+                    <a href="mailto:example@example.com">Gửi email</a> - Tạo liên kết email<br>
+                    <a href="tel:+84123456789">Gọi điện thoại</a> - Tạo liên kết gọi điện<br>
+                    <a href="#top">Về đầu trang</a> - Liên kết nội bộ
+                </p>
+            </article>
+
+            <article>
+                <h3>Hình Ảnh (Image Tag)</h3>
+                <p>Dùng thẻ &lt;img&gt; để nhúng hình ảnh:</p>
+                <figure>
+                    <img src="https://via.placeholder.com/300x200?text=Hình+Ảnh+Ví+Dụ" alt="Hình ảnh ví dụ từ placeholder" width="300" height="200">
+                    <figcaption>Hình ảnh từ Placeholder - Dùng để làm ví dụ</figcaption>
+                </figure>
+            </article>
+
+            <article>
+                <h3>Hình Ảnh Đáp Ứng (Picture Tag)</h3>
+                <p>Thẻ &lt;picture&gt; cho phép cung cấp nhiều phiên bản hình ảnh cho các kích thước màn hình khác nhau.</p>
+                <picture>
+                    <source media="(min-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Desktop">
+                    <source media="(max-width: 767px)" srcset="https://via.placeholder.com/300x300?text=Mobile">
+                    <img src="https://via.placeholder.com/300x300?text=Fallback" alt="Hình ảnh đáp ứng">
+                </picture>
+            </article>
+
+            <article>
+                <h3>Video (Video Tag)</h3>
+                <p>Nhúng video trực tiếp vào trang web:</p>
+                <video width="400" height="300" controls>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+                    Trình duyệt của bạn không hỗ trợ thẻ video.
+                </video>
+                <p>Các thuộc tính: <code>controls</code>, <code>autoplay</code>, <code>muted</code>, <code>loop</code>, <code>poster</code></p>
+            </article>
+
+            <article>
+                <h3>Âm Thanh (Audio Tag)</h3>
+                <p>Nhúng âm thanh vào trang web:</p>
+                <audio controls>
+                    <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                    <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+                    Trình duyệt của bạn không hỗ trợ thẻ audio.
+                </audio>
+            </article>
+
+            <article>
+                <h3>Đường Dẫn (Path)</h3>
+                <p>Dùng thẻ &lt;path&gt; trong SVG để vẽ hình:</p>
+                <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="80" fill="#667eea" stroke="#764ba2" stroke-width="3"/>
+                    <text x="100" y="110" text-anchor="middle" fill="white" font-size="24" font-weight="bold">SVG</text>
+                </svg>
+            </article>
+        </section>
+
+        <!-- SECTION 4: Tables -->
+        <section id="tables">
+            <h2>📊 Bảng (Tables)</h2>
+
+            <article>
+                <h3>Bảng Cơ Bản</h3>
+                <table>
+                    <caption>Bảng So Sánh Các Ngôn Ngữ Web</caption>
+                    <thead>
+                        <tr>
+                            <th>Ngôn Ngữ</th>
+                            <th>Mục Đích</th>
+                            <th>Loại</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>HTML</td>
+                            <td>Cấu trúc nội dung</td>
+                            <td>Markup Language</td>
+                        </tr>
+                        <tr>
+                            <td>CSS</td>
+                            <td>Thiết kế kiểu dáng</td>
+                            <td>Style Sheet</td>
+                        </tr>
+                        <tr>
+                            <td>JavaScript</td>
+                            <td>Lập trình tương tác</td>
+                            <td>Programming Language</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">Cả ba đều cần thiết để tạo một trang web hoàn chỉnh</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </article>
+
+            <article>
+                <h3>Bảng Phức Tạp</h3>
+                <table>
+                    <caption>Lịch Trình Học Tập</caption>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Tuần</th>
+                            <th colspan="3">Kỹ Năng Học</th>
+                        </tr>
+                        <tr>
+                            <th>HTML</th>
+                            <th>CSS</th>
+                            <th>JavaScript</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tuần 1</td>
+                            <td>Thẻ cơ bản</td>
+                            <td>Selectors</td>
+                            <td>Cú pháp cơ bản</td>
+                        </tr>
+                        <tr>
+                            <td>Tuần 2</td>
+                            <td>Biểu mẫu</td>
+                            <td>Flexbox</td>
+                            <td>DOM</td>
+                        </tr>
+                        <tr>
+                            <td>Tuần 3</td>
+                            <td>Semantic HTML</td>
+                            <td>Grid</td>
+                            <td>Events</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+        </section>
+
+        <!-- SECTION 5: Forms -->
+        <section id="forms">
+            <h2>📝 Biểu Mẫu (Forms)</h2>
+
+            <article>
+                <h3>Các Loại Input</h3>
+                <form>
+                    <fieldset>
+                        <legend>Thông Tin Cá Nhân</legend>
+                        
+                        <label for="name">Tên (Text Input):</label>
+                        <input type="text" id="name" name="name" placeholder="Nhập tên của bạn" required>
+                        
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="example@example.com" required>
+                        
+                        <label for="phone">Số Điện Thoại:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+84 123456789">
+                        
+                        <label for="birthdate">Ngày Sinh:</label>
+                        <input type="date" id="birthdate" name="birthdate">
+                        
+                        <label for="time">Giờ:</label>
+                        <input type="time" id="time" name="time">
+                        
+                        <label for="color">Màu Yêu Thích:</label>
+                        <input type="color" id="color" name="color" value="#667eea">
+                        
+                        <label for="age">Tuổi (Range):</label>
+                        <input type="range" id="age" name="age" min="0" max="100" value="25">
+                        
+                        <label for="quantity">Số Lượng (Number):</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
+                        
+                        <label for="website">Website (URL):</label>
+                        <input type="url" id="website" name="website" placeholder="https://example.com">
+                        
+                        <label for="search">Tìm Kiếm:</label>
+                        <input type="search" id="search" name="search" placeholder="Nhập từ khóa...">
+                        
+                        <label for="password">Mật Khẩu:</label>
+                        <input type="password" id="password" name="password" placeholder="••••••••">
+                        
+                        <label for="file">Tải Lên File:</label>
+                        <input type="file" id="file" name="file" accept=".jpg,.png,.pdf">
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Tùy Chọn</legend>
+                        
+                        <label for="gender">Giới Tính (Radio):</label>
+                        <div>
+                            <input type="radio" id="male" name="gender" value="male">
+                            <label for="male" style="display: inline;">Nam</label>
+                            
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female" style="display: inline;">Nữ</label>
+                            
+                            <input type="radio" id="other" name="gender" value="other">
+                            <label for="other" style="display: inline;">Khác</label>
+                        </div>
+                        
+                        <label for="interests">Sở Thích (Checkbox):</label>
+                        <div>
+                            <input type="checkbox" id="html" name="interests" value="html">
+                            <label for="html" style="display: inline;">HTML</label>
+                            
+                            <input type="checkbox" id="css" name="interests" value="css">
+                            <label for="css" style="display: inline;">CSS</label>
+                            
+                            <input type="checkbox" id="js" name="interests" value="javascript">
+                            <label for="js" style="display: inline;">JavaScript</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Các Phần Tử Khác</legend>
+                        
+                        <label for="country">Quốc Gia (Select):</label>
+                        <select id="country" name="country">
+                            <option value="">-- Chọn Quốc Gia --</option>
+                            <option value="vietnam">Việt Nam</option>
+                            <option value="thailand">Thái Lan</option>
+                            <option value="cambodia">Campuchia</option>
+                            <optgroup label="Châu Âu">
+                                <option value="france">Pháp</option>
+                                <option value="germany">Đức</option>
+                                <option value="spain">Tây Ban Nha</option>
+                            </optgroup>
+                        </select>
+                        
+                        <label for="message">Lời Nhắn (Textarea):</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Nhập lời nhắn của bạn..." maxlength="500"></textarea>
+                        
+                        <label for="level">Mức Độ (Datalist):</label>
+                        <input list="levels" id="level" name="level" placeholder="Chọn hoặc nhập">
+                        <datalist id="levels">
+                            <option value="Beginner">
+                            <option value="Intermediate">
+                            <option value="Advanced">
+                            <option value="Expert">
+                        </datalist>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Nút Lệnh</legend>
+                        <button type="submit">Gửi</button>
+                        <button type="reset">Xóa</button>
+                        <button type="button">Nút Bình Thường</button>
+                    </fieldset>
+                </form>
+            </article>
+        </section>
+
+        <!-- SECTION 6: Semantic Elements -->
+        <section id="semantic">
+            <h2>🏗️ Phần Tử Semantic (Semantic Elements)</h2>
+
+            <article>
+                <h3>Tầu Ngữ Cảnh (Semantic HTML)</h3>
+                <p>Các thẻ semantic giúp tạo ý nghĩa cho nội dung:</p>
+                
+                <h4>&lt;article&gt; - Nội dung độc lập</h4>
+                <article style="background-color: #fff;">
+                    <h5>Bài Viết: Học HTML Cho Người Mới</h5>
+                    <p>Nội dung bài viết độc lập...</p>
+                    <time datetime="2026-05-01">1 tháng 5, 2026</time>
+                </article>
+                
+                <h4>&lt;section&gt; - Phần của nội dung</h4>
+                <p>Thẻ section được sử dụng để nhóm nội dung liên quan vào một phần.</p>
+                
+                <h4>&lt;aside&gt; - Nội dung phụ</h4>
+                <aside>
+                    <h5>Thông Tin Thêm</h5>
+                    <p>Đây là thông tin phụ hoặc thanh bên (sidebar).</p>
+                    <ul>
+                        <li>Liên kết 1</li>
+                        <li>Liên kết 2</li>
+                    </ul>
+                </aside>
+                
+                <h4>&lt;time&gt; - Thời gian</h4>
+                <p>Sự kiện sẽ diễn ra vào <time datetime="2026-12-25">ngày Giáng Sinh</time>.</p>
+                <p>Bài viết được đăng lúc <time datetime="2026-05-01T14:30">14:30 ngày 1 tháng 5</time>.</p>
+                
+                <h4>&lt;address&gt; - Địa chỉ liên hệ</h4>
+                <address>
+                    <p>Công ty ABC<br>
+                    Địa chỉ: 123 Đường Lê Lợi, TP.HCM<br>
+                    Email: <a href="mailto:info@abc.com">info@abc.com</a></p>
+                </address>
+            </article>
+        </section>
+
+        <!-- SECTION 7: Interactive Elements -->
+        <section id="interactive">
+            <h2>⚡ Phần Tử Tương Tác (Interactive Elements)</h2>
+
+            <article>
+                <h3>Chi Tiết Có Thể Mở/Đóng (Details & Summary)</h3>
+                <details>
+                    <summary>Nhấp vào đây để xem chi tiết</summary>
+                    <p>Đây là nội dung chi tiết sẽ được hiển thị khi bạn nhấp vào summary. Bạn có thể ẩn hoặc hiển thị nó bằng cách nhấp.</p>
+                    <p>Nội dung chi tiết có thể chứa bất kỳ phần tử HTML nào.</p>
+                </details>
+
+                <details>
+                    <summary>Các Câu Hỏi Thường Gặp</summary>
+                    <dl>
+                        <dt>HTML là gì?</dt>
+                        <dd>HTML (HyperText Markup Language) là ngôn ngữ đánh dấu siêu văn bản.</dd>
+                        
+                        <dt>CSS là gì?</dt>
+                        <dd>CSS (Cascading Style Sheets) được dùng để tạo kiểu cho các phần tử.</dd>
+                        
+                        <dt>JavaScript là gì?</dt>
+                        <dd>JavaScript là ngôn ngữ lập trình chạy trên trình duyệt.</dd>
+                    </dl>
+                </details>
+            </article>
+
+            <article>
+                <h3>Thanh Tiến Độ (Progress Bar)</h3>
+                <p>Quá trình tải: 0%</p>
+                <progress value="0" max="100"></progress>
+                
+                <p>Quá trình tải: 50%</p>
+                <progress value="50" max="100"></progress>
+                
+                <p>Quá trình tải: 100%</p>
+                <progress value="100" max="100"></progress>
+            </article>
+
+            <article>
+                <h3>Thước Đo (Meter)</h3>
+                <p>Nhiệt độ: 20°C</p>
+                <meter value="20" min="0" max="40" low="10" high="30" optimum="25"></meter>
+                
+                <p>Điểm: 7/10</p>
+                <meter value="7" min="0" max="10"></meter>
+                
+                <p>Dung lượng đĩa: 70%</p>
+                <meter value="70" max="100" low="25" high="90" optimum="50"></meter>
+            </article>
+
+            <article>
+                <h3>Yếu Tố Nhúng (Embedded Elements)</h3>
+                <h4>Object Tag:</h4>
+                <object data="data:text/html,<h3>Nội dung nhúng</h3>" type="text/html" width="300" height="150"></object>
+                
+                <h4>Iframe:</h4>
+                <p>Nhúng trang web khác:</p>
+                <iframe src="https://www.w3schools.com/" width="100%" height="300" style="border: 1px solid #ccc; border-radius: 4px;"></iframe>
+            </article>
+
+            <article>
+                <h3>Canvas (Vẽ Đồ Họa)</h3>
+                <p>Thẻ canvas cho phép vẽ đồ họa bằng JavaScript:</p>
+                <canvas id="myCanvas" width="300" height="150" style="border: 1px solid #ccc; border-radius: 4px; background-color: #f9f9f9;"></canvas>
+                <script>
+                    const canvas = document.getElementById('myCanvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    // Vẽ hình chữ nhật
+                    ctx.fillStyle = '#667eea';
+                    ctx.fillRect(50, 40, 100, 70);
+                    
+                    // Vẽ hình tròn
+                    ctx.fillStyle = '#764ba2';
+                    ctx.beginPath();
+                    ctx.arc(200, 75, 40, 0, 2 * Math.PI);
+                    ctx.fill();
+                    
+                    // Vẽ văn bản
+                    ctx.fillStyle = 'black';
+                    ctx.font = 'bold 16px Arial';
+                    ctx.fillText('Canvas', 10, 130);
+                </script>
+            </article>
+        </section>
+
+        <!-- SECTION 8: Các Thẻ Khác -->
+        <section>
+            <h2>🎨 Các Thẻ Khác (Miscellaneous Tags)</h2>
+
+            <article>
+                <h3>Dòng Ngang (HR)</h3>
+                <p>Dùng thẻ &lt;hr&gt; để tạo một dòng ngang ngăn cách nội dung:</p>
+                <hr>
+                <p>Nội dung sau dòng ngang</p>
+            </article>
+
+            <article>
+                <h3>Xuống Dòng (BR)</h3>
+                <p>Dùng thẻ &lt;br&gt; để xuống dòng:<br>
+                Đây là dòng thứ hai<br>
+                Đây là dòng thứ ba</p>
+            </article>
+
+            <article>
+                <h3>Phân Chia (Div) và Nhóm Nội Tuyến (Span)</h3>
+                <div style="background-color: #f0f0f0; padding: 1rem; border-radius: 4px; margin: 1rem 0;">
+                    <p>Thẻ &lt;div&gt; là một phần tử khối dùng để nhóm nội dung.</p>
+                    <p>Bạn có thể có văn bản <span style="background-color: #ffeb3b;">được đánh dấu</span> trong đoạn.</p>
+                </div>
+            </article>
+
+            <article>
+                <h3>Tiêu Đề Tương Tác (Interactive Heading)</h3>
+                <p>Thẻ &lt;hgroup&gt; nhóm các tiêu đề liên quan (lưu ý: hiếm khi sử dụng):</p>
+                <hgroup>
+                    <h3>Tiêu Đề Chính</h3>
+                    <p>Tiêu đề phụ giải thích thêm</p>
+                </hgroup>
+            </article>
+
+            <article>
+                <h3>Ghi Chú (Footnote)</h3>
+                <p>Bạn có thể thêm ghi chú<sup><a href="#note1">[1]</a></sup> để cung cấp thông tin thêm.</p>
+                <p id="note1"><sup>[1]</sup> Đây là một ghi chú giải thích.</p>
+            </article>
+
+            <article>
+                <h3>Thẻ Base</h3>
+                <p>Thẻ &lt;base&gt; (nằm trong &lt;head&gt;) xác định URL cơ sở và mục tiêu mặc định cho tất cả các liên kết tương đối:</p>
+                <code>&lt;base href="https://example.com/" target="_blank"&gt;</code>
+            </article>
+
+            <article>
+                <h3>Thẻ Meta</h3>
+                <p>Thẻ &lt;meta&gt; được sử dụng để cung cấp thông tin bổ sung về tài liệu:</p>
+                <pre><code>&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;meta name="description" content="Mô tả trang web"&gt;
+&lt;meta name="keywords" content="từ khóa 1, từ khóa 2"&gt;
+&lt;meta name="author" content="Tác giả"&gt;</code></pre>
+            </article>
+
+            <article>
+                <h3>Thẻ Link</h3>
+                <p>Thẻ &lt;link&gt; được dùng để liên kết CSS:</p>
+                <code>&lt;link rel="stylesheet" href="styles.css"&gt;</code>
+                <p>Hoặc favicon:</p>
+                <code>&lt;link rel="icon" href="favicon.ico"&gt;</code>
+            </article>
+
+            <article>
+                <h3>Thẻ Script</h3>
+                <p>Thẻ &lt;script&gt; được dùng để nhúng hoặc tham chiếu mã JavaScript:</p>
+                <pre><code>&lt;!-- Nhúng JavaScript bên ngoài --&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;
+
+&lt;!-- Nhúng JavaScript trực tiếp --&gt;
+&lt;script&gt;
+  console.log('Hello World!');
+&lt;/script&gt;</code></pre>
+            </article>
+
+            <article>
+                <h3>Thẻ Noscript</h3>
+                <p>Thẻ &lt;noscript&gt; dùng để hiển thị nội dung khi JavaScript bị vô hiệu hóa:</p>
+                <noscript>
+                    <p style="background-color: #ffebee; padding: 1rem; border-radius: 4px;">
+                        ⚠️ JavaScript bị vô hiệu hóa. Vui lòng bật JavaScript để sử dụng tất cả các tính năng của trang web.
+                    </p>
+                </noscript>
+            </article>
+        </section>
+
+        <!-- SECTION 9: Data & Attributes -->
+        <section>
+            <h2>📋 Thuộc Tính Dữ Liệu (Data Attributes)</h2>
+
+            <article>
+                <h3>Data Attributes</h3>
+                <p>Dùng thuộc tính &lt;data-*&gt; để lưu trữ dữ liệu tùy chỉnh:</p>
+                <ul>
+                    <li data-id="1" data-category="html">HTML - Cấu trúc</li>
+                    <li data-id="2" data-category="css">CSS - Kiểu dáng</li>
+                    <li data-id="3" data-category="javascript">JavaScript - Tương tác</li>
+                </ul>
+                <p>Các dữ liệu này có thể được truy cập bằng JavaScript: <code>element.dataset.id</code></p>
+            </article>
+        </section>
+
+        <!-- SECTION 10: Summary Table -->
+        <section>
+            <h2>📚 Bảng Tóm Tắt Tất Cả Các Thẻ HTML</h2>
+
+            <article>
+                <h3>Các Thẻ Chính</h3>
+                <div class="tag-list">
+                    <div class="tag-item">
+                        <strong>Cấu Trúc</strong>
+                        <code>&lt;html&gt;, &lt;head&gt;, &lt;body&gt;</code>
+                    </div>
+                    <div class="tag-item">
+                        <strong>Tiêu Đề</strong>
+                        <code>&lt;h1&gt; - &lt;h6&gt;</code>
+                    </div>
+                    <div class="tag-item">
+                        <strong>Đoạn Văn</strong>
+                        <code>&lt;p&gt;</code>
+                    </div>
+                    <div class="tag-item">
+                        <strong>Danh Sách</strong>
+                        <code>&lt;ul&gt;, &lt;ol&gt;, &lt;dl&gt;</code>
+                    </div>
+                    <div class="tag-item">
+                        <strong>Bảng</strong>
+                        <code>&lt;table&gt;, &lt;tr&gt;, &lt;td&gt;, &lt;th&gt;</code>
+                    </div>
+                    <div class="tag-item">
+                        <strong>Biểu Mẫu</strong>
+                        <code>&lt;form&gt;, &lt;input&gt;, &lt;button&gt;</code>
+                    </div>
+                    <div class="tag-item">
+                        <strong>Liên Kết</strong>
+                        <code>&lt;a&gt;</code>
+                    </div>
+                    <div class="tag-item">
+                        <strong>Hình Ảnh</strong>
+                        <code>&lt;img&gt;, &lt;picture&gt;, &lt;figure&gt;</code>
+                    </div>
+                    <div class="tag-item">
+                        <strong>Âm Thanh/Video</strong>
+                        <code>&lt;audio&gt;, &lt;video&gt;</code>
+                    </div>
+                    <div class="tag-item">
+                        <strong>Semantic</strong>
+                        <code>&lt;header&gt;, &lt;footer&gt;, &lt;nav&gt;, &lt;main&gt;</code>
+                    </div>
+                    <div class="tag-item">
+                        <strong>Định Dạng</strong>
+                        <code>&lt;strong&gt;, &lt;em&gt;, &lt;mark&gt;, &lt;code&gt;</code>
+                    </div>
+                    <div class="tag-item">
+                        <strong>Tương Tác</strong>
+                        <code>&lt;details&gt;, &lt;summary&gt;, &lt;canvas&gt;</code>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- FOOTER - Phần chân trang -->
+    <footer>
+        <p>&copy; 2026 Hướng Dẫn HTML Toàn Diện. Tất cả quyền được bảo lưu.</p>
+        <p>
+            <a href="#top" style="color: #667eea; text-decoration: none;">Về đầu trang ⬆️</a>
+        </p>
+        <address>
+            Liên hệ: <a href="mailto:support@htmltutorial.com" style="color: #667eea;">support@htmltutorial.com</a>
+        </address>
+    </footer>
+
+    <!-- SCRIPT - JavaScript -->
+    <script>
+        // Ví dụ: Cuộn mượt mà
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Ví dụ: Thêm sự kiện cho form
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Biểu mẫu đã được gửi! (Demo - không gửi thực tế)');
+            });
+        });
+    </script>
+</body>
+</html>
